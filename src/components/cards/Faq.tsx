@@ -23,7 +23,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
 }) => {
     return (
         <div
-            className={`flex flex-col justify-between gap-3 pt-7 pb-3 px-3 bg-white border-t-[1px] ${isLastItem ? 'border-b-[1px]' : ''} border-gray-500`}
+            className={`flex flex-col justify-between gap-3 pt-7 pb-3 px-3  border-t-[1px] ${isLastItem ? 'border-b-[1px]' : ''} border-gray-500`}
         >
             <div className="w-full flex justify-between items-center">
                 <h3 className="text-gray-900 text-[20px] font-semibold">{item.question}?</h3>
