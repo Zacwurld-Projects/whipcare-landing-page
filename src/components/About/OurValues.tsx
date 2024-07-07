@@ -12,7 +12,7 @@ const OurValues = () => {
                 <div className='w-full flex flex-wrap gap-y-5'>
                     {
                         ourValuesInfo.map((value, index) => (
-                            <div key={index} className='w-1/2 px-20'>
+                            <div key={index} className='xl:w-1/2 px-7 xl:px-20'>
                                 <Values title={value.title} image={value.image} description={value.description} />
                             </div>
                         ))

@@ -10,17 +10,17 @@ import ellipse from "@/assets/images/about/ellipse.png"
 
 const OurStory = () => {
     return (
-        <section className='w-full h-full my-[5rem]'>
+        <section className='w-full h-full my-[5rem] px-7'>
             <div className="h-full w-full flex items-end relative">
                 <div className='h-full w-full flex flex-col gap-y-16 relative z-10 xl:px-[5rem] 2xl:px-[7rem]'>
                     <div className='flex flex-col gap-y-16'>
-                        <div className='w-1/3'>
+                        <div className='xl:w-1/3'>
                             <h2 className='text-3xl font-semibold'>Our Story</h2>
                             <p className='text-sm'>WhipCare was created to solve the hassle of finding reliable car care services. By bringing top-notch car maintenance directly to your doorstep, we make car care effortless and accessible globally.</p>
                         </div>
 
-                        <div className='w-full flex'>
-                            <div className='w-1/2'>
+                        <div className='w-full flex flex-col xl:flex-row'>
+                            <div className='xl:w-1/2'>
                                 <Image
                                     src={mockup}
                                     alt="mockup"
@@ -28,8 +28,8 @@ const OurStory = () => {
                                 />
                             </div>
 
-                            <div className='w-1/2 pl-20 pr-5 flex flex-col gap-y-2'>
-                                <h2 className='text-[#FC4B37] text-[20px] font-medium pl-7'>Whipcare</h2>
+                            <div className='xl:w-1/2 xl:pl-20 pr-5 flex flex-col gap-y-2'>
+                                <h2 className='text-[#FC4B37] text-[20px] font-medium pl-6 xl:pl-7 pt-3 xl:pt-0'>Whipcare</h2>
                                 <div className='flex flex-col gap-y-3'>
                                     {
                                         ourStoryInfo.map((item, index) => (
@@ -52,12 +52,12 @@ const OurStory = () => {
                     </div>
 
                     <div className='h-full flex flex-col gap-y-7'>
-                        <div className='w-1/3'>
+                        <div className='xl:w-1/3'>
                             <h2 className='text-3xl font-semibold'>Mission and Vision</h2>
                         </div>
 
-                        <div className='w-full h-full flex flex-row-reverse'>
-                            <div className='w-1/2'>
+                        <div className='w-full h-full flex flex-col xl:flex-row-reverse'>
+                            <div className='xl:w-1/2'>
                                 <Image
                                     src={missionMockup}
                                     alt="mission and vision mockup"
@@ -65,8 +65,8 @@ const OurStory = () => {
                                 />
                             </div>
 
-                            <div className='w-1/2 h-full pr-20 pl-5 flex flex-col justify-center gap-y-2'>
-                                <h2 className='text-[#FC4B37] text-[20px] font-medium pl-7'>Whipcare</h2>
+                            <div className='xl:w-1/2 h-full xl:pr-20 xl:pl-5 flex flex-col justify-center gap-y-2'>
+                                <h2 className='text-[#FC4B37] text-[20px] font-medium pl-6 xl:pl-7 pt-3 xl:pt-0'>Whipcare</h2>
                                 <div className='flex flex-col gap-y-7'>
                                     {
                                         missionVisionInfo.map((item, index) => (
@@ -89,7 +89,7 @@ const OurStory = () => {
                     </div>
                 </div>
 
-                <div className='absolute'>
+                <div className='hidden xl:block absolute'>
                     <Image src={ellipse} alt='ellipse' className='w-[30rem]' />
                 </div>
             </div>

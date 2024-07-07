@@ -23,7 +23,7 @@ const Values: React.FC<ValuesProps> = ({
                     </div>
                 </div>
                 <div className='flex flex-col gap-y-2'>
-                    <h2 className='text-gray-900 text-[25px] font-semibold'>{title}</h2>
+                    <h2 className='text-gray-900 text-[22px] xl:text-[25px] font-semibold'>{title}</h2>
                     <p className='text-sm text-gray-500 font-light'>{description}</p>
                 </div>
             </div>

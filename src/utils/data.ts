@@ -170,19 +170,19 @@ export const footerInfo = {
   company: [
     {
       title: "About us",
-      link: "",
+      link: "/about",
     },
     {
       title: "Home",
-      link: "",
+      link: "/",
     },
     {
       title: "FAQ's",
-      link: "",
+      link: "/faq",
     },
     {
       title: "Contact us",
-      link: "",
+      link: "/contact",
     },
   ],
   socials: [

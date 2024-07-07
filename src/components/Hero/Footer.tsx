@@ -10,16 +10,16 @@ const Footer = () => {
 
     return (
         <footer className='bg-gray-900'>
-            <div className='w-full h-full py-10 px-20'>
-                <div className='w-full flex'>
-                    <div className='w-1/3'>
+            <div className='w-full h-full py-10 px-10 xl:px-20'>
+                <div className='w-full flex flex-col xl:flex-row gap-y-7 xl:gap-y-0'>
+                    <div className='xl:w-1/3 flex flex-col items-center xl:items-start'>
                         <Image src={logo} alt='logo' />
-                        <p className='text-sm text-white font-light'>From mechanics to detailers, book top-rated professionals effortlessly. Your {"car's"} perfect partner is just a click away.</p>
+                        <p className='text-sm text-white font-light text-center xl:text-start'>From mechanics to detailers, book top-rated professionals effortlessly. Your {"car's"} perfect partner is just a click away.</p>
                         <button className="bg-white text-black rounded-full h-[40px] w-[150px] mt-8">Get the app</button>
                     </div>
 
-                    <div className='w-1/3 flex flex-col items-center'>
-                        <div className='flex flex-col gap-y-7'>
+                    <div className='xl:w-1/3 flex flex-col items-center'>
+                        <div className='flex flex-col gap-y-7 text-center xl:text-start'>
                             <h2 className='text-white text-[24px] font-semibold'>Company</h2>
                             <ul className='flex flex-col gap-y-5'>
                                 {
@@ -31,8 +31,8 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className='w-1/3 flex flex-col items-center'>
-                        <div className='flex flex-col gap-y-7'>
+                    <div className='xl:w-1/3 flex flex-col items-center'>
+                        <div className='flex flex-col gap-y-7 text-center xl:text-start'>
                             <h2 className='text-white text-[24px] font-semibold'>Address</h2>
                             <div className='flex flex-col gap-y-5'>
                                 <div>
@@ -46,7 +46,7 @@ const Footer = () => {
                                             <p key={index} className='text-white text-sm'>{item.title}</p>
                                         ))
                                     }
-                                    <div className='flex gap-x-2'>
+                                    <div className='flex gap-x-2 justify-center xl:justify-start'>
                                         {
                                             footerInfo.socials.map((social, index) => (
                                                 <Link
@@ -65,8 +65,8 @@ const Footer = () => {
 
                 <hr className='mt-16 mb-5' />
 
-                <div className='w-full flex justify-center text-white text-sm'>
-                    <p className='border-r-[1px] border-white pr-3'>© {year} Whipcare. All rights reserved.</p>
+                <div className='w-full flex flex-col xl:flex-row justify-center gap-y-3 xl:gap-y-0 text-white text-sm text-center xl:text-start'>
+                    <p className='border-b-[1px] xl:border-b-0 xl:border-r-[1px] border-white pb-3 xl:pb-0 xl:pr-3'>© {year} Whipcare. All rights reserved.</p>
                     <p className='pl-3'>Cookie Settings, Anti-Spam, Privacy, User agreement, Legal Notice and Responsible Disclosure.</p>
                 </div>
             </div>

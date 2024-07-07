@@ -44,7 +44,7 @@ const Team = () => {
     return (
         <section>
             <div className='xl:px-[5rem] 2xl:px-[7rem] mt-[5rem]'>
-                <div>
+                <div className='text-center xl:text-start'>
                     <h2 className='text-3xl font-semibold xl:pl-[6rem] 2xl:pl-[4.5rem]'>
                         Meet The Team
                     </h2>

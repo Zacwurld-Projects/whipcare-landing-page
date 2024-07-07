@@ -6,9 +6,9 @@ import React from 'react'
 const page = () => {
     return (
         <div className='2xl:px-[7rem] bg-gray-100'>
-            <Navbar
+            {/* <Navbar
                 textColor='text-gray-900'
-            />
+            /> */}
             <Form />
             <CTA />
         </div>

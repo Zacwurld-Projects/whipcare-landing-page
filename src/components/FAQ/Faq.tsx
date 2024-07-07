@@ -41,7 +41,7 @@ const Faq = () => {
                     </div>
                 </div>
 
-                <div className='absolute'>
+                <div className='hidden xl:block absolute'>
                     <Image src={ellipse} alt='ellipse' className='w-[25rem]' />
                 </div>
             </div>
