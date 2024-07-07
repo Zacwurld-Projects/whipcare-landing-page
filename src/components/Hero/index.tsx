@@ -4,12 +4,12 @@ import Image from "next/image"
 
 const Hero = () => {
     return (
-        <section className="w-full h-[717px]">
-            <div className="h-full w-full flex xl:px-[5rem] 2xl:px-0">
+        <section className="w-full xl:h-[717px]">
+            <div className="h-full w-full flex flex-col xl:flex-row gap-y-10 xl:gap-y-0 px-7 xl:px-[5rem] 2xl:px-0 my-[2rem] xl:my-0">
 
                 {/* Text */}
-                <div className="w-1/2 flex flex-col justify-center gap-y-7">
-                    <div className="flex items-center">
+                <div className="xl:w-1/2 flex flex-col justify-center gap-y-7">
+                    <div className="flex flex-col xl:flex-row xl:items-center">
                         <Image src={reviewers} alt="reviewers" />
                         <div className="flex flex-col">
                             <span>🌟🌟🌟🌟🌟</span>
@@ -17,10 +17,10 @@ const Hero = () => {
                         </div>
                     </div>
                     <div className="flex flex-col gap-5">
-                        <h1 className="text-[68px] text-gray-900 font-bold leading-tight">Access Quality  <br /> Car
+                        <h1 className="text-[40px] xl:text-[68px] text-gray-900 font-bold leading-tight">Access Quality  <br /> Car
                             Services <br /> Around You
                         </h1>
-                        <p className="text-gray-600 text-md w-2/3">
+                        <p className="text-gray-600 text-md xl:w-2/3">
                             Access Quality Car Care Services Around You. <br />
                             From mechanics to detailers, Get connected to top-rated professionsls seamlessly.
                         </p>
@@ -40,15 +40,15 @@ const Hero = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="flex gap-5">
-                        <input type="email" placeholder="Enter your email" className="bg-[#F5F5F5] rounded-full h-[50px] w-[260px] px-5" />
-                        <button className="bg-brand-500 text-white rounded-full h-[50px] w-[160px]">Stay updated</button>
+                    <div className="flex flex-col xl:flex-row gap-3 xl:gap-5">
+                        <input type="email" placeholder="Enter your email" className="bg-[#F5F5F5] rounded-full h-[50px] xl:w-[260px] px-5" />
+                        <button className="bg-brand-500 text-white rounded-full h-[45px] xl:h-[50px] w-[160px]">Stay updated</button>
                     </div>
                 </div>
 
                 {/* Mockup */}
-                <div className="w-1/2">
-                    <Image src={mockup} className="h-[717px] w-[698px]" alt="mockup" />
+                <div className="xl:w-1/2">
+                    <Image src={mockup} className="xl:h-[717px] xl:w-[698px]" alt="mockup" />
                 </div>
             </div>
         </section>

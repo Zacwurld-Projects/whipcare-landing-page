@@ -6,26 +6,26 @@ import { statistics } from '@/utils/data'
 const Statistics = () => {
     return (
         <section
-            className='w-full h-[224px] bg-gray-100 flex justify-center items-center my-[5rem]'
+            className='w-full xl:h-[224px] bg-gray-100 flex justify-center items-center my-[5rem]'
         >
-            <div className='w-full h-full relative bg-brand-500'>
+            <div className='w-full h-full relative bg-brand-500 py-12 xl:py-0'>
                 <div className='absolute h-full w-full'>
-                    <Image src={backgroundImage} alt="background" className='opacity-20' />
+                    <Image src={backgroundImage} alt="background" className='opacity-20 h-full' />
                 </div>
-                <div className='relative z-10 w-full h-full flex gap-x-16 items-center justify-center px-20'>
-                    <div>
+                <div className='relative z-10 w-full h-full flex flex-col xl:flex-row gap-y-10 xl:gap-y-0 gap-x-16 items-center justify-center px-20'>
+                    <div className='text-center xl:text-start'>
                         <h2 className='text-3xl text-white'>What {"we're"} doing</h2>
                         <p className='text-sm text-white'>Providing access to premium car services <span className='font-semibold'>Globally</span></p>
                     </div>
                     <div>
-                        <div className="flex gap-x-10">
+                        <div className="flex flex-col xl:flex-row gap-x-10 gap-y-10 xl:gap-y-0">
                             {
                                 statistics.map((item, index) => (
                                     <div
                                         key={index}
-                                        className=''>
+                                        className='text-center xl:text-start'>
                                         <h2 className='text-2xl text-white'>{item.title}+</h2>
-                                        <p className='text-xs text-white'>{item.description}</p>
+                                        <p className='text-sm text-white'>{item.description}</p>
                                     </div>
                                 ))
                             }

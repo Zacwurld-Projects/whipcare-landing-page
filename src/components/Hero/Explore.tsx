@@ -23,15 +23,14 @@ const Explore = () => {
         <section
             className="h-full w-full my-[5rem]"
         >
-            <div className='h-full w-full flex bg-black' >
-                <div className="w-1/2">
-                    <div className="h-[50rem] w-full">
-
+            <div className='h-full w-full flex flex-col-reverse xl:flex-row bg-black py-[3rem] xl:py-0' >
+                <div className="xl:w-1/2">
+                    <div className="xl:h-[50rem] w-full">
                         <Image src={mockup} alt="mockup" className="w-full h-full" />
                     </div>
                 </div>
-                <div className="flex flex-col justify-center w-1/2 gap-y-10 pr-20">
-                    <div className="text-white text-center">
+                <div className="flex flex-col justify-center xl:w-1/2 gap-y-10 px-7 xl:px-0 xl:pr-20">
+                    <div className="flex flex-col gap-y-2 text-white text-center">
                         <h2 className="text-4xl font-semibold">Explore Whipcare</h2>
                         <h6 className="font-medium text-sm">Here is a step by step guide on how to use Whipcare.</h6>
                     </div>
