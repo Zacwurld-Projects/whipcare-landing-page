@@ -1,0 +1,77 @@
+import React from 'react'
+import logo from "@/assets/white-logo.svg"
+import Image from 'next/image'
+import { footerInfo } from '@/utils/data'
+import Link from 'next/link'
+
+const Footer = () => {
+    const date = new Date()
+    const year = date.getFullYear()
+
+    return (
+        <footer className='bg-gray-900'>
+            <div className='w-full h-full py-10 px-20'>
+                <div className='w-full flex'>
+                    <div className='w-1/3'>
+                        <Image src={logo} alt='logo' />
+                        <p className='text-sm text-white font-light'>From mechanics to detailers, book top-rated professionals effortlessly. Your {"car's"} perfect partner is just a click away.</p>
+                        <button className="bg-white text-black rounded-full h-[40px] w-[150px] mt-8">Get the app</button>
+                    </div>
+
+                    <div className='w-1/3 flex flex-col items-center'>
+                        <div className='flex flex-col gap-y-7'>
+                            <h2 className='text-white text-[24px] font-semibold'>Company</h2>
+                            <ul className='flex flex-col gap-y-5'>
+                                {
+                                    footerInfo.company.map((item, index) => (
+                                        <li key={index} className='text-[18px] text-white font-normal'><a href={item.link}>{item.title}</a></li>
+                                    ))
+                                }
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div className='w-1/3 flex flex-col items-center'>
+                        <div className='flex flex-col gap-y-7'>
+                            <h2 className='text-white text-[24px] font-semibold'>Address</h2>
+                            <div className='flex flex-col gap-y-5'>
+                                <div>
+                                    <p className='text-white text-sm'>Lagos, Nigeria.</p>
+                                    <span className='text-[#A3DC2F] text-sm'>View on Maps</span>
+                                </div>
+                                <div className='flex flex-col gap-y-5'>
+                                    <p className='text-[24px] text-white'>Inquiries</p>
+                                    {
+                                        footerInfo.contact.map((item, index) => (
+                                            <p key={index} className='text-white text-sm'>{item.title}</p>
+                                        ))
+                                    }
+                                    <div className='flex gap-x-2'>
+                                        {
+                                            footerInfo.socials.map((social, index) => (
+                                                <Link
+                                                    key={index}
+                                                    href={social.link}>
+                                                    <Image src={social.icon} alt={social.name} className='w-7 h-7' />
+                                                </Link>
+                                            ))
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr className='mt-16 mb-5' />
+
+                <div className='w-full flex justify-center text-white text-sm'>
+                    <p className='border-r-[1px] border-white pr-3'>© {year} Whipcare. All rights reserved.</p>
+                    <p className='pl-3'>Cookie Settings, Anti-Spam, Privacy, User agreement, Legal Notice and Responsible Disclosure.</p>
+                </div>
+            </div>
+        </footer>
+    )
+}
+
+export default Footer
