@@ -7,10 +7,10 @@ const page = () => {
     return (
         <div>
             <Hero />
+            <Faq />
             <div className='2xl:px-[7rem]'>
                 <CTA />
             </div>
-            <Faq />
         </div>
     )
 }
