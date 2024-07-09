@@ -46,9 +46,8 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
             </div>
 
             {/* Mobile Navbar */}
-            <div className="xl:hidden px-7 pt-5">
+            <div className="xl:hidden pr-7 pt-5">
                 <Sheet>
-
                     <div className="w-full flex justify-between items-center">
                         <div className="">
                             <div className="w-[115px] h-[70px]">
