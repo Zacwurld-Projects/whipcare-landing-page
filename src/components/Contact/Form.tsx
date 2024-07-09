@@ -7,8 +7,7 @@ const Form = () => {
     return (
         <div>
             <div className="w-full h-[600px] xl:px-[5rem] 2xl:px-0 mt-[2rem]">
-                <div className="w-full h-full flex">
-
+                <div className="w-full h-full flex md:justify-center">
                     <div className='xl:w-1/2 bg-white xl:pl-[5rem] px-7 xl:px-0 py-[2rem] xl:rounded-l-[3rem]'>
                         <div className="w-full h-full flex flex-col justify-center items-start gap-y-7">
                             <div className='flex flex-col gap-y-2'>
