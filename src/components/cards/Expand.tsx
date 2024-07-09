@@ -29,7 +29,7 @@ const Expand: React.FC<ExpandableCardProps> = ({
                     {isOpen ? <Image src={minus} alt="minus" /> : <Image src={plus} alt="plus" />}
                 </span>
             </div>
-            <div className={`card-content ${isOpen ? 'open' : ''}`}>
+            <div className={`expand-card-content ${isOpen ? 'open' : ''}`}>
                 <p className="text-white text-sm">{item.description}</p>
             </div>
         </div>

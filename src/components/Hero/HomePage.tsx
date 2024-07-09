@@ -12,6 +12,7 @@ const HomePage = () => {
         <div className="w-full">
             <Navbar
                 textColor="text-gray-900"
+                hamburgerColor="text-black"
             />
             <Hero />
             <Explore />

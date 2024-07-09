@@ -31,7 +31,7 @@ const Features = () => {
                         </div>
                     </div>
 
-                    <div className="xl:w-1/2 flex justify-end">
+                    <div className="xl:w-1/2 flex justify-center xl:justify-end">
                         <div className='xl:w-[25rem] xl:h-[45rem]'>
                             <Image src={mockup} alt="mockup" className="w-full h-full" />
                         </div>
@@ -55,8 +55,8 @@ const Features = () => {
                         </div>
                     </div>
 
-                    <div className="xl:w-1/2 flex justify-start">
-                        <div className='w-[25rem] h-[45rem]'>
+                    <div className="xl:w-1/2 flex justify-center xl:justify-start">
+                        <div className='xl:w-[25rem] xl:h-[45rem]'>
                             <Image src={mockup2} alt="mockup" className="w-full h-full" />
                         </div>
                     </div>
