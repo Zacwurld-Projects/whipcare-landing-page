@@ -15,6 +15,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 import { Menu } from "lucide-react"
+import Link from "next/link"
 
 interface NavbarProps {
     textColor: string;
@@ -47,23 +48,26 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
             {/* Mobile Navbar */}
             <div className="xl:hidden px-7 pt-5">
                 <Sheet>
-                    <SheetTrigger asChild>
-                        <div className="w-full flex justify-between items-center">
-                            <div className="">
-                                <div className="w-[115px] h-[70px]">
+
+                    <div className="w-full flex justify-between items-center">
+                        <div className="">
+                            <div className="w-[115px] h-[70px]">
+                                <Link href="/">
                                     {
                                         textColor === 'text-white' ? (
                                             <Image src={whiteLogo} alt="Logo" className="h-full w-full" />
                                         ) : (<Image src={logo} alt="Logo" className="h-full w-full" />)
                                     }
+                                </Link>
 
-                                </div>
                             </div>
+                        </div>
+                        <SheetTrigger asChild>
                             <button>
                                 <Menu className={hamburgerColor} size={35} />
                             </button>
-                        </div>
-                    </SheetTrigger>
+                        </SheetTrigger>
+                    </div>
                     <SheetContent>
                         <SheetHeader className="w-full">
                             <SheetTitle className="aria-invisible">Menu</SheetTitle>
@@ -72,7 +76,9 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                             </SheetDescription>
                             <div className="w-full h-full flex justify-center">
                                 <div className="w-[115px] h-[70px]">
-                                    <Image src={logo} alt="Logo" className="h-full w-full" />
+                                    <Link href="/">
+                                        <Image src={logo} alt="Logo" className="h-full w-full" />
+                                    </Link>
                                 </div>
                             </div>
                         </SheetHeader>
