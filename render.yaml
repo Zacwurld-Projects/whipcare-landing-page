@@ -1,6 +1,10 @@
 Uncomment the following to deploy this app as a static site on render
 - type: web
+<<<<<<< HEAD
   name: nextjs-static
+=======
+  name: whipcare-langing-page
+>>>>>>> mobile-navbar
   runtime: static
   buildCommand: yarn; yarn build
   staticPublishPath: out

@@ -22,11 +22,17 @@ const CTA = () => {
                                 <p className='text-white'>Sign up with your email and get informed about discounts , Whipcare tips and exciting features coming your way!</p>
                                 <div className='flex flex-col gap-y-3'>
 
-                                    <div className='w-full h-[3rem] flex items-center justify-between bg-white rounded-full py-1 pr-1 pl-3'>
-                                        <Search className='' size={16} />
-                                        <input type="email" className='w-[67%] h-full outline-none' placeholder='Enter your email' />
-                                        <button className='bg-brand-500 h-full text-white text-xs px-4 rounded-full'>Stay Updated</button>
+                                    <div>
+                                        <div className='w-full h-[3rem] flex items-center xl:justify-between bg-white rounded-full py-1 pr-1 pl-3 mt-5 xl:mt-0'>
+                                            <Search className='mr-2 xl:mr-0' size={16} />
+                                            <input type="email" className='w-[90%] xl:w-[67%] h-full outline-none' placeholder='Enter your email' />
+                                            <button className='hidden xl:block bg-brand-500 h-full text-white text-xs px-4 rounded-full'>Stay Updated</button>
+                                        </div>
+                                        <div className='flex justify-end'>
+                                            <button className='xl:hidden bg-brand-500 h-[2.5rem] text-white text-xs px-4 rounded-full mt-2'>Stay Updated</button>
+                                        </div>
                                     </div>
+
 
                                     <div className="flex gap-5 mt-2 justify-center xl:justify-start">
                                         <div className="w-[8rem] bg-black text-white border-[1px] border-gray-500 px-3 py-2 rounded-md">

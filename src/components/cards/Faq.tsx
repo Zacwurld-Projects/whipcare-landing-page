@@ -31,7 +31,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                     {isOpen ? <X className='text-white' size={19} /> : <Plus className='text-gray-600' size={17} />}
                 </div>
             </div>
-            <div className={`card-content xl:w-2/3  ${isOpen ? 'open' : ''}`}>
+            <div className={`expand-card-content xl:w-2/3  ${isOpen ? 'open' : ''}`}>
                 <p className="text-black text-sm">{item.answer}</p>
             </div>
 

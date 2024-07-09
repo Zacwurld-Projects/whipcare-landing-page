@@ -10,9 +10,10 @@ import CTA from "./CTA"
 const HomePage = () => {
     return (
         <div className="w-full">
-            {/* <Navbar
+            <Navbar
                 textColor="text-gray-900"
-            /> */}
+                hamburgerColor="text-black"
+            />
             <Hero />
             <Explore />
             <Features />
