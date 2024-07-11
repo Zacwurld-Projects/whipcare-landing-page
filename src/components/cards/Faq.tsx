@@ -32,7 +32,7 @@ const FaqCard: React.FC<FaqCardProps> = ({
                 </div>
             </div>
             <div className={`expand-card-content xl:w-2/3  ${isOpen ? 'open' : ''}`}>
-                <p className="text-black text-sm">{item.answer}</p>
+                <p className="text-black text-sm md:text-md">{item.answer}</p>
             </div>
 
 

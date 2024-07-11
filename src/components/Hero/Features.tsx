@@ -20,7 +20,7 @@ const Features = () => {
                     <div className="xl:w-1/2">
                         <div className='flex flex-col gap-y-7'>
                             {
-                                features.map((feature, index) => (
+                                features[0].map((feature, index) => (
                                     <List
                                         key={index}
                                         title={feature.title}
@@ -44,7 +44,7 @@ const Features = () => {
                     <div className="xl:w-1/2">
                         <div className='flex flex-col gap-y-7'>
                             {
-                                features.map((feature, index) => (
+                                features[1].map((feature, index) => (
                                     <List
                                         key={index}
                                         title={feature.title}

@@ -39,19 +39,25 @@ export const exploreInfo = [
     {
       title: "Accept and Manage Bookings",
       list: [
-        "Post-Service Review: After the service is completed, rate the provider and leave a review to help other users.",
+        "Set Availability: Configure available time slots and dates for accepting bookings.",
+        "Instant Updates: Update availability in real-time as needed.",
+        "Booking Requests: Receive notifications for new booking requests.",
+        "Confirm or Decline: Confirm or decline booking requests based on availability and service capacity.",
+        "View Booking Details: Access detailed information about each booking",
       ],
     },
     {
       title: "Provide the Service",
       list: [
-        "Post-Service Review: After the service is completed, rate the provider and leave a review to help other users.",
+        "Service Delivery: Perform the requested service at the scheduled time and location.",
+        "Customer Interaction: Communicate with the customer for any specific instructions or updates.",
       ],
     },
     {
       title: "Receive Payment",
       list: [
-        "Post-Service Review: After the service is completed, rate the provider and leave a review to help other users.",
+        "Secure Payments: Payments are processed through the app and transferred securely to the provider’s account.",
+        "Earnings Dashboard: Track earnings and view financial reports.",
       ],
     },
     {

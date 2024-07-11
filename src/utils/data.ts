@@ -38,11 +38,13 @@ export const navLinks = [
 export const explore = [
   {
     title: "Create a profile",
-    description: "Here is a step by step guide on how to use Whipcare.",
+    description:
+      "Set up your profile and let us know your car's details to get personalized service recommendations during bookings.",
   },
   {
     title: "Book a service",
-    description: "Here is a step by step guide on how to use Whipcare.",
+    description:
+      "Explore a variety of car services offered by our network of independent car service providers. Choose the service you need, confirm your booking and receive real-time updates.",
   },
   {
     title: "Receive confirmation",
@@ -50,50 +52,94 @@ export const explore = [
   },
   {
     title: "Get your service",
-    description: "Here is a step by step guide on how to use Whipcare.",
+    description:
+      "Watch as our professionals take care of your car. From start to finish, enjoy the convenience of at-home service.",
   },
   {
     title: "Rate your Review",
-    description: "Here is a step by step guide on how to use Whipcare.",
+    description:
+      "After the service, rate your experience and provide feedback to help us maintain high standards of quality. Your car care is our top most priority.",
   },
 ];
 
 export const features = [
-  {
-    title: "Comprehensive Service Listings",
-    list: [
-      "Service Categories: Detailed listings for various services such as mechanics, detailers, and haulers.",
-      "Service Descriptions: Clear and detailed descriptions of each service, including what is covered and any specializations.",
-    ],
-  },
-  {
-    title: "Service Provider Profiles",
-    list: [
-      "Provider Profiles: Detailed profiles for each service provider, including their qualifications and reviews.",
-      "Provider Reviews: Ratings and reviews for each service provider, allowing you to make an informed decision.",
-    ],
-  },
-  {
-    title: "Easy Booking and Payment",
-    list: [
-      "Service Booking: Easy booking process for each service, allowing you to schedule your appointment quickly.",
-      "Secure Payment: Secure payment processing for each service, ensuring your information is safe and protected.",
-    ],
-  },
-  {
-    title: "Customer Support",
-    list: [
-      "24/7 Support: Customer support available 24/7 to assist with any questions or issues you may have.",
-      "Service Guarantee: Satisfaction guarantee for each service, ensuring you are happy with the results.",
-    ],
-  },
-  {
-    title: "User-Friendly Interface",
-    list: [
-      "Easy Navigation: User-friendly interface that makes it easy to find and book the services you need.",
-      "Mobile Compatibility: Mobile compatibility for on-the-go booking, allowing you to schedule services from anywhere.",
-    ],
-  },
+  [
+    {
+      title: "Comprehensive Service Listings",
+      list: [
+        "Service Categories: Detailed listings for various services such as mechanics, detailers, and haulers.",
+        "Service Descriptions: Clear and detailed descriptions of each service, including what is covered and any specializations.",
+      ],
+    },
+    {
+      title: "User-Friendly Interface",
+      list: [
+        "Intuitive Design: Easy-to-navigate interface that allows users to find and book services quickly.",
+        "Responsive Layout: Optimized for both mobile and desktop devices for seamless access.",
+      ],
+    },
+    {
+      title: "Advanced Search and Filtering",
+      list: [
+        "Location-Based Search: Find services near the user's location using GPS.",
+        "Filters and Sorting: Filter by service type, ratings, distance, availability, and price.",
+      ],
+    },
+    {
+      title: "Booking System",
+      list: [
+        "Real-Time Availability: View and book available time slots in real-time.",
+        "Appointment Scheduling: Schedule appointments in advance or for immediate service.",
+      ],
+    },
+    {
+      title: "Ratings and Reviews",
+      list: [
+        "User Ratings: See ratings from previous customers to assess service quality.",
+        "Written Reviews: Read detailed reviews and comments from other users.",
+      ],
+    },
+  ],
+
+  // second features section
+  [
+    {
+      title: "Secure Payment Options",
+      list: [
+        "Multiple Payment Methods: Support for credit/debit cards, mobile wallets, and other popular payment methods.",
+        "Secure Transactions: SSL encryption and secure payment gateways to ensure user data protection.",
+        "Support for credit/debit cards and in-app wallets.",
+      ],
+    },
+    {
+      title: "User Profiles",
+      list: [
+        "Profile Management: Users can create and manage their profiles with personal and vehicle information.",
+        "Booking History: Access past and upcoming bookings easily.",
+      ],
+    },
+    {
+      title: "Notifications and Alerts",
+      list: [
+        "Booking Confirmations: Receive instant notifications for booking confirmations and updates.",
+        "Service Reminders: Automatic reminders for upcoming appointments and maintenance schedules.",
+      ],
+    },
+    {
+      title: "Customer Support",
+      list: [
+        "In-App Chat: Direct communication with service providers for queries and updates.",
+        "Help Center: Access to FAQs, troubleshooting guides, and support resources.",
+      ],
+    },
+    {
+      title: "Special Offers and Discounts",
+      list: [
+        "Promotions: Access to exclusive deals and discounts from service providers.",
+        "Loyalty Programs: Earn rewards and discounts for frequent use of the app.",
+      ],
+    },
+  ],
 ];
 
 export const statistics = [
