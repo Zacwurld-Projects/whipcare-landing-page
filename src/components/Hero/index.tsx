@@ -5,6 +5,7 @@ import mockup from "@/assets/images/hero/mockup.svg"
 import reviewers from "@/assets/images/hero/reviewers.svg"
 import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
+import ratingImage from "@/assets/icons/five-star-rating.svg"
 
 const Hero = () => {
     return (
@@ -13,10 +14,10 @@ const Hero = () => {
 
                 {/* Text */}
                 <div className="xl:w-1/2 flex flex-col justify-center gap-y-7">
-                    <div className="flex flex-col xl:flex-row xl:items-center">
+                    <div className="flex flex-col xl:flex-row xl:items-center gap-x-2">
                         <Image src={reviewers} alt="reviewers" />
                         <div className="flex flex-col">
-                            <span>🌟🌟🌟🌟🌟</span>
+                            <Image src={ratingImage} alt="rating" />
                             <span>Join 50,000+ happy users</span>
                         </div>
                     </div>

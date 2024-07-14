@@ -3,7 +3,7 @@ import Image from 'next/image'
 
 import { ArrowRight, Search } from 'lucide-react'
 import backgroundImage from "@/assets/images/hero/cta-bg.png"
-import mockup from "@/assets/images/hero/cta-mockup.png"
+import mockup from "@/assets/images/hero/cta-mockup.svg"
 import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
 
