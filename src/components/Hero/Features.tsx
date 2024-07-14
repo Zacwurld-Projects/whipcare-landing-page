@@ -1,7 +1,7 @@
 import React from 'react'
 import List from '../cards/List'
-import mockup from "@/assets/images/hero/features-mockup.png"
-import mockup2 from "@/assets/images/hero/features-mockup2.png"
+import mockup from "@/assets/images/hero/features-mockup.svg"
+import mockup2 from "@/assets/images/hero/features-mockup2.svg"
 import Image from 'next/image'
 import { features } from '@/utils/data'
 

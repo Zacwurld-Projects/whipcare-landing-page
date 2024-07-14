@@ -5,7 +5,7 @@ import List from '../cards/List'
 
 import { exploreInfo } from '@/utils/explore.data'
 
-import mockup from "@/assets/images/explore/mockup1.png"
+import mockup from "@/assets/images/explore/mockup1.svg"
 import mockup2 from "@/assets/images/explore/mockup2.png"
 import ellipse from "@/assets/images/explore/ellipse.png"
 

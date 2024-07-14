@@ -1,8 +1,10 @@
 import React from 'react'
-import backgroundImage from "@/assets/images/hero/testimonials-bg.svg"
 import Image from 'next/image'
-import { testimonials } from '@/utils/data'
+
 import TestimonialCard from '../cards/Testimonial'
+
+import { testimonials } from '@/utils/data'
+import backgroundImage from "@/assets/images/hero/testimonials-bg.svg"
 
 const Testimonials = () => {
     return (
