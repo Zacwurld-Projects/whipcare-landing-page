@@ -28,13 +28,13 @@ const ServicesCard: React.FC<ServicesProps> = ({
                         <h2 className='text-[#12141D] text-2xl font-semibold'>{title}</h2>
                         <p className='text-gray-700 text-sm'>{description}</p>
                     </div>
-                    <div className='flex items-center gap-x-3'>
+                    {/* <div className='flex items-center gap-x-3'>
                         <button className='text-brand-500 text-sm font-medium'>Learn More</button>
                         <ArrowRight
                             className='text-brand-500'
                             size={16}
                         />
-                    </div>
+                    </div> */}
                 </div>
             </div>
         </div>
