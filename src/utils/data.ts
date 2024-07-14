@@ -148,7 +148,7 @@ export const statistics = [
     description: "customers around the world.",
   },
   {
-    title: "30+",
+    title: "30",
     description: "countries across the globe.",
   },
   {
