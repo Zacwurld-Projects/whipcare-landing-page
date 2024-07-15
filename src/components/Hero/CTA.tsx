@@ -18,19 +18,19 @@ const CTA = () => {
                                 className='h-full w-full object-cover xl:object-fill'
                                 alt="background image" />
                         </div>
-                        <div className='xl:w-1/2 h-full relative z-20 px-7 xl:px-10 py-20'>
-                            <div className='w-full h-full flex flex-col justify-center gap-y-3'>
-                                <h2 className='text-white font-semibold text-3xl'>Your Whip, Our Care</h2>
-                                <p className='text-white'>Sign up with your email and get informed about discounts , Whipcare tips and exciting features coming your way!</p>
-                                <div className='flex flex-col gap-y-3'>
+                        <div className='w-full xl:w-1/2 h-full relative z-20 px-7 xl:px-10 py-20'>
+                            <div className='w-full h-full flex flex-col md:items-center xl:items-start justify-center gap-y-3'>
+                                <h2 className='text-white font-semibold text-3xl capitalize'>Your car, our priority</h2>
+                                <p className='text-white md:w-2/3 xl:w-full md:text-center xl:text-start'>Sign up with your email and get informed about discounts , Whipcare tips and exciting features coming your way!</p>
+                                <div className='w-full flex flex-col gap-y-3'>
 
-                                    <div>
-                                        <div className='w-full h-[3rem] flex items-center md:justify-between xl:justify-between bg-white rounded-full py-1 pr-1 pl-3 mt-5 xl:mt-0'>
+                                    <div className='w-full flex justify-center'>
+                                        <div className='w-full md:w-2/3 xl:w-full h-[3rem] flex items-center md:justify-between xl:justify-between bg-white rounded-full py-1 pr-1 pl-3 mt-5 xl:mt-0'>
                                             <Search className='mr-2 xl:mr-0' size={16} />
-                                            <input type="email" className='w-[90%] md:w-[80%] xl:w-[67%] h-full outline-none' placeholder='Enter your email' />
-                                            <button className='bg-brand-500 h-full text-white text-xs px-4 rounded-full'>
+                                            <input type="email" className='w-[90%] md:w-[70%] xl:w-[70%] 2xl:w-[75%] h-full outline-none' placeholder='Enter your email' />
+                                            <button className='bg-brand-500 h-full text-white text-xs px-7 rounded-full'>
                                                 <span className='hidden md:block'>
-                                                    Stay Updated
+                                                    Sign Up
                                                 </span>
                                                 <ArrowRight className='md:hidden' size={16} />
                                             </button>

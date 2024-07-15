@@ -21,11 +21,13 @@ const List: React.FC<ListProps> = ({
                 </div>
                 <div className="flex flex-col gap-y-2">
                     <h2 className="text-xl font-semibold">{title}</h2>
-                    <div>
+                    <div className="w-full flex flex-col">
                         {
                             list.map((item, index) => (
-                                <div key={index} className="flex">
-                                    <Dot />
+                                <div key={index} className="w-full flex items-start justify-start">
+                                    <div>
+                                        <Dot size={22} />
+                                    </div>
                                     <h6 className="text-sm">{item}</h6>
                                 </div>
                             ))

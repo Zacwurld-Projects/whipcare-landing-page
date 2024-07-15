@@ -7,27 +7,27 @@ export const faq = [
   {
     question: "Is Whipcare free to use",
     answer:
-      "Yes, we have a free version that gives you access to quality mechanics within your location.",
+      "Yes, Whipcare gives you access to quality car care services within your location for FREE.",
   },
   {
     question: "How do I earn as a service provider",
     answer:
-      "To earn as a Service Provider, all you have to do is Download The App, Register as a Service Provider to gain access to Whipcare Business, complete account creation and start getting Booking Requests.",
+      "To earn as a Service Provider, all you have to do is Download The App, Register as a Service Provider, complete KYC verification, set up your services and start getting Booking Requests.",
   },
   {
     question: "What payment methods are accepted",
     answer:
-      "Our payment methods include Debit/Credit Card, Bank Transfers, and In-app wallets.",
+      "Our payment methods include Cash, Debit/Credit Card, and In-app wallets.",
   },
   {
     question: "How do I create an account?",
     answer:
-      "Open the app and click on the 'Sign Up' button. You can create an account using your email address, phone number, or by linking your social media accounts. Follow the prompts to complete the registration process.",
+      'Open the app and click on the "Sign Up" button. You can create an account using your email address, or by linking your social media accounts.',
   },
   {
     question: "How do I book a service",
     answer:
-      "After you have created your account successfully, head on to the Explore section of the App, select the service of your choice, select a provider that meets your requirements, and click 'Book'",
+      'After you have created your account successfully, click "Book" on your bottom bar to proceed booking any car care service of your choice and get connected to the available ones around your location.',
   },
   {
     question: "Can I reschedule or cancel a booking",
