@@ -52,7 +52,7 @@ export const explore = [
       "Watch as our professionals take care of your car. From start to finish, enjoy the convenience of at-home service.",
   },
   {
-    title: "Rate your Review",
+    title: "Rate and Review",
     description:
       "After the service, rate your experience and provide feedback to help us maintain high standards of quality. Your car care is our top most priority.",
   },
