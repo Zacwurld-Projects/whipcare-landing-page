@@ -12,7 +12,7 @@ import ellipse from "@/assets/images/explore/ellipse.png"
 const HowItWorks = () => {
     return (
         <div className='w-full h-full my-[5rem] relative flex items-center'>
-            <div className='relative z-20 px-7 xl:px-[5rem] 2xl:px-[7rem]'>
+            <div className='flex flex-col gap-y-10 relative z-20 px-7 xl:px-[5rem] 2xl:px-[7rem]'>
                 <div>
                     <div className="h-full w-full mb-10 flex flex-col gap-y-2">
                         <h1 className='text-3xl font-semibold'>Use Whipcare as a <br /> car owner</h1>
@@ -68,7 +68,7 @@ const HowItWorks = () => {
                             </div>
                         </div>
 
-                        <div className="xl:w-1/2 flex justify-end">
+                        <div className="xl:w-1/2 flex justify-end items-center">
                             <div className='xl:w-[25rem] xl:h-[23rem]'>
                                 <Image src={mockup2} alt="mockup" className="w-full h-full" />
                             </div>

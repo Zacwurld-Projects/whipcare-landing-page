@@ -47,10 +47,6 @@ export const explore = [
       "Explore a variety of car services offered by our network of independent car service providers. Choose the service you need, confirm your booking and receive real-time updates.",
   },
   {
-    title: "Receive confirmation",
-    description: "Here is a step by step guide on how to use Whipcare.",
-  },
-  {
     title: "Get your service",
     description:
       "Watch as our professionals take care of your car. From start to finish, enjoy the convenience of at-home service.",
@@ -249,9 +245,6 @@ export const footerInfo = {
     },
   ],
   contact: [
-    {
-      title: "+65 6156 5519",
-    },
     {
       title: "hello@whipcare.app",
     },

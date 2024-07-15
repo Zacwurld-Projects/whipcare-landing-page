@@ -11,16 +11,21 @@ const Services = () => {
                     <p className='text-sm text-black'>Discover how WhipCare connects you to a variety of car service providers</p>
                 </div>
                 <div>
-                    <div className='w-full flex flex-col xl:flex-row'>
+                    <div className='w-full flex flex-col md:justify-center xl:justify-start md:flex-wrap xl:flex-nowrap md:flex-row md:gap-x-10 xl:gap-x-0'>
                         {
                             services.map((service, index) => (
-                                <ServicesCard
+                                <div
                                     key={index}
-                                    title={service.title}
-                                    description={service.description}
-                                    icon={service.icon}
-                                    backgroundColor={service.backgroundColor}
-                                />
+                                    className='md:w-1/3 xl:w-full'
+                                >
+
+                                    <ServicesCard
+                                        title={service.title}
+                                        description={service.description}
+                                        icon={service.icon}
+                                        backgroundColor={service.backgroundColor}
+                                    />
+                                </div>
                             ))
                         }
                     </div>

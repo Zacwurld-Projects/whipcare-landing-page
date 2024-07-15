@@ -6,7 +6,7 @@ import Image from "next/image"
 
 import {
     Sheet,
-    SheetClose,
+    // SheetClose,
     SheetContent,
     SheetDescription,
     SheetFooter,
@@ -39,8 +39,8 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                     ))}
                 </ul>
                 <div>
-                    <button className="bg-brand-500 text-white w-[160px] h-[50px] rounded-full">
-                        Sign Up
+                    <button className="w-[160px] h-[45px] flex justify-center items-center bg-brand-500 text-white  rounded-full">
+                        Get the App
                     </button>
                 </div>
             </div>
@@ -92,6 +92,13 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                                 ))}
                             </ul>
                         </div>
+                        <SheetFooter>
+                            <div>
+                                <button className="w-[160px] h-[45px] flex justify-center items-center bg-brand-500 text-white  rounded-full">
+                                    Get the App
+                                </button>
+                            </div>
+                        </SheetFooter>
                     </SheetContent>
                 </Sheet>
             </div>

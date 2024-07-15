@@ -14,23 +14,22 @@ const Hero = () => {
 
                 {/* Text */}
                 <div className="xl:w-1/2 flex flex-col justify-center gap-y-7">
-                    <div className="flex flex-col xl:flex-row xl:items-center gap-x-2">
+                    <div className="flex flex-col-reverse xl:flex-row xl:items-center gap-y-2 xl:gap-x-2 xl:gap-y-0">
                         <Image src={reviewers} alt="reviewers" />
                         <div className="flex flex-col">
                             <Image src={ratingImage} alt="rating" />
                             <span>Join 50,000+ happy users</span>
                         </div>
                     </div>
-                    <div className="flex flex-col gap-5">
+                    <div className="flex flex-col gap-y-4">
                         <h1 className="text-[50px] xl:text-[68px] text-gray-900 font-bold leading-tight">Access Quality  <br /> Car
                             Services <br /> Around You
                         </h1>
                         <p className="text-gray-600 text-md xl:w-2/3">
-                            Access Quality Car Care Services Around You. <br />
-                            From mechanics to detailers, Get connected to top-rated professionsls seamlessly.
+                            From mechanics to detailers, Get connected to top-rated professionals seamlessly.
                         </p>
 
-                        <div className="flex gap-5">
+                        <div className="flex gap-4">
                             <div className="flex items-center justify-between w-[9rem] bg-black text-white px-3 py-1 rounded-md">
                                 <div className="w-7 h-7">
                                     <Image src={playstoreIcon} alt="playstore" className="w-full h-full" />
@@ -50,14 +49,18 @@ const Hero = () => {
                                 </div>
                             </div>
                         </div>
+
+                        <p className="text-gray-600 text-md xl:w-2/3">
+                            Join our Newsletter and Stay updated with Whipcare!
+                        </p>
                     </div>
                     <div className="flex items-center gap-3 xl:gap-5">
-                        <input type="email" placeholder="Enter your email" className="bg-[#F5F5F5] rounded-full h-[50px] xl:w-[260px] px-5" />
-                        <button className="flex justify-center items-center bg-brand-500 text-white rounded-full h-[45px] xl:h-[50px] w-[60px] xl:w-[160px]">
-                            <span className='hidden xl:block'>
-                                Stay Updated
+                        <input type="email" placeholder="Enter your email" className="bg-[#F5F5F5] rounded-full h-[50px] w-[82%] xl:w-[260px] px-5" />
+                        <button className="flex justify-center items-center bg-brand-500 text-white rounded-full h-[45px] xl:h-[50px] w-[45px] xl:w-[160px]">
+                            <span className='hidden xl:block capitalize'>
+                                Sign Up
                             </span>
-                            <ArrowRight className='xl:hidden' size={25} />
+                            <ArrowRight className='xl:hidden' size={20} />
                         </button>
                     </div>
                 </div>
