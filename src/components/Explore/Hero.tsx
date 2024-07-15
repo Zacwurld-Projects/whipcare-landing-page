@@ -8,7 +8,7 @@ const Hero = () => {
         <section className='h-[100dvh] border'>
             <div className='w-full h-full relative'>
                 <div className='w-full h-full absolute'>
-                    <Image src={backgroundImage} alt='background image' className='w-full h-full object-cover' />
+                    <Image src={backgroundImage} alt='background image' className='w-full h-full' />
                 </div>
                 <div className='relative h-full z-20 xl:px-[5rem]'>
                     <Navbar

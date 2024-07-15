@@ -1,8 +1,8 @@
 import React from "react"
-import { navLinks } from "@/utils/data"
-import logo from "@/assets/logo.svg"
-import whiteLogo from "@/assets/white-logo.svg"
 import Image from "next/image"
+import Link from "next/link"
+
+import { Menu } from "lucide-react"
 
 import {
     Sheet,
@@ -14,8 +14,14 @@ import {
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
-import { Menu } from "lucide-react"
-import Link from "next/link"
+
+import { navLinks } from "@/utils/data"
+import logo from "@/assets/logo.svg"
+import whiteLogo from "@/assets/white-logo.svg"
+import nigerianFlag from "@/assets/icons/nigerian-flag.svg"
+import chevronDownIcon from "@/assets/icons/chevron-down.svg"
+
+
 
 interface NavbarProps {
     textColor: string;
@@ -29,14 +35,24 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                 <div className="w-[122px] h-[77px]">
                     <Image src={logo} alt="Logo" className="h-full w-full" />
                 </div>
-                <ul className="flex space-x-8">
+                <ul className="flex items-center space-x-10">
                     {navLinks.map((link, index) => (
                         <li key={index}>
                             <a href={link.url} className={`${textColor} hover:text-gray-800 text-md`}>
                                 {link.name}
                             </a>
+
                         </li>
                     ))}
+
+                    {/* Language */}
+                    <div className="flex items-center gap-x-2 hover:cursor-pointer">
+                        <div className="w-[20px] h-[20px]">
+                            <Image src={nigerianFlag} alt="flag" className="w-full h-full" />
+                        </div>
+                        <span className="hover:text-gray-800 text-md">EN</span>
+                        <Image src={chevronDownIcon} alt="chevron" className="w-6 h-6" />
+                    </div>
                 </ul>
                 <div>
                     <button className="w-[160px] h-[45px] flex justify-center items-center bg-brand-500 text-white  rounded-full">
@@ -90,6 +106,15 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                                         </a>
                                     </li>
                                 ))}
+
+                                {/* Language */}
+                                <div className="flex items-center gap-x-2 hover:cursor-pointer">
+                                    <div className="w-[20px] h-[20px]">
+                                        <Image src={nigerianFlag} alt="flag" className="w-full h-full" />
+                                    </div>
+                                    <span className="hover:text-gray-800 text-md">EN</span>
+                                    <Image src={chevronDownIcon} alt="chevron" className="w-6 h-6" />
+                                </div>
                             </ul>
                         </div>
                         <SheetFooter>
