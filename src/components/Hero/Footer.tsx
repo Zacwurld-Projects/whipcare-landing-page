@@ -67,7 +67,9 @@ const Footer = () => {
 
                 <div className='w-full flex flex-col xl:flex-row justify-center gap-y-3 xl:gap-y-0 text-white text-sm text-center xl:text-start'>
                     <p className='border-b-[1px] xl:border-b-0 xl:border-r-[1px] border-white pb-3 xl:pb-0 xl:pr-3'>© {year} Whipcare. All rights reserved.</p>
-                    <p className='pl-3'>Cookie Settings, Anti-Spam, Privacy, User agreement, Legal Notice and Responsible Disclosure.</p>
+                    <p className='pl-3'>
+                        <Link href="/terms-and-conditions"> Terms and Conditions,</Link>
+                        <Link href="/privacy-policy"> Privacy,</Link> Cookie Settings </p>
                 </div>
             </div>
         </footer>
