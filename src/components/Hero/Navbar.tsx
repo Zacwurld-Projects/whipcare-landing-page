@@ -50,7 +50,7 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                         <div className="w-[20px] h-[20px]">
                             <Image src={nigerianFlag} alt="flag" className="w-full h-full" />
                         </div>
-                        <span className="hover:text-gray-800 text-md">EN</span>
+                        <span className={`${textColor} hover:text-gray-800 text-md`}>EN</span>
                         <Image src={chevronDownIcon} alt="chevron" className="w-6 h-6" />
                     </div>
                 </ul>
@@ -112,7 +112,7 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                                     <div className="w-[20px] h-[20px]">
                                         <Image src={nigerianFlag} alt="flag" className="w-full h-full" />
                                     </div>
-                                    <span className="hover:text-gray-800 text-md">EN</span>
+                                    <span className="text-black hover:text-gray-800 text-md">EN</span>
                                     <Image src={chevronDownIcon} alt="chevron" className="w-6 h-6" />
                                 </div>
                             </ul>

@@ -5,7 +5,7 @@ import Image from "next/image"
 
 import Expand from "../cards/Expand"
 import { explore } from "@/utils/data"
-import mockup from "@/assets/images/hero/explore-mockup.svg"
+import mockup from "@/assets/images/hero/explore-mockup.png"
 
 const Explore = () => {
     const [openCardIndex, setOpenCardIndex] = useState<number | null>(null)
@@ -21,11 +21,11 @@ const Explore = () => {
 
     return (
         <section
-            className="h-full w-full my-[5rem]"
+            className="h-full xl:h-[600px] w-full my-[5rem]"
         >
             <div className='h-full w-full flex flex-col-reverse xl:flex-row bg-black py-[3rem] xl:py-0' >
                 <div className="xl:w-1/2">
-                    <div className="xl:h-[50rem] w-full">
+                    <div className="md:w-[35rem] xl:w-[34rem]">
                         <Image src={mockup} alt="mockup" className="w-full h-full" />
                     </div>
                 </div>
