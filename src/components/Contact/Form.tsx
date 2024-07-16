@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import map from "@/assets/images/contact/map.png"
+import mockup from "@/assets/images/contact/mockup.png"
 import emailIcon from "@/assets/icons/mail.svg";
 
 const Form = () => {
@@ -66,7 +66,7 @@ const Form = () => {
                         <div className='h-full w-1/2 bg-white'></div>
                         <div className='h-full w-1/2 bg-brand-500  rounded-r-[3rem]'></div>
                         <div className='absolute w-1/2 h-[80%]'>
-                            <Image src={map} alt="map image" className='h-full' />
+                            <Image src={mockup} alt="map image" className='h-full object-cover' />
                         </div>
                     </div>
                 </div>

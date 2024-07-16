@@ -20,7 +20,7 @@ export const faq = [
       "Our payment methods include Cash, Debit/Credit Card, and In-app wallets.",
   },
   {
-    question: "How do I create an account?",
+    question: "How do I create an account",
     answer:
       'Open the app and click on the "Sign Up" button. You can create an account using your email address, or by linking your social media accounts.',
   },
