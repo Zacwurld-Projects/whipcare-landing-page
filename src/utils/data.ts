@@ -246,7 +246,7 @@ export const footerInfo = {
   ],
   contact: [
     {
-      title: "hello@whipcare.app",
+      title: "whipcare@zacwurld.com",
     },
   ],
 };

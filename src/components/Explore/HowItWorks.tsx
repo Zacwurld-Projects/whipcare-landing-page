@@ -8,6 +8,7 @@ import { exploreInfo } from '@/utils/explore.data'
 import mockup from "@/assets/images/explore/mockup1.svg"
 import mockup2 from "@/assets/images/explore/mockup2.png"
 import ellipse from "@/assets/images/explore/ellipse.png"
+import ExploreCarousel from './Carousel'
 
 const HowItWorks = () => {
     return (
@@ -70,7 +71,11 @@ const HowItWorks = () => {
 
                         <div className="xl:w-1/2 flex justify-end items-center">
                             <div className='xl:w-[25rem] xl:h-[23rem]'>
-                                <Image src={mockup2} alt="mockup" className="w-full h-full" />
+                                <div className="w-full h-full">
+                                    <ExploreCarousel />
+                                </div>
+
+                                {/* <Image src={mockup2} alt="mockup" className="w-full h-full" /> */}
                             </div>
                         </div>
                     </div>
