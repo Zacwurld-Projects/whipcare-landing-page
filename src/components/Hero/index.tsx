@@ -1,3 +1,5 @@
+"use client"
+
 import Image from "next/image"
 
 import { ArrowRight } from "lucide-react"
@@ -6,6 +8,8 @@ import reviewers from "@/assets/images/hero/reviewers.svg"
 import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
 import ratingImage from "@/assets/icons/five-star-rating.svg"
+import HeroCarousel from "./Carousel"
+import { carouselInfo } from "@/utils/data"
 
 const Hero = () => {
     return (
@@ -67,7 +71,14 @@ const Hero = () => {
 
                 {/* Mockup */}
                 <div className="xl:w-1/2">
-                    <Image src={mockup} className="xl:h-[717px] xl:w-[698px]" alt="mockup" />
+                    {/* <Image src={mockup} className="xl:h-[717px] xl:w-[698px]" alt="mockup" /> */}
+                    {
+                        <div className="h-full">
+                            <HeroCarousel
+                                items={carouselInfo}
+                            />
+                        </div>
+                    }
                 </div>
             </div>
         </section>
