@@ -12,8 +12,8 @@ const page = () => {
                 textColor='text-gray-900'
                 hamburgerColor='text-black'
             />
+            <PrivacyPolicy />
             <CTA />
-            {/* <PrivacyPolicy /> */}
         </div>
     )
 }
