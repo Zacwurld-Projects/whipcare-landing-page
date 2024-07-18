@@ -1,7 +1,9 @@
+"use client"
 import React from 'react'
 
 import Navbar from '@/components/Hero/Navbar'
 import CTA from '@/components/Hero/CTA'
+import PrivacyPolicy from '@/components/Global/PrivacyPolicy'
 
 const page = () => {
     return (
@@ -10,6 +12,7 @@ const page = () => {
                 textColor='text-gray-900'
                 hamburgerColor='text-black'
             />
+            <PrivacyPolicy />
             <CTA />
         </div>
     )

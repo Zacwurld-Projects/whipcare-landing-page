@@ -7,7 +7,7 @@ export const ourStoryInfo = [
   {
     title: "Introduction",
     description:
-      "WhipCare was born from the frustration of our founders, who struggled to find reliable car care services. Inspired to make car maintenance effortless, they created a platform connecting car owners with certified professionals within their location. Today, WhipCare revolutionizes car care globally, ensuring top-notch convenience and quality for every vehicle.",
+      "Whipcare was born from the frustration of our founders, who struggled to find reliable car care services. Inspired to make car maintenance effortless, they created a platform connecting car owners with certified professionals within their location. Today, Whipcare revolutionizes car care globally, ensuring top-notch convenience and quality for every vehicle.",
   },
   {
     title: "Founding",
@@ -52,6 +52,6 @@ export const ourValuesInfo = [
     title: "Trust and Transparency",
     image: trustIcon,
     description:
-      "At WhipCare, we prioritize trust and transparency by connecting you with certified professionals and ensuring clear, upfront communication for every service.",
+      "At Whipcare, we prioritize trust and transparency by connecting you with certified professionals and ensuring clear, upfront communication for every service.",
   },
 ];

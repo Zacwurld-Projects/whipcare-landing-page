@@ -6,11 +6,18 @@ import carWashIcon from "@/assets/icons/explore-purple.svg";
 
 // Avatars
 import avatar from "@/assets/images/avatar.png";
+import avatar2 from "@/assets/images/avatar2.png";
 
 // Socials
 import xIcon from "@/assets/icons/x.svg";
 import facebookIcon from "@/assets/icons/facebook.svg";
 import instagramIcon from "@/assets/icons/instagram.svg";
+
+// Carousel images
+import carouselImage1 from "@/assets/images/hero/carousel-mockup1.png";
+import carouselImage2 from "@/assets/images/hero/carousel-mockup2.png";
+import carouselImage3 from "@/assets/images/hero/carousel-mockup3.png";
+import carouselImage4 from "@/assets/images/hero/carousel-mockup4.png";
 
 export const navLinks = [
   {
@@ -189,7 +196,7 @@ export const testimonials = [
     name: "Leslie Alexander",
     testimonial:
       "Thanks to Whipcare, I found a fantastic mechanic right in my neighborhood. The booking process was seamless, and the service was top-notch.",
-    image: avatar,
+    image: avatar2,
     rating: 5,
   },
   {
@@ -246,7 +253,26 @@ export const footerInfo = {
   ],
   contact: [
     {
-      title: "hello@whipcare.app",
+      title: "whipcare@zacwurld.com",
     },
   ],
 };
+
+export const carouselInfo = [
+  {
+    image: carouselImage1,
+    alt: "carousel image 1",
+  },
+  {
+    image: carouselImage2,
+    alt: "carousel image 2",
+  },
+  {
+    image: carouselImage3,
+    alt: "carousel image 3",
+  },
+  {
+    image: carouselImage4,
+    alt: "carousel image 4",
+  },
+];
