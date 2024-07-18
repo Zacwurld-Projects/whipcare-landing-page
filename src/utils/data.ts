@@ -196,7 +196,7 @@ export const testimonials = [
     name: "Leslie Alexander",
     testimonial:
       "Thanks to Whipcare, I found a fantastic mechanic right in my neighborhood. The booking process was seamless, and the service was top-notch.",
-    image: avatar2,
+    image: avatar,
     rating: 5,
   },
   {
