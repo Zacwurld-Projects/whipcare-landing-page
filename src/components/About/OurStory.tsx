@@ -10,7 +10,7 @@ import ellipse from "@/assets/images/about/ellipse.png"
 
 const OurStory = () => {
     return (
-        <section className='w-full h-full my-[5rem] px-7'>
+        <section className='w-full h-full my-[2rem] xl:my-[5rem] px-7'>
             <div className="h-full w-full flex items-end relative">
                 <div className='h-full w-full flex flex-col gap-y-16 relative z-10 xl:px-[5rem] 2xl:px-[7rem]'>
                     <div className='flex flex-col gap-y-16'>

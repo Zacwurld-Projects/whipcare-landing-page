@@ -19,6 +19,8 @@ import carouselImage2 from "@/assets/images/hero/carousel-mockup2.png";
 import carouselImage3 from "@/assets/images/hero/carousel-mockup3.png";
 import carouselImage4 from "@/assets/images/hero/carousel-mockup4.png";
 
+export const email = "whipcare@zacwurld.com";
+
 export const navLinks = [
   {
     name: "Home",
@@ -237,23 +239,23 @@ export const footerInfo = {
   socials: [
     {
       name: "x",
-      link: "",
+      link: "https://x.com/whipcareapp",
       icon: xIcon,
     },
     {
       name: "facebook",
-      link: "",
+      link: "https://web.facebook.com/profile.php?id=61562572721634",
       icon: facebookIcon,
     },
     {
       name: "instragram",
-      link: "",
+      link: "https://instagram.com/whipcare.app",
       icon: instagramIcon,
     },
   ],
   contact: [
     {
-      title: "whipcare@zacwurld.com",
+      title: email,
     },
   ],
 };
