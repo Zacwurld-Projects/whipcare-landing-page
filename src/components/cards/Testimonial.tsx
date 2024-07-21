@@ -16,7 +16,7 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
     image
 }) => {
     return (
-        <div className="w-full h-full bg-white rounded-xl">
+        <div className="w-[20rem] h-full bg-white rounded-xl">
             <div className="w-full h-full p-7 flex flex-col gap-y-3 justify-center">
                 <div className="flex">
                     <Image src={userRatingIcon} alt="user rating" />

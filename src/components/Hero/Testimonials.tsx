@@ -8,7 +8,7 @@ import backgroundImage from "@/assets/images/hero/testimonials-bg.svg"
 
 const Testimonials = () => {
     return (
-        <section className='w-full h-full bg-gray-50 py-[4rem] xl:py-[5rem] mb-[5rem]'>
+        <section className='w-full h-full bg-gray-50 py-[4rem] xl:py-[5rem] mb-[5rem] overflow-hidden'>
             <div className="w-full h-full flex flex-col gap-y-5">
                 <div className='text-center px-7 xl:px-7'>
                     <p className='text-sm text-gray-600'> <span className='text-brand-500'>2,157</span> people have experienced quality service with Whipcare</p>
@@ -20,21 +20,40 @@ const Testimonials = () => {
                         <Image src={backgroundImage} alt="background image" className="h-full w-full" />
                     </div>
                     <div className='h-full relative z-20  flex items-center'>
-                        <div className='w-full flex flex-col xl:flex-row gap-y-5 xl:gap-y-0 gap-x-5'>
-                            {
-                                testimonials.map((testimonial, index) => (
-                                    <div
-                                        key={index}
-                                        className='h-[16rem] w-[20rem]'
-                                    >
-                                        <TestimonialCard
-                                            name={testimonial.name}
-                                            testimonial={testimonial.testimonial}
-                                            image={testimonial.image}
-                                        />
-                                    </div>
-                                ))
-                            }
+                        {/* <div className='w-full flex flex-col xl:flex-row gap-y-5 xl:gap-y-0 gap-x-5 card-carousel'> */}
+                        <div className='w-full flex justify-center'>
+                            <div className='xl:w-1/2 flex flex-row xl:flex-row gap-y-5 xl:gap-y-0 gap-x-5 card-carousel'>
+                                {
+                                    testimonials.map((testimonial, index) => (
+                                        <div
+                                            key={index}
+                                            className='h-[16rem] scroll-container'
+                                        >
+                                            <TestimonialCard
+                                                name={testimonial.name}
+                                                testimonial={testimonial.testimonial}
+                                                image={testimonial.image}
+                                            />
+                                        </div>
+                                    ))
+                                }
+                                {/* Second one */}
+                                {
+                                    testimonials.map((testimonial, index) => (
+                                        <div
+                                            key={index}
+                                            className='h-[16rem] w-[20rem] scroll-container'
+                                        >
+
+                                            <TestimonialCard
+                                                name={testimonial.name}
+                                                testimonial={testimonial.testimonial}
+                                                image={testimonial.image}
+                                            />
+                                        </div>
+                                    ))
+                                }
+                            </div>
                         </div>
                     </div>
                 </div>

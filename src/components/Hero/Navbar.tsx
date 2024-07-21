@@ -1,8 +1,10 @@
-import React from "react"
+"use client"
+
+import React, { useState } from "react"
 import Image from "next/image"
 import Link from "next/link"
 
-import { Menu } from "lucide-react"
+import { ChevronDown, Menu } from "lucide-react"
 
 import {
     Sheet,
@@ -20,15 +22,29 @@ import logo from "@/assets/logo.svg"
 import whiteLogo from "@/assets/white-logo.svg"
 import nigerianFlag from "@/assets/icons/nigerian-flag.svg"
 import chevronDownIcon from "@/assets/icons/chevron-down.svg"
-
-
+import { ChevronUp } from "lucide-react"
+import Dropdown from "../Global/Dropdown"
 
 interface NavbarProps {
     textColor: string;
     hamburgerColor: string
 }
 
+const data = [
+    {
+        name: "English"
+    },
+    {
+        name: "English"
+    },
+    {
+        name: "English"
+    },
+]
+
 const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
+    const [showLanguages, setShowLanguages] = useState(false)
+
     return (
         <nav className="w-full">
             <div className="hidden xl:flex justify-between items-center py-4 xl:px-[5rem] 2xl:px-0">
@@ -46,12 +62,33 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                     ))}
 
                     {/* Language */}
-                    <div className="flex items-center gap-x-2 hover:cursor-pointer">
-                        <div className="w-[20px] h-[20px]">
-                            <Image src={nigerianFlag} alt="flag" className="w-full h-full" />
+                    <div className="relative z-20">
+                        <div
+                            onClick={() => setShowLanguages(!showLanguages)}
+                            className="w-full flex items-center gap-x-2 hover:cursor-pointer"
+                        >
+                            <div className="w-[20px] h-[20px]">
+                                <Image src={nigerianFlag} alt="flag" className="w-full h-full" />
+                            </div>
+                            <span className={`${textColor} hover:text-gray-800 text-md`}>EN</span>
+                            <div>
+                                {
+                                    showLanguages ?
+                                        <ChevronUp size={15} /> :
+                                        <ChevronDown size={15} />
+                                }
+                                {/* <Image src={chevronDownIcon} alt="chevron" className="w-6 h-6" /> */}
+                            </div>
                         </div>
-                        <span className={`${textColor} hover:text-gray-800 text-md`}>EN</span>
-                        <Image src={chevronDownIcon} alt="chevron" className="w-6 h-6" />
+
+                        {/* Languages Dropdown */}
+                        <div className="w-[10rem] absolute bg-white">
+                            {showLanguages &&
+                                <Dropdown
+                                    items={data}
+                                />
+                            }
+                        </div>
                     </div>
                 </ul>
                 <div>
@@ -113,7 +150,9 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                                         <Image src={nigerianFlag} alt="flag" className="w-full h-full" />
                                     </div>
                                     <span className="text-black hover:text-gray-800 text-md">EN</span>
-                                    <Image src={chevronDownIcon} alt="chevron" className="w-6 h-6" />
+                                    <div>
+                                        <Image src={chevronDownIcon} alt="chevron" className="w-6 h-6" />
+                                    </div>
                                 </div>
                             </ul>
                         </div>
