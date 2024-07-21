@@ -5,7 +5,7 @@ import Navbar from '../Hero/Navbar'
 
 const Hero = () => {
     return (
-        <section className='h-[50dvh] xl:h-[100dvh] mb-5 xl:mb-0 border'>
+        <section className='h-[50dvh] xl:h-[100dvh] mb-5 xl:mb-0'>
             <div className='w-full h-full relative'>
                 <div className='w-full h-full absolute'>
                     <Image src={backgroundImage} alt='background image' className='w-full h-full object-cover' />
