@@ -1,3 +1,5 @@
+import { email } from "./data";
+
 export const faq = [
   {
     question: "How do I download the app",
@@ -33,5 +35,9 @@ export const faq = [
     question: "Can I reschedule or cancel a booking",
     answer:
       "Yes, you can cancel a booking. However, in some cases, a cancellation fee may be charged.",
+  },
+  {
+    question: "How to become an affiliate with Whipcare",
+    answer: `To become an affiliate, kindly reach out to us via ${email} and we will contact you on further details.`,
   },
 ];

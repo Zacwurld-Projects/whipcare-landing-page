@@ -11,7 +11,7 @@ import ellipse from "@/assets/images/explore/ellipse.png"
 
 const HowItWorks = () => {
     return (
-        <div className='w-full h-full my-[5rem] relative flex items-center'>
+        <div className='w-full h-full my-[0rem] xl:my-[5rem] relative flex items-center'>
             <div className='flex flex-col gap-y-10 relative z-20 px-7 xl:px-[5rem] 2xl:px-[7rem]'>
                 <div>
                     <div className="h-full w-full mb-10 flex flex-col gap-y-2">

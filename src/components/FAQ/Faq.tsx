@@ -18,7 +18,7 @@ const Faq = () => {
         }
     }
     return (
-        <div className='my-[5rem]'>
+        <div className='my-[2rem] xl:my-[5rem]'>
             <div className='relative flex items-end'>
                 <div className='2xl:px-[7rem] relative z-20'>
                     <div className='text-center mb-5 leading-tight'>
