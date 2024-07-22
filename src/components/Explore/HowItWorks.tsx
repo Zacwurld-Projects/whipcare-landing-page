@@ -68,7 +68,7 @@ const HowItWorks = () => {
                             </div>
                         </div>
 
-                        <div className="xl:w-1/2 justify-center xl:flex justify-end items-center">
+                        <div className="xl:w-1/2 flex justify-center  xl:justify-end items-center">
                             <div className='xl:w-[25rem] xl:h-[23rem]'>
                                 <Image src={mockup2} alt="mockup" className="w-full h-full" />
                             </div>

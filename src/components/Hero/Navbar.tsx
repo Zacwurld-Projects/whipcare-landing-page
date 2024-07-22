@@ -30,16 +30,13 @@ interface NavbarProps {
     hamburgerColor: string
 }
 
-const data = [
+const languages = [
     {
         name: "English"
     },
     {
-        name: "English"
-    },
-    {
-        name: "English"
-    },
+        name: "French"
+    }
 ]
 
 const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
@@ -85,7 +82,7 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                         <div className="w-[10rem] absolute bg-white">
                             {showLanguages &&
                                 <Dropdown
-                                    items={data}
+                                    items={languages}
                                 />
                             }
                         </div>
