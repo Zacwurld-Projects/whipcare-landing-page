@@ -1,9 +1,17 @@
 "use client"
 
+import { useState } from 'react'
+
 import Image from "next/image"
 
+import axios from "axios"
+
+import { registerPath } from '@/utils/paths'
+
 import { ArrowRight } from "lucide-react"
-import mockup from "@/assets/images/hero/mockup.svg"
+import { useToast } from "@/components/ui/use-toast"
+
+// import mockup from "@/assets/images/hero/mockup.svg"
 import reviewers from "@/assets/images/hero/reviewers.svg"
 import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
@@ -12,6 +20,37 @@ import HeroCarousel from "./Carousel"
 import { carouselInfo } from "@/utils/data"
 
 const Hero = () => {
+    const [email, setEmail] = useState('')
+    const [loader, setLoader] = useState(false)
+
+    const { toast } = useToast()
+
+    const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+
+    const handleRegister = () => {
+        setLoader(true)
+        axios.post(`${BASE_URL + registerPath}`, {
+            email: email
+        })
+            .then((response) => {
+                toast({
+                    title: response?.data.message,
+                    description: "Your registration was successful",
+                })
+            })
+            .catch((error) => {
+                toast({
+                    title: error?.response.data.message,
+                    description: "An error occured, try again",
+                    variant: "destructive"
+                })
+            })
+            .finally(() => {
+                setLoader(false)
+            })
+
+    }
+
     return (
         <section className="w-full xl:h-[717px]">
             <div className="h-full w-full flex flex-col xl:flex-row gap-y-10 xl:gap-y-0 px-7 xl:px-[5rem] 2xl:px-0 my-[2rem] xl:my-0">
@@ -59,8 +98,18 @@ const Hero = () => {
                         </p>
                     </div>
                     <div className="flex items-center gap-3 xl:gap-5">
-                        <input type="email" placeholder="Enter your email" className="bg-[#F5F5F5] rounded-full h-[50px] w-[82%] xl:w-[260px] px-5" />
-                        <button className="flex justify-center items-center bg-brand-500 text-white rounded-full h-[45px] xl:h-[50px] w-[45px] xl:w-[160px]">
+
+                        <input
+                            type="email"
+                            placeholder="Enter your email"
+                            onChange={(e) => setEmail(e.target.value)}
+                            className="bg-[#F5F5F5] rounded-full h-[50px] w-[82%] xl:w-[260px] px-5" />
+
+                        <button
+                            onClick={handleRegister}
+                            className={`${loader ? 'bg-brand-500/20' : 'bg-brand-500'} flex justify-center items-center  text-white rounded-full h-[45px] xl:h-[50px] w-[45px] xl:w-[160px]`}
+                            disabled={loader}
+                        >
                             <span className='hidden xl:block capitalize'>
                                 Sign Up
                             </span>
