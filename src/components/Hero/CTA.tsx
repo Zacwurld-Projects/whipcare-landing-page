@@ -1,13 +1,53 @@
-import React from 'react'
+"use client"
+
+import React, { useState } from 'react'
 import Image from 'next/image'
 
+import axios from "axios"
+
 import { ArrowRight, Search } from 'lucide-react'
+import { useToast } from "@/components/ui/use-toast"
+
+import { registerPath } from '@/utils/paths'
+
 import backgroundImage from "@/assets/images/hero/cta-bg.png"
 import mockup from "@/assets/images/hero/cta-mockup.svg"
 import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
 
 const CTA = () => {
+    const [email, setEmail] = useState('')
+    const [loader, setLoader] = useState(false)
+
+    const { toast } = useToast()
+
+    const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL
+
+    const handleRegister = () => {
+
+        setLoader(true)
+        axios.post(`${BASE_URL + registerPath}`, {
+            email: email
+        })
+            .then((response) => {
+                toast({
+                    title: response?.data.message,
+                    description: "Your registration was successful",
+                })
+            })
+            .catch((error) => {
+                toast({
+                    title: error?.response.data.message,
+                    description: "An error occured, try again",
+                    variant: "destructive"
+                })
+            })
+            .finally(() => {
+                setLoader(false)
+            })
+
+    }
+
     return (
         <section>
             <div className='w-full h-full my-[5rem] xl:px-[5rem] 2xl:px-0'>
@@ -27,8 +67,18 @@ const CTA = () => {
                                     <div className='w-full flex justify-center'>
                                         <div className='w-full md:w-2/3 xl:w-full h-[3rem] flex items-center md:justify-between xl:justify-between bg-white rounded-full py-1 pr-1 pl-3 mt-5 xl:mt-0'>
                                             <Search className='mr-2 xl:mr-0' size={16} />
-                                            <input type="email" className='w-[90%] md:w-[70%] xl:w-[70%] 2xl:w-[75%] h-full outline-none' placeholder='Enter your email' />
-                                            <button className='bg-brand-500 h-full text-white text-xs px-7 rounded-full'>
+
+                                            <input
+                                                type="email"
+                                                className='w-[90%] md:w-[70%] xl:w-[70%] 2xl:w-[75%] h-full outline-none'
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                placeholder='Enter your email' />
+
+                                            <button
+                                                onClick={handleRegister}
+                                                className={`${loader ? 'bg-brand-500/20' : 'bg-brand-500'}  h-full text-white text-xs px-7 rounded-full`}
+                                                disabled={loader}
+                                            >
                                                 <span className='hidden md:block'>
                                                     Sign Up
                                                 </span>
