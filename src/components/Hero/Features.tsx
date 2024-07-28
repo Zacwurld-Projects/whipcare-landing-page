@@ -1,9 +1,13 @@
+"use client"
+
 import React from 'react'
 import List from '../cards/List'
 import mockup from "@/assets/images/hero/features-mockup.svg"
 import mockup2 from "@/assets/images/hero/features-mockup2.svg"
 import Image from 'next/image'
 import { features } from '@/utils/data'
+import { motion } from 'framer-motion'
+
 
 const Features = () => {
     return (
@@ -33,7 +37,17 @@ const Features = () => {
 
                     <div className="xl:w-1/2 flex justify-center xl:justify-end">
                         <div className='xl:w-[25rem] xl:h-[45rem]'>
+                            {/* <motion.div
+                            className='xl:w-[25rem] xl:h-[45rem]'
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        >
+                        </motion.div> */}
                             <Image src={mockup} alt="mockup" className="w-full h-full" />
+
                         </div>
                     </div>
                 </div>
@@ -57,7 +71,16 @@ const Features = () => {
 
                     <div className="xl:w-1/2 flex justify-center xl:justify-start">
                         <div className='xl:w-[25rem] xl:h-[45rem]'>
+                            {/* <motion.div
+                            className='xl:w-[25rem] xl:h-[45rem]'
+                            initial={{ y: 50, opacity: 0 }}
+                            animate={{ y: 0, opacity: 1 }}
+                            transition={{ duration: 0.5 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                        > */}
                             <Image src={mockup2} alt="mockup" className="w-full h-full" />
+                            {/* </motion.div> */}
                         </div>
                     </div>
                 </div>

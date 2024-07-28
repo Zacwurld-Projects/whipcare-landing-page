@@ -60,8 +60,8 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
 
                     {/* Language */}
                     <div className="relative z-20">
+                        {/* onClick={() => setShowLanguages(!showLanguages)} */}
                         <div
-                            onClick={() => setShowLanguages(!showLanguages)}
                             className="w-full flex items-center gap-x-2 hover:cursor-pointer"
                         >
                             <div className="w-[20px] h-[20px]">

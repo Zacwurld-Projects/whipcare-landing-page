@@ -16,7 +16,7 @@ const OurStory = () => {
                     <div className='flex flex-col gap-y-16'>
                         <div className='xl:w-1/3'>
                             <h2 className='text-3xl font-semibold'>Our Story</h2>
-                            <p className='text-sm'>WhipCare was created to solve the hassle of finding reliable car care services. By bringing top-notch car maintenance directly to your doorstep, we make car care effortless and accessible globally.</p>
+                            <p className='text-sm'>Whipcare was created to solve the hassle of finding reliable car care services. By bringing top-notch car maintenance directly to your doorstep, we make car care effortless and accessible globally.</p>
                         </div>
 
                         <div className='w-full flex flex-col xl:flex-row'>
