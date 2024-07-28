@@ -6,7 +6,8 @@ import carWashIcon from "@/assets/icons/explore-purple.svg";
 
 // Avatars
 import avatar from "@/assets/images/avatar.png";
-import avatar2 from "@/assets/images/avatar2.png";
+import avatar2 from "@/assets/images/avatar2.jpg";
+import avatar3 from "@/assets/images/avatar3.jpg";
 
 // Socials
 import xIcon from "@/assets/icons/x.svg";
@@ -205,14 +206,14 @@ export const testimonials = [
     name: "Jacob Jones",
     testimonial:
       "I've used Whipcare for both detailing and car wash services, and every experience has been excellent. The providers are professional, punctual, and very thorough",
-    image: avatar,
+    image: avatar3,
     rating: 5,
   },
   {
     name: "Jenny Wilson",
     testimonial:
       "Keeping my classic car in pristine condition is important to me, and Whiocare connects me with detailers who understand and respect that. The attention to detail and quality of service are outstanding.",
-    image: avatar,
+    image: avatar2,
     rating: 5,
   },
 ];

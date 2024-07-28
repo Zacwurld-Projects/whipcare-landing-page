@@ -11,7 +11,7 @@ const page = () => {
             <Hero />
             <OurStory />
             <OurValues />
-            <Team />
+            {/* <Team /> */}
             <div className=' 2xl:px-[7rem]'>
                 <CTA />
             </div>

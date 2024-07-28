@@ -21,11 +21,15 @@ const TestimonialCard: React.FC<TestimonialProps> = ({
                 <div className="flex">
                     <Image src={userRatingIcon} alt="user rating" />
                 </div>
-                <p className="text-sm font-medium">{`"${testimonial}"`}</p>
+                <div className="h-2/3">
+                    <p className="text-sm font-medium">{`"${testimonial}"`}</p>
+                </div>
                 <div className="flex gap-x-3 items-center">
-                    <Image src={image}
-                        className="rounded-full"
-                        alt={`${name} testimonial image`} />
+                    <div className="w-10 h-10">
+                        <Image src={image}
+                            className="rounded-full w-full h-full object-cover"
+                            alt={`${name} testimonial image`} />
+                    </div>
                     <p className="text-md font-medium">{name}</p>
                 </div>
             </div>

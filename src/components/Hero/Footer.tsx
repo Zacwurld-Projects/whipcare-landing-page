@@ -37,7 +37,7 @@ const Footer = () => {
                             <div className='flex flex-col gap-y-5'>
                                 <div>
                                     <p className='text-white text-sm'>Lagos, Nigeria.</p>
-                                    <span className='text-[#A3DC2F] text-sm'>View on Maps</span>
+                                    {/* <span className='text-[#A3DC2F] text-sm'>View on Maps</span> */}
                                 </div>
                                 <div className='flex flex-col gap-y-5'>
                                     <p className='text-[24px] text-white'>Inquiries</p>
