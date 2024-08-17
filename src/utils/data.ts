@@ -114,7 +114,7 @@ export const features = [
       list: [
         "Multiple Payment Methods: Support for credit/debit cards, mobile wallets, and other popular payment methods.",
         "Secure Transactions: SSL encryption and secure payment gateways to ensure user data protection.",
-        "Support for credit/debit cards and in-app wallets.",
+        "Support for credit/debit cards and bank transfers.",
       ],
     },
     {
