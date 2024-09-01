@@ -13,6 +13,9 @@ import avatar3 from "@/assets/images/avatar3.jpg";
 import xIcon from "@/assets/icons/x.svg";
 import facebookIcon from "@/assets/icons/facebook.svg";
 import instagramIcon from "@/assets/icons/instagram.svg";
+import linkedinIcon from "@/assets/icons/linkedin.svg";
+import youtubeIcon from "@/assets/icons/youtube.svg";
+import tiktokIcon from "@/assets/icons/tiktok.svg";
 
 // Carousel images
 import carouselImage1 from "@/assets/images/hero/carousel-mockup1.png";
@@ -252,6 +255,21 @@ export const footerInfo = {
       name: "instragram",
       link: "https://instagram.com/whipcare.app",
       icon: instagramIcon,
+    },
+    {
+      name: "LinkedIn",
+      link: "https://www.linkedin.com/company/whipcare-by-zacwurld/",
+      icon: linkedinIcon,
+    },
+    {
+      name: "YouTube",
+      link: "https://youtube.com/@whipcareapp",
+      icon: youtubeIcon,
+    },
+    {
+      name: "Tiktok",
+      link: "https://www.tiktok.com/@whipcare",
+      icon: tiktokIcon,
     },
   ],
   contact: [

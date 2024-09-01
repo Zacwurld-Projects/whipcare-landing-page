@@ -46,13 +46,15 @@ const Footer = () => {
                                             <p key={index} className='text-white text-sm'>{item.title}</p>
                                         ))
                                     }
-                                    <div className='flex gap-x-2 justify-center xl:justify-start'>
+                                    <div className='flex flex-wrap gap-x-3 justify-center xl:justify-start'>
                                         {
                                             footerInfo.socials.map((social, index) => (
                                                 <Link
                                                     key={index}
-                                                    href={social.link}>
-                                                    <Image src={social.icon} alt={social.name} className='w-7 h-7' />
+                                                    href={social.link}
+                                                    target='_blank'
+                                                >
+                                                    <Image src={social.icon} alt={social.name} className='w-7 h-7 mt-2 md:mt-0' />
                                                 </Link>
                                             ))
                                         }
