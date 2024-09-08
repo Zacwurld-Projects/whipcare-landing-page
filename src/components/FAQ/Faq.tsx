@@ -7,6 +7,9 @@ import { faq } from '@/utils/faq.data'
 import ellipse from "@/assets/images/faq/ellipse.png"
 import Image from 'next/image'
 
+import { motion } from 'framer-motion'
+import { fadeIn } from '@/variants'
+
 const Faq = () => {
     const [openCardIndex, setOpenCardIndex] = useState<number | null>(null)
 
@@ -21,11 +24,21 @@ const Faq = () => {
         <div className='my-[2rem] xl:my-[5rem]'>
             <div className='relative flex items-end'>
                 <div className='2xl:px-[7rem] relative z-20'>
-                    <div className='text-center mb-5 leading-tight'>
+                    <motion.div
+                        variants={fadeIn("down", 0.2)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.5 }}
+                        className='text-center mb-5 leading-tight'>
                         <h2 className='text-3xl font-semibold'>Frequently asked questions</h2>
                         <p className='text-sm'>We`re happy to answer your questions</p>
-                    </div>
-                    <div className='mt-5'>
+                    </motion.div>
+                    <motion.div
+                        variants={fadeIn("left", 0.4)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.5 }}
+                        className='mt-5'>
                         {
                             faq.map((item, index) => (
                                 <FaqCard
@@ -38,7 +51,7 @@ const Faq = () => {
                                 />
                             ))
                         }
-                    </div>
+                    </motion.div>
                 </div>
 
                 <div className='hidden xl:block absolute'>
