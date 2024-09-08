@@ -1,15 +1,30 @@
+"use client"
+
 import { ourValuesInfo } from '@/utils/about.data'
 import React from 'react'
 import Values from '../cards/Values'
+
+import { motion } from 'framer-motion'
+import { fadeIn } from '@/variants'
 
 const OurValues = () => {
     return (
         <section>
             <div className='xl:px-[5rem] 2xl:px-[7rem] flex flex-col gap-y-7'>
                 <div className="w-full h-full">
-                    <h2 className='text-3xl text-center font-semibold'>Our Values</h2>
+                    <motion.h2
+                        variants={fadeIn("up", 0.1)}
+                        initial="hidden"
+                        whileInView={"show"}
+                        viewport={{ once: false, amount: 0.5 }}
+                        className='text-3xl text-center font-semibold'>Our Values</motion.h2>
                 </div>
-                <div className='w-full flex flex-wrap gap-y-5'>
+                <motion.div
+                    variants={fadeIn("left", 0.3)}
+                    initial="hidden"
+                    whileInView={"show"}
+                    viewport={{ once: false, amount: 0.5 }}
+                    className='w-full flex flex-wrap gap-y-5'>
                     {
                         ourValuesInfo.map((value, index) => (
                             <div key={index} className='xl:w-1/2 px-7 xl:px-20'>
@@ -17,7 +32,7 @@ const OurValues = () => {
                             </div>
                         ))
                     }
-                </div>
+                </motion.div>
             </div>
         </section>
     )
