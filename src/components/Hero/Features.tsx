@@ -31,7 +31,7 @@ const Features = () => {
                         variants={fadeIn("right", 0.2)}
                         initial="hidden"
                         whileInView={"show"}
-                        viewport={{ once: false, amount: 0.3 }}
+                        viewport={{ once: false, amount: 0.2 }}
                         className="xl:w-1/2">
                         <div className='flex flex-col gap-y-7'>
                             {
@@ -50,18 +50,9 @@ const Features = () => {
                         variants={fadeIn("left", 0.3)}
                         initial="hidden"
                         whileInView={"show"}
-                        viewport={{ once: false, amount: 0.3 }}
+                        viewport={{ once: false, amount: 0.2 }}
                         className="xl:w-1/2 flex justify-center xl:justify-end">
                         <div className='xl:w-[25rem] xl:h-[45rem]'>
-                            {/* <motion.div
-                            className='xl:w-[25rem] xl:h-[45rem]'
-                            initial={{ y: 50, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.5 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                        >
-                        </motion.div> */}
                             <Image src={mockup} alt="mockup" className="w-full h-full" />
 
                         </div>
