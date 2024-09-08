@@ -1,12 +1,23 @@
+"use client"
+
 import React from 'react'
+import { useInView } from 'react-intersection-observer';
 import backgroundImage from "@/assets/images/hero/statistics-bg.svg"
 import Image from 'next/image'
 import { statistics } from '@/utils/data'
 
+import CountUp from 'react-countup';
+
 const Statistics = () => {
+    const { ref, inView } = useInView({
+        triggerOnce: false,
+        threshold: 0.7,
+    });
+
     return (
         <section
             className='w-full xl:h-[224px] bg-gray-100 flex justify-center items-center my-[5rem]'
+            ref={ref}
         >
             <div className='w-full h-full relative bg-brand-500 py-12 xl:py-0'>
                 <div className='absolute h-full w-full'>
@@ -24,7 +35,9 @@ const Statistics = () => {
                                     <div
                                         key={index}
                                         className='text-center xl:text-start'>
-                                        <h2 className='text-2xl text-white'>{item.title}+</h2>
+                                        <h2 className='text-2xl text-white'>
+                                            {inView ? <CountUp start={0} end={item.title} duration={2.5} /> : 0}+
+                                        </h2>
                                         <p className='text-sm text-white'>{item.description}</p>
                                     </div>
                                 ))
