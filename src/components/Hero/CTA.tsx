@@ -15,6 +15,10 @@ import mockup from "@/assets/images/hero/cta-mockup.svg"
 import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
 
+import { fadeIn } from "@/variants"
+import { motion } from 'framer-motion'
+
+
 const CTA = () => {
     const [email, setEmail] = useState('')
     const [loader, setLoader] = useState(false)
@@ -60,8 +64,15 @@ const CTA = () => {
                         </div>
                         <div className='w-full xl:w-1/2 h-full relative z-20 px-7 xl:px-10 py-20'>
                             <div className='w-full h-full flex flex-col md:items-center xl:items-start justify-center gap-y-3'>
-                                <h2 className='text-white font-semibold text-3xl capitalize'>Your car, our priority</h2>
-                                <p className='text-white md:w-2/3 xl:w-full md:text-center xl:text-start'>Sign up with your email and get informed about discounts , Whipcare tips and exciting features coming your way!</p>
+                                <motion.div
+                                    variants={fadeIn("up", 0.1)}
+                                    initial="hidden"
+                                    whileInView={"show"}
+                                    viewport={{ once: false, amount: 0.7 }}
+                                    className='flex flex-col gap-y-1'>
+                                    <h2 className='text-white font-semibold text-3xl capitalize'>Your car, our priority</h2>
+                                    <p className='text-white md:w-2/3 xl:w-full md:text-center xl:text-start'>Sign up with your email and get informed about discounts , Whipcare tips and exciting features coming your way!</p>
+                                </motion.div>
                                 <div className='w-full flex flex-col gap-y-3'>
 
                                     <div className='w-full flex justify-center'>

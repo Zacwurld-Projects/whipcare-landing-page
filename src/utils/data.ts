@@ -153,15 +153,15 @@ export const features = [
 
 export const statistics = [
   {
-    title: "50,000",
+    title: 50000,
     description: "customers around the world.",
   },
   {
-    title: "30",
+    title: 30,
     description: "countries across the globe.",
   },
   {
-    title: "100",
+    title: 100,
     description: "Real time active service providers",
   },
 ];
@@ -173,6 +173,7 @@ export const services = [
     description:
       "Our network of certified mechanics offer a range of expertise to keep your Whip running smoothly.",
     backgroundColor: "bg-[#FEEDEC]",
+    delay: 0.2,
   },
   {
     title: "Detailers",
@@ -180,6 +181,7 @@ export const services = [
     description:
       "Enhance your Whip's appearance and protect its value with the best rated detailing services close to you.",
     backgroundColor: "bg-[#F5EBF2]",
+    delay: 0.4,
   },
   {
     title: "Haulers",
@@ -187,6 +189,7 @@ export const services = [
     description:
       "Safe and efficient transportation for your Whip, whether it's across town or across the country, by our available top rated professional car haulers.",
     backgroundColor: "bg-[#EBFCFF]",
+    delay: 0.6,
   },
   {
     title: "Car wash",
@@ -194,6 +197,7 @@ export const services = [
     description:
       "Keep your Whip looking its best with our thorough and convenient car wash options, courtesy of our available top rated car wash professionals.",
     backgroundColor: "bg-[#F4EBFF]",
+    delay: 0.8,
   },
 ];
 

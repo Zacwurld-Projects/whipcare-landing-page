@@ -1,6 +1,10 @@
+import React from 'react'
+
 import pieChart from "@/assets/icons/pie-chart.svg"
 import { Dot } from "lucide-react"
 import Image from "next/image"
+
+import { motion } from 'framer-motion'
 
 interface ListProps {
     title: string
@@ -11,12 +15,21 @@ const List: React.FC<ListProps> = ({
     title,
     list
 }) => {
+    const [rotate, setRotate] = React.useState(false)
+
     return (
         <div className="w-full">
             <div className="w-full flex gap-5">
                 <div>
                     <div className="p-2 h-10 w-10 rounded-full bg-[#FBE8FF]">
-                        <Image src={pieChart} alt="pie-chart" className="w-[3rem]" />
+                        <motion.div
+                            animate={{ rotate: rotate ? 360 : 0 }}
+                            transition={{ duration: 0.5 }}
+                            onClick={() => setRotate(!rotate)}
+                            className='hover:cursor-pointer'
+                        >
+                            <Image src={pieChart} alt="pie-chart" className="w-[3rem]" />
+                        </motion.div>
                     </div>
                 </div>
                 <div className="flex flex-col gap-y-2">
