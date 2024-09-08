@@ -53,7 +53,7 @@ const Explore = () => {
                             variants={fadeIn("left", 0.3)}
                             initial="hidden"
                             whileInView={"show"}
-                            viewport={{ once: false, amount: 0.7 }}
+                            viewport={{ once: false, amount: 0.2 }}
                             className="flex flex-col gap-5">
                             {
                                 explore.map((item, index) => (
