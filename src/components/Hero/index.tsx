@@ -19,6 +19,9 @@ import ratingImage from "@/assets/icons/five-star-rating.svg"
 import HeroCarousel from "./Carousel"
 import { carouselInfo } from "@/utils/data"
 
+import { fadeIn } from "@/variants"
+import { motion } from 'framer-motion'
+
 const Hero = () => {
     const [email, setEmail] = useState('')
     const [loader, setLoader] = useState(false)
@@ -53,8 +56,13 @@ const Hero = () => {
 
     return (
         <section className="w-full xl:h-[717px]">
-            <div className="h-full w-full flex flex-col xl:flex-row gap-y-10 xl:gap-y-0 px-7 xl:px-[5rem] 2xl:px-0 my-[2rem] xl:my-0">
-
+            <motion.div
+                className="h-full w-full flex flex-col xl:flex-row gap-y-10 xl:gap-y-0 px-7 xl:px-[5rem] 2xl:px-0 my-[2rem] xl:my-0"
+                variants={fadeIn("up", 0.2)}
+                initial="hidden"
+                whileInView={"show"}
+                viewport={{ once: false, amount: 0.7 }}
+            >
                 {/* Text */}
                 <div className="xl:w-1/2 flex flex-col justify-center gap-y-7">
                     <div className="flex flex-col-reverse xl:flex-row xl:items-center gap-y-2 xl:gap-x-2 xl:gap-y-0">
@@ -129,7 +137,7 @@ const Hero = () => {
                         </div>
                     }
                 </div>
-            </div>
+            </motion.div>
         </section>
     )
 }

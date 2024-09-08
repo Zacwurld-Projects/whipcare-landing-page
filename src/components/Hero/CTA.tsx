@@ -15,6 +15,10 @@ import mockup from "@/assets/images/hero/cta-mockup.svg"
 import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
 
+import { fadeIn } from "@/variants"
+import { motion } from 'framer-motion'
+
+
 const CTA = () => {
     const [email, setEmail] = useState('')
     const [loader, setLoader] = useState(false)
@@ -49,7 +53,12 @@ const CTA = () => {
     }
 
     return (
-        <section>
+        <motion.section
+            variants={fadeIn("up", 0.2)}
+            initial="hidden"
+            whileInView={"show"}
+            viewport={{ once: false, amount: 0.7 }}
+        >
             <div className='w-full h-full my-[5rem] xl:px-[5rem] 2xl:px-0'>
                 <div className='w-full xl:h-[25rem] flex items-end'>
                     <div className='w-full xl:h-[20rem] xl:rounded-2xl relative'>
@@ -120,7 +129,7 @@ const CTA = () => {
                     </div>
                 </div>
             </div>
-        </section>
+        </motion.section>
     )
 }
 

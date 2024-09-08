@@ -1,6 +1,9 @@
+"use client"
+
 import { services } from '@/utils/data'
 import React from 'react'
 import ServicesCard from '../cards/Services'
+
 
 const Services = () => {
     return (

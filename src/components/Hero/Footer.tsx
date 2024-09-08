@@ -1,15 +1,21 @@
+"use client"
+
 import React from 'react'
 import logo from "@/assets/white-logo.svg"
 import Image from 'next/image'
 import { footerInfo } from '@/utils/data'
 import Link from 'next/link'
 
+import { motion } from 'framer-motion'
+
 const Footer = () => {
     const date = new Date()
     const year = date.getFullYear()
 
     return (
-        <footer className='bg-gray-900'>
+        <footer
+            className='bg-gray-900'
+        >
             <div className='w-full h-full py-10 px-10 xl:px-20'>
                 <div className='w-full flex flex-col xl:flex-row gap-y-7 xl:gap-y-0'>
                     <div className='xl:w-1/3 flex flex-col items-center xl:items-start'>
@@ -54,7 +60,12 @@ const Footer = () => {
                                                     href={social.link}
                                                     target='_blank'
                                                 >
-                                                    <Image src={social.icon} alt={social.name} className='w-7 h-7 mt-2 md:mt-0' />
+                                                    <motion.div
+                                                        whileHover={{ scale: 1.1 }}
+                                                        whileTap={{ scale: 0.9 }}
+                                                    >
+                                                        <Image src={social.icon} alt={social.name} className='w-7 h-7 mt-2 md:mt-0' />
+                                                    </motion.div>
                                                 </Link>
                                             ))
                                         }
