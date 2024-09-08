@@ -20,7 +20,7 @@ const Hero = () => {
                     />
                     <div className='h-1/4 w-full flex items-center justify-center'>
                         <motion.h2
-                            variants={fadeIn("up", 0.2)}
+                            variants={fadeIn("up", 0.1)}
                             initial="hidden"
                             whileInView={"show"}
                             viewport={{ once: false, amount: 0.5 }}

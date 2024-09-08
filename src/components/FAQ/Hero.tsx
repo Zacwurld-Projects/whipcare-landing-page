@@ -1,7 +1,12 @@
+"use client"
+
 import React from 'react'
 import Image from 'next/image'
 import backgroundImage from "@/assets/images/faq/background-image.png"
 import Navbar from '../Hero/Navbar'
+
+import { motion } from 'framer-motion'
+import { fadeIn } from '@/variants'
 
 const Hero = () => {
     return (
@@ -16,7 +21,12 @@ const Hero = () => {
                         hamburgerColor='text-white'
                     />
                     <div className='h-1/3 w-full flex items-center justify-center'>
-                        <h2 className='text-white text-4xl font-semibold'>FAQ</h2>
+                        <motion.h2
+                            variants={fadeIn("up", 0.1)}
+                            initial="hidden"
+                            whileInView={"show"}
+                            viewport={{ once: false, amount: 0.5 }}
+                            className='text-white text-4xl font-semibold'>FAQ</motion.h2>
                     </div>
                 </div>
 
