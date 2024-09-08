@@ -43,7 +43,8 @@ const Explore = () => {
                         initial="hidden"
                         whileInView={"show"}
                         viewport={{ once: false, amount: 0.7 }}
-                        className="flex flex-col gap-y-2 text-white text-center">
+                        className="flex flex-col gap-y-2 text-white text-center"
+                    >
                         <h2 className="text-4xl font-semibold">Explore Whipcare</h2>
                         <h6 className="font-medium text-sm">Here is a step by step guide on how to use Whipcare.</h6>
                     </motion.div>

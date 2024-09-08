@@ -1,17 +1,17 @@
 "use client"
 
 import React from 'react'
-import { useInView } from 'react-intersection-observer';
 import backgroundImage from "@/assets/images/hero/statistics-bg.svg"
 import Image from 'next/image'
 import { statistics } from '@/utils/data'
 
 import CountUp from 'react-countup';
+import { useInView } from 'react-intersection-observer';
 
 const Statistics = () => {
     const { ref, inView } = useInView({
         triggerOnce: false,
-        threshold: 0.7,
+        threshold: 0.8,
     });
 
     return (

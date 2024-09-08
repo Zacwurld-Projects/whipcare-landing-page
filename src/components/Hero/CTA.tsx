@@ -53,12 +53,7 @@ const CTA = () => {
     }
 
     return (
-        <motion.section
-            variants={fadeIn("up", 0.2)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.7 }}
-        >
+        <section>
             <div className='w-full h-full my-[5rem] xl:px-[5rem] 2xl:px-0'>
                 <div className='w-full xl:h-[25rem] flex items-end'>
                     <div className='w-full xl:h-[20rem] xl:rounded-2xl relative'>
@@ -69,8 +64,15 @@ const CTA = () => {
                         </div>
                         <div className='w-full xl:w-1/2 h-full relative z-20 px-7 xl:px-10 py-20'>
                             <div className='w-full h-full flex flex-col md:items-center xl:items-start justify-center gap-y-3'>
-                                <h2 className='text-white font-semibold text-3xl capitalize'>Your car, our priority</h2>
-                                <p className='text-white md:w-2/3 xl:w-full md:text-center xl:text-start'>Sign up with your email and get informed about discounts , Whipcare tips and exciting features coming your way!</p>
+                                <motion.div
+                                    variants={fadeIn("up", 0.1)}
+                                    initial="hidden"
+                                    whileInView={"show"}
+                                    viewport={{ once: false, amount: 0.7 }}
+                                    className='flex flex-col gap-y-1'>
+                                    <h2 className='text-white font-semibold text-3xl capitalize'>Your car, our priority</h2>
+                                    <p className='text-white md:w-2/3 xl:w-full md:text-center xl:text-start'>Sign up with your email and get informed about discounts , Whipcare tips and exciting features coming your way!</p>
+                                </motion.div>
                                 <div className='w-full flex flex-col gap-y-3'>
 
                                     <div className='w-full flex justify-center'>
@@ -129,7 +131,7 @@ const CTA = () => {
                     </div>
                 </div>
             </div>
-        </motion.section>
+        </section>
     )
 }
 

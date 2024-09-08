@@ -17,7 +17,7 @@ const Features = () => {
                 variants={fadeIn("up", 0.1)}
                 initial="hidden"
                 whileInView={"show"}
-                viewport={{ once: false, amount: 0.7 }}
+                viewport={{ once: false, amount: 0.3 }}
                 className="h-full w-full mb-10">
                 <h1 className='text-3xl font-semibold'>Live Easier With Whipcare</h1>
                 <p className='text-sm'>How do we serve you and your car?</p>
@@ -31,7 +31,7 @@ const Features = () => {
                         variants={fadeIn("right", 0.2)}
                         initial="hidden"
                         whileInView={"show"}
-                        viewport={{ once: false, amount: 0.7 }}
+                        viewport={{ once: false, amount: 0.3 }}
                         className="xl:w-1/2">
                         <div className='flex flex-col gap-y-7'>
                             {
@@ -50,7 +50,7 @@ const Features = () => {
                         variants={fadeIn("left", 0.3)}
                         initial="hidden"
                         whileInView={"show"}
-                        viewport={{ once: false, amount: 0.7 }}
+                        viewport={{ once: false, amount: 0.3 }}
                         className="xl:w-1/2 flex justify-center xl:justify-end">
                         <div className='xl:w-[25rem] xl:h-[45rem]'>
                             {/* <motion.div
@@ -75,7 +75,7 @@ const Features = () => {
                         variants={fadeIn("up", 0.1)}
                         initial="hidden"
                         whileInView={"show"}
-                        viewport={{ once: false, amount: 0.7 }}
+                        viewport={{ once: false, amount: 0.3 }}
                         className="xl:w-1/2">
                         <div className='flex flex-col gap-y-7'>
                             {
@@ -94,7 +94,7 @@ const Features = () => {
                         variants={fadeIn("down", 0.3)}
                         initial="hidden"
                         whileInView={"show"}
-                        viewport={{ once: false, amount: 0.7 }}
+                        viewport={{ once: false, amount: 0.3 }}
                         className="xl:w-1/2 flex justify-center xl:justify-start">
                         <div className='xl:w-[25rem] xl:h-[45rem]'>
                             {/* <motion.div
