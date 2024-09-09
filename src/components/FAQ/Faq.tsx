@@ -34,10 +34,10 @@ const Faq = () => {
                         <p className='text-sm'>We`re happy to answer your questions</p>
                     </motion.div>
                     <motion.div
-                        variants={fadeIn("left", 0.4)}
+                        variants={fadeIn("left", 0.1)}
                         initial="hidden"
                         whileInView={"show"}
-                        viewport={{ once: false, amount: 0.5 }}
+                        viewport={{ once: false, amount: 0.3 }}
                         className='mt-5'>
                         {
                             faq.map((item, index) => (
