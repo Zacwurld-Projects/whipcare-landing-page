@@ -19,12 +19,13 @@ const Hero = () => {
                         hamburgerColor='text-white'
                     />
                     <div className='h-1/4 w-full flex items-center justify-center'>
-                        <motion.h2
+                        {/* <motion.h2
                             variants={fadeIn("up", 0.1)}
                             initial="hidden"
                             whileInView={"show"}
                             viewport={{ once: false, amount: 0.5 }}
-                            className='text-white text-xl xl:text-4xl font-semibold text-center'>Explore <br className='xl:hidden' /> Whipcare</motion.h2>
+                            className='text-white text-xl xl:text-4xl font-semibold text-center'>Explore <br className='xl:hidden' /> Whipcare</motion.h2> */}
+                        <h2 className='text-white text-xl xl:text-4xl font-semibold text-center'>Explore <br className='xl:hidden' /> Whipcare</h2>
                     </div>
                 </div>
 

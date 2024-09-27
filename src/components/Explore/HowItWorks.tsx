@@ -17,17 +17,12 @@ import { fadeIn } from '@/variants'
 const HowItWorks = () => {
     return (
         <div className='w-full h-full my-[0rem] xl:my-[5rem] relative flex items-center'>
-            <div className='flex flex-col gap-y-10 relative z-20 px-7 xl:px-[5rem] 2xl:px-[7rem]'>
+            <div className='w-full flex flex-col gap-y-10 relative z-20 px-7 xl:px-[5rem] 2xl:px-[7rem]'>
                 <div>
-                    <motion.div
-                        variants={fadeIn("up", 0.1)}
-                        initial="hidden"
-                        whileInView={"show"}
-                        viewport={{ once: false, amount: 0.5 }}
-                        className="h-full w-full mb-10 flex flex-col gap-y-2">
+                    <div className="h-full w-full mb-10 flex flex-col gap-y-2">
                         <h1 className='text-3xl font-semibold'>Use Whipcare as a <br /> car owner</h1>
                         <p className='text-sm'>{"Here's"} a step-by-step guide on how to book and complete your selected service.</p>
-                    </motion.div>
+                    </div>
 
                     <div className='flex flex-col gap-y-20'>
                         {/* First section */}
@@ -68,19 +63,14 @@ const HowItWorks = () => {
 
                 <div>
                     {/* Second section */}
-                    <motion.div
-                        variants={fadeIn("up", 0.1)}
-                        initial="hidden"
-                        whileInView={"show"}
-                        viewport={{ once: false, amount: 0.7 }}
-                        className="h-full w-full mb-10 flex flex-col gap-y-2">
+                    <div className="h-full w-full mb-10 flex flex-col gap-y-2">
                         <h1 className='text-3xl font-semibold'>Use Whipcare as a <br /> car service provider</h1>
                         <p className='text-sm'>Here is a guide on how to manage bookings and Earn as a service provider.</p>
-                    </motion.div>
+                    </div>
                     <div className='w-full flex flex-col xl:flex-row gap-y-10 xl:gap-y-0'>
 
                         <div className="xl:w-1/2">
-                            <motion.div
+                            {/* <motion.div
                                 variants={fadeIn("right", 0.2)}
                                 initial="hidden"
                                 whileInView={"show"}
@@ -95,7 +85,18 @@ const HowItWorks = () => {
                                         />
                                     ))
                                 }
-                            </motion.div>
+                            </motion.div> */}
+                            <div className='flex flex-col gap-y-7'>
+                                {
+                                    exploreInfo[1].map((info, index) => (
+                                        <List
+                                            key={index}
+                                            title={info.title}
+                                            list={info.list}
+                                        />
+                                    ))
+                                }
+                            </div>
                         </div>
 
                         <div className="xl:w-1/2 flex justify-center  xl:justify-end items-center">

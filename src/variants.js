@@ -21,16 +21,20 @@ export const fadeIn = (direction, delay) => {
   };
 };
 
-export const fadeInShow = {
-  hidden: {
-    opacity: 0,
-  },
-  show: {
-    opacity: 1,
-    transition: {
-      type: "tween",
-      duration: 1.1,
-      ease: "easeInOut",
+export const fadeInShow = (initialScale) => {
+  return {
+    hidden: {
+      opacity: 0,
+      scale: initialScale,
     },
-  },
+    show: {
+      opacity: 1,
+      scale: 1,
+      transition: {
+        type: "tween",
+        duration: 1.1,
+        ease: "easeInOut",
+      },
+    },
+  };
 };
