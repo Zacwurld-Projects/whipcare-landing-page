@@ -28,6 +28,11 @@ const Footer = () => {
                         <Image src={logo} alt='logo' />
                         <p className='text-sm text-white font-light text-center xl:text-start'>From mechanics to detailers, book top-rated professionals effortlessly. Your {"car's"} perfect partner is just a click away.</p>
                         <button className="bg-white text-black rounded-full h-[40px] w-[150px] mt-8">Get the app</button>
+                        <div className='mt-3'>
+                            <Link href='/register-service-provider' className='text-white underline'>
+                                Register as a service provider
+                            </Link>
+                        </div>
                     </div>
 
                     <div className='xl:w-1/3 flex flex-col items-center'>
