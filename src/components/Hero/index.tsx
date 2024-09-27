@@ -19,7 +19,7 @@ import ratingImage from "@/assets/icons/five-star-rating.svg"
 import HeroCarousel from "./Carousel"
 import { carouselInfo } from "@/utils/data"
 
-import { fadeIn } from "@/variants"
+import { fadeIn, popUp } from "@/variants"
 import { motion } from 'framer-motion'
 
 const Hero = () => {
@@ -130,11 +130,16 @@ const Hero = () => {
                 <div className="xl:w-1/2">
                     {/* <Image src={mockup} className="xl:h-[717px] xl:w-[698px]" alt="mockup" /> */}
                     {
-                        <div className="h-full">
+                        <motion.div
+                            variants={popUp}
+                            initial="hidden"
+                            whileInView={"show"}
+                            viewport={{ once: false, amount: 0.5 }}
+                            className="h-full">
                             <HeroCarousel
                                 items={carouselInfo}
                             />
-                        </div>
+                        </motion.div>
                     }
                 </div>
             </motion.div>

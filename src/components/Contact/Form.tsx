@@ -5,9 +5,6 @@ import Image from 'next/image'
 import mockup from "@/assets/images/contact/mockup.png"
 import emailIcon from "@/assets/icons/mail.svg";
 
-import { motion } from 'framer-motion'
-import { fadeIn } from '@/variants'
-
 const Form = () => {
     return (
         <div>
@@ -15,15 +12,10 @@ const Form = () => {
                 <div className="w-full h-full flex md:justify-center">
                     <div className='xl:w-1/2 bg-white xl:pl-[5rem] px-7 xl:px-0 py-[2rem] xl:rounded-l-[3rem]'>
                         <div className="w-full h-full flex flex-col justify-center items-start gap-y-7">
-                            <motion.div
-                                variants={fadeIn("down", 0.1)}
-                                initial="hidden"
-                                whileInView={"show"}
-                                viewport={{ once: false, amount: 0.5 }}
-                                className='flex flex-col gap-y-2'>
+                            <div className='flex flex-col gap-y-2'>
                                 <h2 className='text-3xl font-semibold'>Contact Us</h2>
                                 <p className='text-gray-500 text-sm xl:w-2/3'>Have questions or need assistance? Our customer support team is here to help. Contact us.</p>
-                            </motion.div>
+                            </div>
                             <div className='w-full flex flex-col gap-y-4'>
                                 <div>
                                     <input
@@ -76,14 +68,9 @@ const Form = () => {
                         <div className='h-full w-1/2 bg-white'></div>
                         <div className='h-full w-1/2 bg-brand-500  rounded-r-[3rem]'></div>
                         <div className='absolute w-1/2 h-[80%]'>
-                            <motion.div
-                                variants={fadeIn("left", 0.3)}
-                                initial="hidden"
-                                whileInView={"show"}
-                                viewport={{ once: false, amount: 0.5 }}
-                                className='h-full'>
+                            <div className='h-full'>
                                 <Image src={mockup} alt="map image" className='h-full object-cover' />
-                            </motion.div>
+                            </div>
                         </div>
                     </div>
                 </div>
