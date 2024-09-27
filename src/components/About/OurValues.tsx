@@ -20,7 +20,7 @@ const OurValues = () => {
                         className='text-3xl text-center font-semibold'>Our Values</motion.h2>
                 </div>
                 <motion.div
-                    variants={fadeInShow}
+                    variants={fadeInShow(0.9)}
                     initial="hidden"
                     whileInView={"show"}
                     viewport={{ once: false, amount: 0.5 }}
