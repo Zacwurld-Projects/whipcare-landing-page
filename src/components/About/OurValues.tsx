@@ -5,7 +5,7 @@ import React from 'react'
 import Values from '../cards/Values'
 
 import { motion } from 'framer-motion'
-import { fadeIn } from '@/variants'
+import { fadeIn, fadeInShow } from '@/variants'
 
 const OurValues = () => {
     return (
@@ -20,7 +20,7 @@ const OurValues = () => {
                         className='text-3xl text-center font-semibold'>Our Values</motion.h2>
                 </div>
                 <motion.div
-                    variants={fadeIn("left", 0.3)}
+                    variants={fadeInShow}
                     initial="hidden"
                     whileInView={"show"}
                     viewport={{ once: false, amount: 0.5 }}

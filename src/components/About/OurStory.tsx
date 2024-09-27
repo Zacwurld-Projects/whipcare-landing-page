@@ -10,7 +10,7 @@ import missionMockup from "@/assets/images/about/mission-mockup.png"
 import ellipse from "@/assets/images/about/ellipse.png"
 
 import { motion } from 'framer-motion'
-import { fadeIn } from '@/variants'
+import { fadeIn, fadeInShow } from '@/variants'
 
 const OurStory = () => {
     return (
@@ -30,7 +30,7 @@ const OurStory = () => {
 
                         <div className='w-full flex flex-col xl:flex-row'>
                             <motion.div
-                                variants={fadeIn("right", 0.2)}
+                                variants={fadeInShow}
                                 initial="hidden"
                                 whileInView={"show"}
                                 viewport={{ once: false, amount: 0.5 }}
@@ -49,12 +49,7 @@ const OurStory = () => {
                                 viewport={{ once: false, amount: 0.5 }}
                                 className='xl:w-1/2 xl:pl-20 pr-5 flex flex-col gap-y-2'>
 
-                                <motion.h2
-                                    variants={fadeIn("down", 0.5)}
-                                    initial="hidden"
-                                    whileInView={"show"}
-                                    viewport={{ once: false, amount: 0.5 }}
-                                    className='text-[#FC4B37] text-[20px] font-medium pl-6 xl:pl-7 pt-3 xl:pt-0'>Whipcare</motion.h2>
+                                <h2 className='text-[#FC4B37] text-[20px] font-medium pl-6 xl:pl-7 pt-3 xl:pt-0'>Whipcare</h2>
 
                                 <div className='flex flex-col gap-y-3'>
                                     {
@@ -79,17 +74,12 @@ const OurStory = () => {
 
                     <div className='h-full flex flex-col gap-y-7'>
                         <div className='xl:w-1/3'>
-                            <motion.h2
-                                variants={fadeIn("up", 0.5)}
-                                initial="hidden"
-                                whileInView={"show"}
-                                viewport={{ once: false, amount: 0.5 }}
-                                className='text-3xl font-semibold'>Mission and Vision</motion.h2>
+                            <h2 className='text-3xl font-semibold'>Mission and Vision</h2>
                         </div>
 
                         <div className='w-full h-full flex flex-col xl:flex-row-reverse'>
                             <motion.div
-                                variants={fadeIn("left", 0.2)}
+                                variants={fadeInShow}
                                 initial="hidden"
                                 whileInView={"show"}
                                 viewport={{ once: false, amount: 0.5 }}

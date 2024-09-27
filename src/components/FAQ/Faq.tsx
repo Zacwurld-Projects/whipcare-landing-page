@@ -22,8 +22,8 @@ const Faq = () => {
     }
     return (
         <div className='my-[2rem] xl:my-[5rem]'>
-            <div className='relative flex items-end'>
-                <div className='2xl:px-[7rem] relative z-20'>
+            <div className='w-full relative flex items-end'>
+                <div className='w-full 2xl:px-[7rem] relative z-20'>
                     <motion.div
                         variants={fadeIn("down", 0.2)}
                         initial="hidden"
