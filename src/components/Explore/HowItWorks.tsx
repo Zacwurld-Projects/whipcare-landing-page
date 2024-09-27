@@ -12,7 +12,7 @@ import mockup2 from "@/assets/images/explore/mockup2.png"
 import ellipse from "@/assets/images/explore/ellipse.png"
 
 import { motion } from 'framer-motion'
-import { fadeIn } from '@/variants'
+import { fadeIn, fadeInShow } from '@/variants'
 
 const HowItWorks = () => {
     return (
@@ -49,7 +49,8 @@ const HowItWorks = () => {
 
                             <div className="xl:w-1/2 flex justify-center xl:justify-start">
                                 <motion.div
-                                    variants={fadeIn("right", 0.2)}
+                                    // variants={fadeIn("right", 0.2)}
+                                    variants={fadeInShow(0.8)}
                                     initial="hidden"
                                     whileInView={"show"}
                                     viewport={{ once: false, amount: 0.3 }}
@@ -70,7 +71,7 @@ const HowItWorks = () => {
                     <div className='w-full flex flex-col xl:flex-row gap-y-10 xl:gap-y-0'>
 
                         <div className="xl:w-1/2">
-                            {/* <motion.div
+                            <motion.div
                                 variants={fadeIn("right", 0.2)}
                                 initial="hidden"
                                 whileInView={"show"}
@@ -85,8 +86,8 @@ const HowItWorks = () => {
                                         />
                                     ))
                                 }
-                            </motion.div> */}
-                            <div className='flex flex-col gap-y-7'>
+                            </motion.div>
+                            {/* <div className='flex flex-col gap-y-7'>
                                 {
                                     exploreInfo[1].map((info, index) => (
                                         <List
@@ -96,12 +97,13 @@ const HowItWorks = () => {
                                         />
                                     ))
                                 }
-                            </div>
+                            </div> */}
                         </div>
 
                         <div className="xl:w-1/2 flex justify-center  xl:justify-end items-center">
                             <motion.div
-                                variants={fadeIn("left", 0.3)}
+                                // variants={fadeIn("left", 0.3)}
+                                variants={fadeInShow(0.8)}
                                 initial="hidden"
                                 whileInView={"show"}
                                 viewport={{ once: false, amount: 0.3 }}
