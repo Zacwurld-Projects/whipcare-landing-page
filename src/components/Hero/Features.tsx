@@ -8,20 +8,16 @@ import Image from 'next/image'
 import { features } from '@/utils/data'
 
 import { motion } from 'framer-motion'
-import { fadeIn } from '@/variants'
+import { fadeIn, fadeInShow } from '@/variants'
 
 const Features = () => {
     return (
         <div className='w-full h-full px-7 xl:px-[5rem] 2xl:px-0'>
-            <motion.div
-                variants={fadeIn("up", 0.1)}
-                initial="hidden"
-                whileInView={"show"}
-                viewport={{ once: false, amount: 0.3 }}
+            <div
                 className="h-full w-full mb-10">
                 <h1 className='text-3xl font-semibold'>Live Easier With Whipcare</h1>
                 <p className='text-sm'>How do we serve you and your car?</p>
-            </motion.div>
+            </div>
 
             <div className='flex flex-col gap-y-20'>
                 {/* First section */}
