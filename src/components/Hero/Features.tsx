@@ -2,13 +2,13 @@
 
 import React from 'react'
 import List from '../cards/List'
-import mockup from "@/assets/images/hero/features-mockup.svg"
+import mockup from "@/assets/images/hero/features-mockup.png"
 import mockup2 from "@/assets/images/hero/features-mockup2.svg"
 import Image from 'next/image'
 import { features } from '@/utils/data'
 
 import { motion } from 'framer-motion'
-import { fadeIn, fadeInShow } from '@/variants'
+import { fadeIn } from '@/variants'
 
 const Features = () => {
     return (
@@ -50,7 +50,6 @@ const Features = () => {
                         className="xl:w-1/2 flex justify-center xl:justify-end">
                         <div className='xl:w-[25rem] xl:h-[45rem]'>
                             <Image src={mockup} alt="mockup" className="w-full h-full" />
-
                         </div>
                     </motion.div>
                 </div>

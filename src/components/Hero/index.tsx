@@ -12,7 +12,7 @@ import { ArrowRight } from "lucide-react"
 import { useToast } from "@/components/ui/use-toast"
 
 // import mockup from "@/assets/images/hero/mockup.svg"
-import reviewers from "@/assets/images/hero/reviewers.svg"
+import reviewers from "@/assets/images/hero/reviewers.png"
 import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
 import ratingImage from "@/assets/icons/five-star-rating.svg"
@@ -66,7 +66,7 @@ const Hero = () => {
                 {/* Text */}
                 <div className="xl:w-1/2 flex flex-col justify-center gap-y-7">
                     <div className="flex flex-col-reverse xl:flex-row xl:items-center gap-y-2 xl:gap-x-2 xl:gap-y-0">
-                        <Image src={reviewers} alt="reviewers" />
+                        <Image src={reviewers} className='w-1/2 md:w-36' alt="reviewers" />
                         <div className="flex flex-col">
                             <Image src={ratingImage} alt="rating" />
                             <span>Join 50,000+ happy users</span>
