@@ -18,8 +18,8 @@ import {
 } from "@/components/ui/sheet"
 
 import { navLinks } from "@/utils/data"
-import logo from "@/assets/logo.svg"
-import whiteLogo from "@/assets/white-logo.svg"
+// import logo from "@/assets/logo.svg"
+// import whiteLogo from "@/assets/white-logo.svg"
 import nigerianFlag from "@/assets/icons/nigerian-flag.svg"
 import chevronDownIcon from "@/assets/icons/chevron-down.svg"
 import { ChevronUp } from "lucide-react"
