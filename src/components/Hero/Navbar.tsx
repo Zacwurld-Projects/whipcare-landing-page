@@ -18,12 +18,13 @@ import {
 } from "@/components/ui/sheet"
 
 import { navLinks } from "@/utils/data"
-import logo from "@/assets/logo.svg"
-import whiteLogo from "@/assets/white-logo.svg"
+// import logo from "@/assets/logo.svg"
+// import whiteLogo from "@/assets/white-logo.svg"
 import nigerianFlag from "@/assets/icons/nigerian-flag.svg"
 import chevronDownIcon from "@/assets/icons/chevron-down.svg"
 import { ChevronUp } from "lucide-react"
 import Dropdown from "../Global/Dropdown"
+import Logo from "../lib/Logo"
 
 interface NavbarProps {
     textColor: string;
@@ -42,11 +43,13 @@ const languages = [
 const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
     const [showLanguages, setShowLanguages] = useState(false)
 
+    const logoWhite = textColor === 'text-white' ? true : false
+
     return (
         <nav className="w-full">
             <div className="hidden xl:flex justify-between items-center py-4 xl:px-[5rem] 2xl:px-0">
-                <div className="w-[122px] h-[77px]">
-                    <Image src={logo} alt="Logo" className="h-full w-full" />
+                <div className="">
+                    <Logo white={logoWhite} />
                 </div>
                 <ul className="flex items-center space-x-10">
                     {navLinks.map((link, index) => (
@@ -102,11 +105,14 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                         <div className="">
                             <div className="w-[115px] h-[70px]">
                                 <Link href="/">
-                                    {
+                                    {/* {
                                         textColor === 'text-white' ? (
                                             <Image src={whiteLogo} alt="Logo" className="h-full w-full" />
                                         ) : (<Image src={logo} alt="Logo" className="h-full w-full" />)
-                                    }
+                                    } */}
+                                    <div className="">
+                                        <Logo white={logoWhite} />
+                                    </div>
                                 </Link>
 
                             </div>
@@ -126,7 +132,10 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                             <div className="w-full h-full flex justify-center">
                                 <div className="w-[115px] h-[70px]">
                                     <Link href="/">
-                                        <Image src={logo} alt="Logo" className="h-full w-full" />
+                                        {/* <Image src={logo} alt="Logo" className="h-full w-full" /> */}
+                                        <div className="">
+                                            <Logo white={false} />
+                                        </div>
                                     </Link>
                                 </div>
                             </div>
