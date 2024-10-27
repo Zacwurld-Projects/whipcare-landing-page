@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react'
-import logo from "@/assets/white-logo.svg"
+// import logo from "@/assets/white-logo.svg"
 import Image from 'next/image'
 import { footerInfo } from '@/utils/data'
 import Link from 'next/link'
