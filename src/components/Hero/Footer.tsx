@@ -8,6 +8,7 @@ import Link from 'next/link'
 
 import { motion } from 'framer-motion'
 import { fadeIn } from '@/variants'
+import Logo from '../lib/Logo'
 
 const Footer = () => {
     const date = new Date()
@@ -25,7 +26,10 @@ const Footer = () => {
                 className='w-full h-full py-10 px-10 xl:px-20'>
                 <div className='w-full flex flex-col xl:flex-row gap-y-7 xl:gap-y-0'>
                     <div className='xl:w-1/3 flex flex-col items-center xl:items-start'>
-                        <Image src={logo} alt='logo' />
+                        {/* <Image src={logo} alt='logo' /> */}
+                        <div className='my-2'>
+                            <Logo white={true} />
+                        </div>
                         <p className='text-sm text-white font-light text-center xl:text-start'>From mechanics to detailers, book top-rated professionals effortlessly. Your {"car's"} perfect partner is just a click away.</p>
                         <button className="bg-white text-black rounded-full h-[40px] w-[150px] mt-8">Get the app</button>
                         <div className='mt-3'>
