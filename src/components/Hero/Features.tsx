@@ -3,7 +3,8 @@
 import React from 'react'
 import List from '../cards/List'
 import mockup from "@/assets/images/hero/features-mockup.png"
-import mockup2 from "@/assets/images/hero/features-mockup2.svg"
+// import mockup2 from "@/assets/images/hero/features-mockup2.svg"
+import mockup3 from "@/assets/images/hero/features-mockup3.png"
 import Image from 'next/image'
 import { features } from '@/utils/data'
 
@@ -91,7 +92,7 @@ const Features = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         > */}
-                            <Image src={mockup2} alt="mockup" className="w-full h-full" />
+                            <Image src={mockup3} alt="mockup" className="w-full h-full" />
                             {/* </motion.div> */}
                         </div>
                     </motion.div>
