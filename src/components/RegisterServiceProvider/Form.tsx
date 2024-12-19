@@ -43,8 +43,8 @@ const ServiceProviderForm = () => {
                     <div className='xl:w-1/2 bg-white xl:pl-[5rem] px-7 xl:px-0 py-[2rem] xl:rounded-l-[3rem]'>
                         <div className="w-full h-full flex flex-col justify-center items-start gap-y-7">
                             <div className='flex flex-col gap-y-2'>
-                                <h2 className='text-3xl font-semibold'>Register as Service provider</h2>
-                                <p className='text-gray-500 text-sm xl:w-2/3'>Ensure you fill in correctly, the details below in order to get verified as a service provider on Whipcare.</p>
+                                <h2 className='text-3xl font-semibold'>Not in your city? Let us know</h2>
+                                <p className='text-gray-500 text-sm xl:w-2/3'>If {"we've"} not launched in your city, fill in your details and {"we'd"} make it happen soon!</p>
                             </div>
                             <div className='w-full flex flex-col gap-y-4'>
                                 <div>

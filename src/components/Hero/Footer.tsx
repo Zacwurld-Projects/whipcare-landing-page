@@ -3,7 +3,7 @@
 import React from 'react'
 // import logo from "@/assets/white-logo.svg"
 import Image from 'next/image'
-import { footerInfo } from '@/utils/data'
+import { footerInfo, linkTree } from '@/utils/data'
 import Link from 'next/link'
 
 import { motion } from 'framer-motion'
@@ -14,14 +14,19 @@ const Footer = () => {
     const date = new Date()
     const year = date.getFullYear()
 
+    // <motion.footer
+    //         variants={fadeIn("up", 0.1)}
+    //         initial="hidden"
+    //         whileInView={"show"}
+    //         viewport={{ once: false, amount: 0.7 }}
+    //         className='bg-gray-900'
+    //     >
+
+    // </motion.footer>
+
+
     return (
-        <motion.footer
-            variants={fadeIn("up", 0.1)}
-            initial="hidden"
-            whileInView={"show"}
-            viewport={{ once: false, amount: 0.7 }}
-            className='bg-gray-900'
-        >
+        <footer className='bg-gray-900'>
             <div
                 className='w-full h-full py-10 px-10 xl:px-20'>
                 <div className='w-full flex flex-col xl:flex-row gap-y-7 xl:gap-y-0'>
@@ -31,10 +36,13 @@ const Footer = () => {
                             <Logo white={true} />
                         </div>
                         <p className='text-sm text-white font-light text-center xl:text-start'>From mechanics to detailers, book top-rated professionals effortlessly. Your {"car's"} perfect partner is just a click away.</p>
-                        <button className="bg-white text-black rounded-full h-[40px] w-[150px] mt-8">Get the app</button>
+                        <Link
+                            href={linkTree}
+                            target='_blank'
+                            className="bg-white text-black rounded-full h-[40px] w-[150px] flex items-center justify-center mt-8 hover:bg-opacity-50">Get the app</Link>
                         <div className='mt-3'>
                             <Link href='/register-service-provider' className='text-white underline'>
-                                Register as a service provider
+                                Not in your city? Let us know
                             </Link>
                         </div>
                     </div>
@@ -100,7 +108,7 @@ const Footer = () => {
                         <Link href="/privacy-policy"> Privacy Policy</Link></p>
                 </div>
             </div>
-        </motion.footer>
+        </footer>
     )
 }
 

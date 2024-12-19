@@ -301,3 +301,5 @@ export const carouselInfo = [
     alt: "carousel image 4",
   },
 ];
+
+export const linkTree: string = "https://linktr.ee/whipcare";
