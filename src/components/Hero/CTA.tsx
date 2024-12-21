@@ -48,6 +48,7 @@ const CTA = () => {
             })
             .finally(() => {
                 setLoader(false)
+                setEmail('')
             })
 
     }
@@ -76,6 +77,7 @@ const CTA = () => {
 
                                             <input
                                                 type="email"
+                                                value={email}
                                                 className='w-[90%] md:w-[70%] xl:w-[70%] 2xl:w-[75%] h-full outline-none'
                                                 onChange={(e) => setEmail(e.target.value)}
                                                 placeholder='Enter your email' />
