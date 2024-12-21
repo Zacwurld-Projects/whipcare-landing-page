@@ -54,7 +54,7 @@ const CTA = () => {
 
     return (
         <section>
-            <div className='w-full h-full xl:my-[5rem] xl:px-[5rem] 2xl:px-0'>
+            <div className='w-full h-full my-[5rem] xl:px-[5rem] 2xl:px-0'>
                 <div className='w-full xl:h-[25rem] flex items-end'>
                     <div className='w-full xl:h-[20rem] xl:rounded-2xl relative'>
                         <div className='absolute h-full w-full'>
