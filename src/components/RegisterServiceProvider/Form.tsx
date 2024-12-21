@@ -13,6 +13,7 @@ import {
 
 import mockup from "@/assets/images/contact/mockup.png"
 import emailIcon from "@/assets/icons/mail.svg";
+import { email } from '@/utils/data'
 
 const ServiceProviderForm = () => {
     const serviceProviderTypes = [
@@ -134,7 +135,7 @@ const ServiceProviderForm = () => {
                                 </div>
                                 <div>
                                     <h2 className="uppercase text-lg font-semibold">Email</h2>
-                                    <p className='text-sm text-brand-500'>whipcare@zacwurld.com</p>
+                                    <p className='text-sm text-brand-500'>{email}</p>
                                 </div>
                             </div>
                         </div>

@@ -7,7 +7,7 @@ import { footerInfo, linkTree } from '@/utils/data'
 import Link from 'next/link'
 
 import { motion } from 'framer-motion'
-import { fadeIn } from '@/variants'
+// import { fadeIn } from '@/variants'
 import Logo from '../lib/Logo'
 
 const Footer = () => {
