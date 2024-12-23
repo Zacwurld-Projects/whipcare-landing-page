@@ -19,7 +19,7 @@ export const faq = [
   {
     question: "What payment methods are accepted",
     answer:
-      "Our payment methods include Cash, Debit/Credit Card, and In-app wallets.",
+      "Our payment methods include Transfer and Debit Card, and In-app wallets.",
   },
   {
     question: "How do I create an account",
