@@ -17,7 +17,7 @@ import {
     SheetTrigger,
 } from "@/components/ui/sheet"
 
-import { navLinks } from "@/utils/data"
+import { linkTree, navLinks } from "@/utils/data"
 // import logo from "@/assets/logo.svg"
 // import whiteLogo from "@/assets/white-logo.svg"
 import nigerianFlag from "@/assets/icons/nigerian-flag.svg"
@@ -92,9 +92,12 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                     </div>
                 </ul>
                 <div>
-                    <button className="w-[160px] h-[45px] flex justify-center items-center bg-brand-500 text-white  rounded-full">
+                    <Link
+                        href={linkTree}
+                        target="_blank"
+                        className="w-[160px] h-[45px] flex justify-center items-center bg-brand-500 text-white  rounded-full">
                         Get the App
-                    </button>
+                    </Link>
                 </div>
             </div>
 
@@ -164,9 +167,12 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                         </div>
                         <SheetFooter>
                             <div>
-                                <button className="w-[160px] h-[45px] flex justify-center items-center bg-brand-500 text-white  rounded-full">
+                                <Link
+                                    href={linkTree}
+                                    target="_blank"
+                                    className="w-[160px] h-[45px] flex justify-center items-center bg-brand-500 text-white  rounded-full">
                                     Get the App
-                                </button>
+                                </Link>
                             </div>
                         </SheetFooter>
                     </SheetContent>

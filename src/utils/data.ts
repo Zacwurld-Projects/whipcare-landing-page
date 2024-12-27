@@ -23,7 +23,7 @@ import carouselImage2 from "@/assets/images/hero/carousel-mockup2.png";
 import carouselImage3 from "@/assets/images/hero/carousel-mockup3.png";
 import carouselImage4 from "@/assets/images/hero/carousel-mockup4.png";
 
-export const email = "whipcare@zacwurld.com";
+export const email = "support@whipcare.app";
 
 export const navLinks = [
   {
@@ -301,3 +301,5 @@ export const carouselInfo = [
     alt: "carousel image 4",
   },
 ];
+
+export const linkTree: string = "https://linktr.ee/whipcare";

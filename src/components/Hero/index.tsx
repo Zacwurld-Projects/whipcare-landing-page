@@ -50,6 +50,7 @@ const Hero = () => {
             })
             .finally(() => {
                 setLoader(false)
+                setEmail('')
             })
 
     }
@@ -109,6 +110,7 @@ const Hero = () => {
 
                         <input
                             type="email"
+                            value={email}
                             placeholder="Enter your email"
                             onChange={(e) => setEmail(e.target.value)}
                             className="bg-[#F5F5F5] rounded-full h-[50px] w-[82%] xl:w-[260px] px-5" />
