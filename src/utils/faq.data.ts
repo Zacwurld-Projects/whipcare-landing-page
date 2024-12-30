@@ -18,8 +18,7 @@ export const faq = [
   },
   {
     question: "What payment methods are accepted",
-    answer:
-      "Our payment methods include Transfer and Debit Card, and In-app wallets.",
+    answer: "Our payment methods include Transfer and Debit Card.",
   },
   {
     question: "How do I create an account",
