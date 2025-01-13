@@ -17,10 +17,11 @@ import playstoreIcon from "@/assets/icons/playstore.svg";
 import appstoreIcon from "@/assets/icons/appstore.svg";
 import ratingImage from "@/assets/icons/five-star-rating.svg";
 import HeroCarousel from "./Carousel";
-import { carouselInfo } from "@/utils/data";
+import { carouselInfo, playstoreLink } from "@/utils/data";
 
 import { fadeIn, fadeInShow } from "@/variants";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 const Hero = () => {
   const [email, setEmail] = useState("");
@@ -83,7 +84,7 @@ const Hero = () => {
             </p>
 
             <div className='flex gap-4'>
-              <div className='flex items-center justify-between w-[9rem] bg-black text-white px-3 py-1 rounded-md'>
+              <Link href={playstoreLink} target='_blank' className='flex items-center justify-between w-[9rem] bg-black text-white px-3 py-1 rounded-md'>
                 <div className='w-7 h-7'>
                   <Image
                     src={playstoreIcon}
@@ -95,7 +96,7 @@ const Hero = () => {
                   <span className='text-xs'>Get It On</span>
                   <span className='text-sm'>Google Play</span>
                 </div>
-              </div>
+              </Link>
               <div className='flex items-center justify-between w-[9.5rem] bg-black text-white pl-1 pr-2 py-2 rounded-md'>
                 <div className='w-10 h-10'>
                   <Image
@@ -126,9 +127,8 @@ const Hero = () => {
 
             <button
               onClick={handleRegister}
-              className={`${
-                loader ? "bg-brand-500/20" : "bg-brand-500"
-              } flex justify-center items-center  text-white rounded-full h-[45px] xl:h-[50px] w-[45px] xl:w-[160px]`}
+              className={`${loader ? "bg-brand-500/20" : "bg-brand-500"
+                } flex justify-center items-center  text-white rounded-full h-[45px] xl:h-[50px] w-[45px] xl:w-[160px]`}
               disabled={loader}
             >
               <span className='hidden xl:block capitalize'>Sign Up</span>
