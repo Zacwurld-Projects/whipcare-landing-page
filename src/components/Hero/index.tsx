@@ -3,6 +3,7 @@
 import { useState } from 'react'
 
 import Image from "next/image"
+import Link from 'next/link'
 
 import axios from "axios"
 
@@ -17,7 +18,7 @@ import playstoreIcon from "@/assets/icons/playstore.svg"
 import appstoreIcon from "@/assets/icons/appstore.svg"
 import ratingImage from "@/assets/icons/five-star-rating.svg"
 import HeroCarousel from "./Carousel"
-import { carouselInfo } from "@/utils/data"
+import { carouselInfo, playstoreLink } from "@/utils/data"
 
 import { fadeIn, fadeInShow } from "@/variants"
 import { motion } from 'framer-motion'
@@ -86,10 +87,10 @@ const Hero = () => {
                                 <div className="w-7 h-7">
                                     <Image src={playstoreIcon} alt="playstore" className="w-full h-full" />
                                 </div>
-                                <div className="flex flex-col ">
+                                <Link href={playstoreLink} target='_blank' className="flex flex-col ">
                                     <span className="text-xs">Get It On</span>
                                     <span className="text-sm">Google Play</span>
-                                </div>
+                                </Link>
                             </div>
                             <div className="flex items-center justify-between w-[9.5rem] bg-black text-white pl-1 pr-2 py-2 rounded-md">
                                 <div className="w-10 h-10">
