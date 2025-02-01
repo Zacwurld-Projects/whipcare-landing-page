@@ -53,6 +53,14 @@ const CTA = () => {
             });
     };
 
+    const handleAppStore = () => {
+        toast({
+            title: "Coming soon...",
+            description: "We are currently working on the iOS version of the app",
+            variant: "default",
+        });
+    }
+
     return (
         <section>
             <div className='w-full h-full my-[5rem]'>
@@ -124,7 +132,9 @@ const CTA = () => {
                                                     className='w-full h-full'
                                                 />
                                             </div>
-                                            <div className='flex flex-col '>
+                                            <div className='flex flex-col hover:cursor-pointer'
+                                                onClick={handleAppStore}
+                                            >
                                                 <span className='text-xs'>Download on the</span>
                                                 <span className='text-sm'>App Store</span>
                                             </div>

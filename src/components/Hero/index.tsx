@@ -56,6 +56,14 @@ const Hero = () => {
       });
   };
 
+  const handleAppStore = () => {
+    toast({
+      title: "Coming soon...",
+      description: "We are currently working on the iOS version of the app",
+      variant: "default",
+    });
+  }
+
   return (
     <section className='w-full xl:h-[717px] lg:px-[80px]'>
       <motion.div
@@ -105,7 +113,9 @@ const Hero = () => {
                     className='w-full h-full'
                   />
                 </div>
-                <div className='flex flex-col '>
+                <div className='flex flex-col hover:cursor-pointer'
+                  onClick={handleAppStore}
+                >
                   <span className='text-xs'>Download on the</span>
                   <span className='text-sm'>App Store</span>
                 </div>
