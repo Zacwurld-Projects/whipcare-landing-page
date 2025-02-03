@@ -1,6 +1,6 @@
-// components/SplashScreen.js
 import { useState, useEffect } from 'react';
-
+import Lottie from 'lottie-react';
+import preloaderAnimation from '@/assets/preloader.json';
 interface SplashScreenProps {
     onDone?: () => void;
 }
@@ -20,20 +20,19 @@ const SplashScreen = ({ onDone }: SplashScreenProps) => {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed inset-0 w-full h-full z-50 bg-black">
-            <video
-                autoPlay
-                muted
-                playsInline
-                onEnded={() => {
+        <div className="fixed inset-0 w-full h-full z-50 bg-black flex items-center justify-center">
+            <Lottie
+                animationData={preloaderAnimation}
+                loop={false}
+                autoplay={true}
+                onComplete={() => {
                     setIsVisible(false);
                     if (onDone) onDone();
                 }}
-                className="w-full h-full object-cover"
-            >
-                <source src="/assets/preloader.mp4" type="video/mp4" />
-                Your browser does not support the video tag.
-            </video>
+                className="w-full h-full object-contain"
+                // If you need to adjust the size, you can use style prop
+                style={{ maxWidth: '100%', maxHeight: '100%' }}
+            />
         </div>
     );
 };
