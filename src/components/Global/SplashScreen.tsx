@@ -20,7 +20,7 @@ const SplashScreen = ({ onDone }: SplashScreenProps) => {
     if (!isVisible) return null;
 
     return (
-        <div className="fixed inset-0 w-full h-full z-50 bg-black flex items-center justify-center">
+        <div className="fixed inset-0 w-full h-full z-50 bg-white flex items-center justify-center">
             <Lottie
                 animationData={preloaderAnimation}
                 loop={false}
