@@ -17,7 +17,7 @@ import playstoreIcon from "@/assets/icons/playstore.svg";
 import appstoreIcon from "@/assets/icons/appstore.svg";
 import ratingImage from "@/assets/icons/five-star-rating.svg";
 import HeroCarousel from "./Carousel";
-import { carouselInfo, playstoreLink } from "@/utils/data";
+import { appstoreLink, carouselInfo, playstoreLink } from "@/utils/data";
 
 import { fadeIn, fadeInShow } from "@/variants";
 import { motion } from "framer-motion";
@@ -55,14 +55,6 @@ const Hero = () => {
         setEmail("");
       });
   };
-
-  const handleAppStore = () => {
-    toast({
-      title: "Coming soon...",
-      description: "We are currently working on the iOS version of the app",
-      variant: "default",
-    });
-  }
 
   return (
     <section className='w-full xl:h-[717px] lg:px-[80px]'>
@@ -105,7 +97,7 @@ const Hero = () => {
                   <span className='text-sm'>Google Play</span>
                 </div>
               </Link>
-              <div className='flex items-center justify-between w-[9.5rem] bg-black text-white pl-1 pr-2 py-2 rounded-md'>
+              <Link href={appstoreLink} target='_blank' className='flex items-center justify-between w-[9.5rem] bg-black text-white pl-1 pr-2 py-2 rounded-md'>
                 <div className='w-10 h-10'>
                   <Image
                     src={appstoreIcon}
@@ -113,13 +105,11 @@ const Hero = () => {
                     className='w-full h-full'
                   />
                 </div>
-                <div className='flex flex-col hover:cursor-pointer'
-                  onClick={handleAppStore}
-                >
+                <div className='flex flex-col hover:cursor-pointer'>
                   <span className='text-xs'>Download on the</span>
                   <span className='text-sm'>App Store</span>
                 </div>
-              </div>
+              </Link>
             </div>
 
             <p className='text-gray-600 text-md xl:w-2/3'>
