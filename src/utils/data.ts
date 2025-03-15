@@ -27,6 +27,8 @@ export const email = "support@whipcare.app";
 
 export const playstoreLink =
   "https://play.google.com/store/apps/details?id=com.jozy.whipcareapp2&pcampaignid=web_share";
+export const appstoreLink =
+  "https://apps.apple.com/ng/app/whipcare-car-care-near-you/id6670729882";
 
 export const navLinks = [
   {

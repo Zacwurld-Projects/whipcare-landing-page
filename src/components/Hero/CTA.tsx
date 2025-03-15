@@ -15,9 +15,7 @@ import mockup from "@/assets/images/hero/cta-mockup.svg";
 import playstoreIcon from "@/assets/icons/playstore.svg";
 import appstoreIcon from "@/assets/icons/appstore.svg";
 
-import { fadeIn } from "@/variants";
-import { motion } from "framer-motion";
-import { playstoreLink } from "@/utils/data";
+import { appstoreLink, playstoreLink } from "@/utils/data";
 import Link from "next/link";
 
 const CTA = () => {
@@ -52,14 +50,6 @@ const CTA = () => {
                 setEmail("");
             });
     };
-
-    const handleAppStore = () => {
-        toast({
-            title: "Coming soon...",
-            description: "We are currently working on the iOS version of the app",
-            variant: "default",
-        });
-    }
 
     return (
         <section>
@@ -124,7 +114,7 @@ const CTA = () => {
                                             </div>
                                         </Link>
 
-                                        <div className='flex items-center justify-between w-[9.5rem] bg-black text-white border-[1px] border-gray-500 pl-1 pr-2 py-2 rounded-md'>
+                                        <Link href={appstoreLink} target='_blank' className='flex items-center justify-between w-[9.5rem] bg-black text-white border-[1px] border-gray-500 pl-1 pr-2 py-2 rounded-md'>
                                             <div className='w-10 h-10'>
                                                 <Image
                                                     src={appstoreIcon}
@@ -132,13 +122,11 @@ const CTA = () => {
                                                     className='w-full h-full'
                                                 />
                                             </div>
-                                            <div className='flex flex-col hover:cursor-pointer'
-                                                onClick={handleAppStore}
-                                            >
+                                            <div className='flex flex-col hover:cursor-pointer'>
                                                 <span className='text-xs'>Download on the</span>
                                                 <span className='text-sm'>App Store</span>
                                             </div>
-                                        </div>
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
