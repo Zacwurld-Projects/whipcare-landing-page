@@ -46,8 +46,8 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
   const logoWhite = textColor === "text-white" ? true : false;
 
   return (
-    <nav className='w-full lg:px-[112px]'>
-      <div className='hidden xl:flex justify-between items-center py-4 xl:px-[5rem] 2xl:px-0'>
+    <nav className='w-full lg:px-[7vw] '>
+      <div className='hidden xl:flex justify-between items-center py-4'>
         <div className=''>
           <Logo white={logoWhite} />
         </div>
