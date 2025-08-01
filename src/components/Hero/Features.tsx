@@ -13,23 +13,23 @@ import { fadeIn } from "@/variants";
 
 const Features = () => {
   return (
-    <div className='w-full lg:px-[5rem] h-full px-7'>
-      <div className='h-full w-full mb-10'>
-        <h1 className='text-3xl font-semibold'>Live Easier With Whipcare</h1>
-        <p className='text-sm'>How do we serve you and your car?</p>
+    <div className="w-full lg:px-[5rem] h-full px-7">
+      <div className="h-full w-full mb-10">
+        <h1 className="text-3xl font-semibold">Live Easier With Whipcare</h1>
+        <p className="text-sm">How do we serve you and your car?</p>
       </div>
 
-      <div className='flex flex-col gap-y-20'>
+      <div className="flex flex-col gap-y-20">
         {/* First section */}
-        <div className='w-full flex flex-col xl:flex-row gap-y-7 xl:gap-y-0'>
+        <div className="w-full flex flex-col xl:flex-row gap-y-7 xl:gap-y-0">
           <motion.div
             variants={fadeIn("right", 0.2)}
-            initial='hidden'
+            initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.2 }}
-            className='xl:w-1/2'
+            className="xl:w-1/2"
           >
-            <div className='flex flex-col gap-y-7'>
+            <div className="flex flex-col gap-y-7">
               {features[0].map((feature, index) => (
                 <List key={index} title={feature.title} list={feature.list} />
               ))}
@@ -38,27 +38,31 @@ const Features = () => {
 
           <motion.div
             variants={fadeIn("left", 0.3)}
-            initial='hidden'
+            initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.2 }}
-            className='xl:w-1/2 flex justify-center xl:justify-end'
+            className="xl:w-1/2 flex justify-center xl:justify-end"
           >
-            <div className='xl:w-[25rem] xl:h-[45rem]'>
-              <Image src={mockup} alt='mockup' className='w-full h-full' />
+            <div className="xl:w-[25rem] xl:h-[45rem]">
+              <Image
+                src={mockup}
+                alt="Whipcare car service features dashboard mockup"
+                className="w-full h-full"
+              />
             </div>
           </motion.div>
         </div>
 
         {/* Second section */}
-        <div className='w-full hidden md:flex flex-col xl:flex-row-reverse gap-y-7 xl:gap-y-0'>
+        <div className="w-full hidden md:flex flex-col xl:flex-row-reverse gap-y-7 xl:gap-y-0">
           <motion.div
             variants={fadeIn("up", 0.1)}
-            initial='hidden'
+            initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.3 }}
-            className='xl:w-1/2'
+            className="xl:w-1/2"
           >
-            <div className='flex flex-col gap-y-7'>
+            <div className="flex flex-col gap-y-7">
               {features[1].map((feature, index) => (
                 <List key={index} title={feature.title} list={feature.list} />
               ))}
@@ -67,12 +71,12 @@ const Features = () => {
 
           <motion.div
             variants={fadeIn("down", 0.3)}
-            initial='hidden'
+            initial="hidden"
             whileInView={"show"}
             viewport={{ once: false, amount: 0.3 }}
-            className='xl:w-1/2 flex justify-center xl:justify-start'
+            className="xl:w-1/2 flex justify-center xl:justify-start"
           >
-            <div className='xl:w-[25rem] xl:h-[45rem]'>
+            <div className="xl:w-[25rem] xl:h-[45rem]">
               {/* <motion.div
                             className='xl:w-[25rem] xl:h-[45rem]'
                             initial={{ y: 50, opacity: 0 }}
@@ -81,7 +85,11 @@ const Features = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                         > */}
-              <Image src={mockup3} alt='mockup' className='w-full h-full' />
+              <Image
+                src={mockup3}
+                alt="Whipcare mobile app showing car care features"
+                className="w-full h-full"
+              />
               {/* </motion.div> */}
             </div>
           </motion.div>

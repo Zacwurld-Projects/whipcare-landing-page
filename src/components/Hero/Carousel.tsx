@@ -30,19 +30,19 @@ const HeroCarousel = ({ items }: CarouselProp) => {
   return (
     <Carousel
       plugins={[plugin.current]}
-      className='w-full h-full flex items-center'
+      className="w-full h-full flex items-center"
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <CarouselContent className='h-full'>
+      <CarouselContent className="h-full">
         {items.map((item, index) => (
           <CarouselItem key={index}>
-            <div className='p-1 h-full w-full flex justify-center items-center'>
-              <div className='xl:h-[90%] xl:w-[698px] flex aspect-square'>
+            <div className="p-1 h-full w-full flex justify-center items-center">
+              <div className="xl:h-[90%] xl:w-[698px] flex aspect-square">
                 <Image
                   src={item.image as any}
-                  alt={item.alt}
-                  className='w-full h-full'
+                  alt={`Whipcare app screenshot: ${item.alt}`}
+                  className="w-full h-full"
                 />
               </div>
             </div>

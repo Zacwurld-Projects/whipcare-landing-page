@@ -24,6 +24,7 @@ import carouselImage3 from "@/assets/images/hero/carousel-mockup3.png";
 import carouselImage4 from "@/assets/images/hero/carousel-mockup4.png";
 
 export const email = "support@whipcare.app";
+export const phoneNumber = `+234 907 861 0801 (Mr Clinton)`
 
 export const playstoreLink =
   "https://play.google.com/store/apps/details?id=com.jozy.whipcareapp2&pcampaignid=web_share";
