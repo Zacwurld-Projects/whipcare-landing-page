@@ -76,7 +76,7 @@ const Hero = () => {
           </div>
           <div className='flex flex-col gap-y-4'>
             <h1 className='text-[50px] xl:text-[68px] text-gray-900 font-bold leading-tight'>
-              Access Quality <br /> Car Services <br /> Around You
+              Book Quality <br /> Car Services <br /> Around You
             </h1>
             <p className='text-gray-600 text-md xl:w-2/3'>
               From mechanics to detailers, Get connected to top-rated

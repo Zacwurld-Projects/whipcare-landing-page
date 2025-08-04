@@ -13,7 +13,8 @@ import {
 
 import mockup from "@/assets/images/contact/mockup.png";
 import emailIcon from "@/assets/icons/mail.svg";
-import { email } from "@/utils/data";
+import { email, phoneNumber } from "@/utils/data";
+import { PhoneIcon } from "lucide-react";
 
 const ServiceProviderForm = () => {
   const serviceProviderTypes = [
@@ -146,7 +147,8 @@ const ServiceProviderForm = () => {
                   Register
                 </button>
               </div>
-              <div className='flex gap-x-3 items-center'>
+             <div className="flex sm:justify-between justify-start w-full gap-5 sm:items-center sm:flex-row flex-col ">
+             <div className='flex gap-x-3 items-center'>
                 <div>
                   <Image src={emailIcon} alt='email icon' />
                 </div>
@@ -155,6 +157,16 @@ const ServiceProviderForm = () => {
                   <p className='text-sm text-brand-500'>{email}</p>
                 </div>
               </div>
+              <div className="flex  gap-x-3 items-center">
+                <div className="">
+                <PhoneIcon/>
+                </div>
+                <div>
+                  <h2 className="uppercase text-lg font-semibold">Call</h2>
+                  <p className="text-sm text-brand-500">{phoneNumber}</p>
+                </div>
+              </div>
+             </div>
             </div>
           </div>
 

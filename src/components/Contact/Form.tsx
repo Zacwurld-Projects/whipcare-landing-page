@@ -78,7 +78,7 @@ const Form = () => {
 
   return (
     <div>
-      <div className="w-full h-[600px] xl:px-[5rem] 2xl:px-0 mt-[2rem]">
+      <div className="w-full h-[650px] xl:px-[5rem] 2xl:px-0 mt-[2rem]">
         <div className="w-full h-full flex md:justify-center">
           <div className="xl:w-1/2 bg-white xl:pl-[5rem] px-7 xl:px-0 py-[2rem] xl:rounded-l-[3rem]">
             <div className="w-full h-full flex flex-col justify-center items-start gap-y-7">
@@ -152,7 +152,7 @@ const Form = () => {
                   {loading ? "SENDING..." : "SEND"}
                 </button>
               </form>
-             <div className="flex justify-between w-full items-center">
+             <div className="flex sm:justify-between justify-start w-full gap-5 sm:items-center sm:flex-row flex-col">
              <div className="flex gap-x-3 items-center">
                 <div>
                   <Image src={emailIcon} alt="email icon" />
@@ -162,9 +162,9 @@ const Form = () => {
                   <p className="text-sm text-brand-500">{email}</p>
                 </div>
               </div>
-              <div className="flex gap-x-3 items-center">
+              <div className="flex  gap-x-3 items-center">
                 <div>
-                 <PhoneIcon />
+                 <PhoneIcon  className=""/>
                 </div>
                 <div>
                   <h2 className="uppercase text-lg font-semibold">Call</h2>
