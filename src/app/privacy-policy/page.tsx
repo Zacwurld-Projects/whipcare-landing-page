@@ -4,6 +4,7 @@ import React from "react";
 import Navbar from "@/components/Hero/Navbar";
 import CTA from "@/components/Hero/CTA";
 import PrivacyPolicy from "@/components/Global/PrivacyPolicy";
+import Footer from "@/components/Hero/Footer";
 
 export const metadata = {
   title: "Whipcare Privacy Policy | Data Protection & Security",
@@ -17,6 +18,8 @@ const page = () => {
       <Navbar textColor="text-gray-900" hamburgerColor="text-black" />
       <PrivacyPolicy />
       <CTA />
+      <Footer/>
+
     </div>
   );
 };

@@ -43,6 +43,10 @@ const HeroCarousel = ({ items }: CarouselProp) => {
                   src={item.image as any}
                   alt={`Whipcare app screenshot: ${item.alt}`}
                   className="w-full h-full"
+                  priority
+                  quality={75} // Optimized image quality for faster loading
+                  layout="responsive" // Optimized layout for responsive design
+                  objectFit="cover" // Optimized object fit for better image display
                 />
               </div>
             </div>

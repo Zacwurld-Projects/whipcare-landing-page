@@ -4,6 +4,7 @@ import CTA from "@/components/Hero/CTA";
 import OurStory from "@/components/About/OurStory";
 import OurValues from "@/components/About/OurValues";
 import Team from "@/components/About/Team";
+import Footer from "@/components/Hero/Footer";
 
 export const metadata = {
   title: "About Whipcare | Our Story, Mission & Team",
@@ -21,6 +22,7 @@ const page = () => {
       <div className=" 2xl:px-[7rem]">
         <CTA />
       </div>
+      <Footer />
     </section>
   );
 };

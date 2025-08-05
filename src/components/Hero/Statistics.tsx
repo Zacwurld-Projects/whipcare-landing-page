@@ -25,6 +25,10 @@ const Statistics = () => {
             src={backgroundImage}
             alt="Whipcare statistics section background image"
             className="opacity-20 h-full"
+            layout="fill"
+            objectFit="cover"
+            quality={75}
+            priority
           />
         </div>
         <div className="relative z-10 w-full h-full flex flex-col xl:flex-row gap-y-10 xl:gap-y-0 gap-x-16 items-center justify-center px-20">

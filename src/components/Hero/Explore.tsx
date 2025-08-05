@@ -31,6 +31,10 @@ const Explore = () => {
                 src={mockup}
                 alt="Whipcare app interface showing car service booking options in Nigeria"
                 className="w-full h-full"
+                layout="responsive"
+                objectFit="cover"
+                quality={75}
+                priority
               />
             </motion.div>
           </div>

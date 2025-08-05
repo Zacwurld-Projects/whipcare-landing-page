@@ -59,8 +59,12 @@ const CTA = () => {
             <div className='absolute h-full w-full'>
               <Image
                 src={backgroundImage}
-                className='h-full w-full object-cover xl:object-fill'
+                className='h-full w-full object-cover xl:object-fill rounded-2xl'
                 alt='background image'
+                layout="fill"
+                objectFit="cover"
+                quality={75}
+                priority
               />
             </div>
             <div className='w-full xl:w-1/2 h-full relative z-20 px-7 xl:px-10 py-20'>
@@ -109,6 +113,11 @@ const CTA = () => {
                           src={playstoreIcon}
                           alt='playstore'
                           className='w-full h-full'
+                          layout="fixed"
+                          width={56}
+                          height={56}
+                          quality={75}
+                          priority
                         />
                       </div>
                       <div className='flex flex-col '>
@@ -127,6 +136,11 @@ const CTA = () => {
                           src={appstoreIcon}
                           alt='playstore'
                           className='w-full h-full'
+                          layout="fixed"
+                          width={64}
+                          height={64}
+                          quality={75}
+                          priority
                         />
                       </div>
                       <div className='flex flex-col hover:cursor-pointer'>
@@ -141,7 +155,7 @@ const CTA = () => {
           </div>
 
           <div className='hidden xl:block absolute h-[25rem] w-[17rem] right-[10rem] 2xl:right-[15rem]'>
-            <Image src={mockup} className='h-full w-full' alt='CTA mockup' />
+            <Image src={mockup} className='h-full w-full' alt='CTA mockup' layout="fixed" width={272} height={400} quality={75} priority/>
           </div>
         </div>
       </div>

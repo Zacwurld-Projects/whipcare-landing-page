@@ -2,6 +2,7 @@ import React from "react";
 import Form from "@/components/Contact/Form";
 import CTA from "@/components/Hero/CTA";
 import Navbar from "@/components/Hero/Navbar";
+import Footer from "@/components/Hero/Footer";
 
 export const metadata = {
   title: "Contact Whipcare | Customer Support & Inquiries",
@@ -11,11 +12,14 @@ export const metadata = {
 
 const page = () => {
   return (
-    <div className="2xl:px-[7rem] bg-gray-100">
-      <Navbar textColor="text-gray-900" hamburgerColor="text-black" />
-      <Form />
-      <CTA />
-    </div>
+    <>
+      <div className="2xl:px-[7rem] bg-gray-100">
+        <Navbar textColor="text-gray-900" hamburgerColor="text-black" />
+        <Form />
+        <CTA />
+      </div>
+      <Footer />
+    </>
   );
 };
 

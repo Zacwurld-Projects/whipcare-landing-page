@@ -48,6 +48,10 @@ const Features = () => {
                 src={mockup}
                 alt="Whipcare car service features dashboard mockup"
                 className="w-full h-full"
+                priority
+                quality={75}
+                layout="responsive"
+                objectFit="cover"
               />
             </div>
           </motion.div>
@@ -89,6 +93,9 @@ const Features = () => {
                 src={mockup3}
                 alt="Whipcare mobile app showing car care features"
                 className="w-full h-full"
+                quality={75}
+                layout="responsive"
+                objectFit="cover"
               />
               {/* </motion.div> */}
             </div>

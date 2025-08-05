@@ -4,6 +4,7 @@ import HomePage from "@/components/Hero/HomePage";
 // import SplashScreen from "@/components/Global/SplashScreen";
 import { useState } from "react";
 import dynamic from "next/dynamic";
+import Footer from "@/components/Hero/Footer";
 
 const SplashScreen = dynamic(() => import("@/components/Global/SplashScreen"), {
   ssr: false, // Disable server-side rendering
@@ -20,6 +21,7 @@ export default function Home() {
     <main className='flex flex-col *:w-full *:flex-1 justify-center items-center'>
       <div className='w-full'>
         <HomePage />
+        <Footer />
       </div>
     </main>
   );

@@ -4,6 +4,7 @@ import CTA from "@/components/Hero/CTA";
 import Faq from "@/components/FAQ/Faq";
 import { faq } from "@/utils/faq.data";
 import FaqJsonLd from "@/components/SEO/FaqJsonLd";
+import Footer from "@/components/Hero/Footer";
 
 export const metadata = {
   title: "Whipcare FAQ | Booking, Payments, Services & More",
@@ -21,6 +22,7 @@ const page = () => {
         <div className="2xl:px-[7rem]">
           <CTA />
         </div>
+        <Footer />
       </div>
     </>
   );

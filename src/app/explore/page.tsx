@@ -4,6 +4,7 @@ import Hero from "@/components/Explore/Hero";
 import HowItWorks from "@/components/Explore/HowItWorks";
 // import { CarouselPlugin } from '@/components/Explore/Test'
 import CTA from "@/components/Hero/CTA";
+import Footer from "@/components/Hero/Footer";
 import React from "react";
 
 export const metadata = {
@@ -20,6 +21,8 @@ const page = () => {
         <CTA />
       </div>
       {/* <CarouselPlugin /> */}
+      <Footer />
+
     </div>
   );
 };
