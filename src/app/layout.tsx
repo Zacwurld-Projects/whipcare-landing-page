@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
+import type { Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
-import Footer from "@/components/Hero/Footer";
 import { Toaster } from "@/components/ui/toaster";
 import dynamic from "next/dynamic";
 
@@ -13,9 +13,38 @@ const MetaPixel = dynamic(() => import("@/components/MetaPixel"), {
 });
 
 export const metadata: Metadata = {
-  title: "Whipcare – Book Certified Mechanics & Car Services in Nigeria",
+  metadataBase: new URL("https://whipcare.app"),
+  title: "Whipcare – Quality Car Repairs & Services Near You",
   description:
-    "Get reliable mobile mechanic, car wash, towing & detailing—anywhere in Lagos, Abuja & beyond. Pay only when satisfied.",
+    "Book affordable car repairs, car wash, detailing, and towing services near you with Whipcare. Reliable, fast, and stress-free car care.",
+  openGraph: {
+    title: "Whipcare – Quality Car Repairs & Services Near You",
+    description:
+      "Book car repairs, car wash, detailing & towing near you. Affordable, reliable & stress-free car care with Whipcare.",
+    url: "https://whipcare.app",
+    siteName: "Whipcare",
+    type: "website",
+    images: [
+      {
+        url: "/images/social-preview.png", // TODO: replace with actual hosted 1200x630 image URL
+        width: 1200,
+        height: 630,
+        alt: "Whipcare – Quality Car Repairs & Services Near You",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Whipcare – Quality Car Repairs & Services Near You",
+    description:
+      "Affordable car repairs, washes & towing near you with Whipcare.",
+    images: ["/images/social-preview.png"], // TODO: replace with actual hosted 1200x630 image URL
+  },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({
