@@ -26,7 +26,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/images/social-preview.png", // TODO: replace with actual hosted 1200x630 image URL
+        url: "/images/social-media-1200x630.png",
         width: 1200,
         height: 630,
         alt: "Whipcare – Quality Car Repairs & Services Near You",
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     title: "Whipcare – Quality Car Repairs & Services Near You",
     description:
       "Affordable car repairs, washes & towing near you with Whipcare.",
-    images: ["/images/social-preview.png"], // TODO: replace with actual hosted 1200x630 image URL
+    images: ["/images/social-media-1200x630.png"],
   },
 };
 
