@@ -23,13 +23,53 @@ import { fadeIn, fadeInShow } from "@/variants";
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const Hero = () => {
+const Hero = ({ selectedCountry }: { selectedCountry?: { name: string; state: string } }) => {
   const [email, setEmail] = useState("");
   const [loader, setLoader] = useState(false);
 
+  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+
   const { toast } = useToast();
 
-  const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL;
+  const getHeroContent = () => {
+    const countryName = selectedCountry?.name || "Nigeria";
+    const stateName = selectedCountry?.state || "Lagos";
+
+    switch (countryName) {
+      case "South Africa":
+        return {
+          title: `Car wash, towing and detailing in ${countryName}`,
+          subtitle: `Book a mobile mechanic in ${stateName}, or schedule car wash, towing, and detailing services anywhere in ${countryName} with Whipcare`
+        };
+      case "Nigeria":
+        return {
+          title: `Book Quality Car Services in ${countryName}`,
+          subtitle: `Get connected to top-rated professionals in ${stateName} and across ${countryName} seamlessly`
+        };
+      case "Kenya":
+        return {
+          title: `Book Quality Car Services in ${countryName}`,
+          subtitle: `Get connected to top-rated professionals in ${stateName} and across ${countryName} seamlessly`
+        };
+      case "Germany":
+        return {
+          title: `Book Quality Car Services in ${countryName}`,
+          subtitle: `Get connected to top-rated professionals in ${stateName} and across ${countryName} seamlessly`
+        };
+      case "Ghana":
+        return {
+          title: `Book Quality Car Services in ${countryName}`,
+          subtitle: `Get connected to top-rated professionals in ${stateName} and across ${countryName} seamlessly`
+        };
+      default:
+        return {
+          title: "Book Quality Car Services Around You",
+          subtitle: "From mechanics to detailers, Get connected to top-rated professionals seamlessly."
+        };
+    }
+  };
+
+  const heroContent = getHeroContent();
 
   const handleRegister = () => {
     setLoader(true);
@@ -76,11 +116,10 @@ const Hero = () => {
           </div>
           <div className='flex flex-col gap-y-4'>
             <h1 className='text-[50px] xl:text-[68px] text-gray-900 font-bold leading-tight'>
-              Book Quality <br /> Car Services <br /> Around You
+              {heroContent.title}
             </h1>
             <p className='text-gray-600 text-md xl:w-2/3'>
-              From mechanics to detailers, Get connected to top-rated
-              professionals seamlessly.
+              {heroContent.subtitle}
             </p>
 
             <div className='flex gap-4'>

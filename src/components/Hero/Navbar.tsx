@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -21,6 +21,10 @@ import { linkTree, navLinks } from "@/utils/data";
 // import logo from "@/assets/logo.svg"
 // import whiteLogo from "@/assets/white-logo.svg"
 import nigerianFlag from "@/assets/icons/nigerian-flag.svg";
+import southAfricanFlag from "@/assets/icons/south-african-flag.svg";
+import kenyanFlag from "@/assets/icons/kenyan-flag.svg";
+import germanFlag from "@/assets/icons/german-flag.svg";
+import ghanianFlag from "@/assets/icons/ghanaian-flag.svg";
 import chevronDownIcon from "@/assets/icons/chevron-down.svg";
 import { ChevronUp } from "lucide-react";
 import Dropdown from "../Global/Dropdown";
@@ -29,24 +33,50 @@ import Logo from "../lib/Logo";
 interface NavbarProps {
   textColor: string;
   hamburgerColor: string;
+  selectedCountry?: { name: string; state: string };
+  onCountrySelect?: (country: { name: string; state: string }) => void;
 }
 
-const languages = [
+const countries = [
   {
-    name: "English",
+    name: "Nigeria",
+    flag: nigerianFlag,
+    state: "Lagos",
   },
   {
-    name: "French",
+    name: "South Africa",
+    flag: southAfricanFlag,
+    state: "Cape Town",
+  },
+  {
+    name: "Kenya",
+    flag: kenyanFlag,
+    state: "Nairobi",
+  },
+  {
+    name: "Germany",
+    flag: germanFlag,
+    state: "Berlin",
+  },
+  {
+    name: "Ghana",
+    flag: ghanianFlag,
+    state: "Accra",
   },
 ];
 
-const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
-  const [showLanguages, setShowLanguages] = useState(false);
+const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor, selectedCountry, onCountrySelect }) => {
+  const [showCountries, setShowCountries] = useState(false);
 
   const logoWhite = textColor === "text-white" ? true : false;
 
+  const handleCountrySelect = (country: { name: string; flag: string; state: string }) => {
+    onCountrySelect?.({ name: country.name, state: country.state });
+    setShowCountries(false);
+  };
+
   return (
-    <nav className='w-full lg:px-[7vw] '>
+    <nav className='w-full lg:px-[7vw] relative'>
       <div className='hidden xl:flex justify-between items-center py-4'>
         <div className=''>
           <Logo white={logoWhite} />
@@ -63,22 +93,28 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
             </li>
           ))}
 
-          {/* Language */}
-          <div className='relative z-20'>
-            {/* onClick={() => setShowLanguages(!showLanguages)} */}
-            <div className='w-full flex items-center gap-x-2 hover:cursor-pointer'>
+          {/* Country */}
+          <div className='relative z-50'>
+            <div
+              onClick={() => setShowCountries(!showCountries)}
+              className='w-full flex items-center gap-x-2 hover:cursor-pointer'
+            >
               <div className='w-[20px] h-[20px]'>
                 <Image
-                  src={nigerianFlag}
+                  src={selectedCountry?.name === "Nigeria" ? nigerianFlag :
+                       selectedCountry?.name === "South Africa" ? southAfricanFlag :
+                       selectedCountry?.name === "Kenya" ? kenyanFlag :
+                       selectedCountry?.name === "Germany" ? germanFlag :
+                       selectedCountry?.name === "Ghana" ? ghanianFlag : nigerianFlag}
                   alt='flag'
                   className='w-full h-full'
                 />
               </div>
               <span className={`${textColor} hover:text-gray-800 text-md`}>
-                EN
+                {selectedCountry?.name || "Nigeria"}
               </span>
               <div>
-                {showLanguages ? (
+                {showCountries ? (
                   <ChevronUp size={15} />
                 ) : (
                   <ChevronDown size={15} />
@@ -87,9 +123,9 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
               </div>
             </div>
 
-            {/* Languages Dropdown */}
+            {/* Countries Dropdown */}
             <div className='w-[10rem] absolute bg-white'>
-              {showLanguages && <Dropdown items={languages} />}
+              {showCountries && <Dropdown items={countries} onSelect={handleCountrySelect} />}
             </div>
           </div>
         </ul>
@@ -158,24 +194,38 @@ const Navbar: React.FC<NavbarProps> = ({ textColor, hamburgerColor }) => {
                   </li>
                 ))}
 
-                {/* Language */}
-                <div className='flex items-center gap-x-2 hover:cursor-pointer'>
-                  <div className='w-[20px] h-[20px]'>
-                    <Image
-                      src={nigerianFlag}
-                      alt='flag'
-                      className='w-full h-full'
-                    />
+                {/* Country */}
+                <div className='relative z-50'>
+                  <div
+                    onClick={() => setShowCountries(!showCountries)}
+                    className='flex items-center gap-x-2 hover:cursor-pointer'
+                  >
+                    <div className='w-[20px] h-[20px]'>
+                      <Image
+                        src={selectedCountry?.name === "Nigeria" ? nigerianFlag :
+                             selectedCountry?.name === "South Africa" ? southAfricanFlag :
+                             selectedCountry?.name === "Kenya" ? kenyanFlag :
+                             selectedCountry?.name === "Germany" ? germanFlag :
+                             selectedCountry?.name === "Ghana" ? ghanianFlag : nigerianFlag}
+                        alt='flag'
+                        className='w-full h-full'
+                      />
+                    </div>
+                    <span className='text-black hover:text-gray-800 text-md'>
+                      {selectedCountry?.name || "Nigeria"}
+                    </span>
+                    <div>
+                      {showCountries ? (
+                        <ChevronUp size={15} />
+                      ) : (
+                        <ChevronDown size={15} />
+                      )}
+                    </div>
                   </div>
-                  <span className='text-black hover:text-gray-800 text-md'>
-                    EN
-                  </span>
-                  <div>
-                    <Image
-                      src={chevronDownIcon}
-                      alt='chevron'
-                      className='w-6 h-6'
-                    />
+
+                  {/* Countries Dropdown */}
+                  <div className='w-[10rem] absolute bg-white z-50'>
+                    {showCountries && <Dropdown items={countries} onSelect={handleCountrySelect} />}
                   </div>
                 </div>
               </ul>

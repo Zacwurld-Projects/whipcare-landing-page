@@ -10,7 +10,7 @@ import mockup from "@/assets/images/hero/explore-mockup.png";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/variants";
 
-const Explore = () => {
+const Explore = ({ selectedCountry }: { selectedCountry?: { name: string; state: string } }) => {
   const [openCardIndex, setOpenCardIndex] = useState<number | null>(null);
 
   const handleToggle = (index: number) => {
@@ -29,7 +29,7 @@ const Explore = () => {
             <motion.div animate={{ x: 0 }} initial={{ x: -100 }}>
               <Image
                 src={mockup}
-                alt="Whipcare app interface showing car service booking options in Nigeria"
+                alt={`Whipcare app interface showing car service booking options in ${selectedCountry?.name || "Nigeria"}`}
                 className="w-full h-full"
                 layout="responsive"
                 objectFit="cover"

@@ -1,10 +1,6 @@
 import React from "react";
-import Hero from "@/components/FAQ/Hero";
-import CTA from "@/components/Hero/CTA";
-import Faq from "@/components/FAQ/Faq";
-import { faq } from "@/utils/faq.data";
-import FaqJsonLd from "@/components/SEO/FaqJsonLd";
-import Footer from "@/components/Hero/Footer";
+import FaqClient from "./client";
+
 
 export const metadata = {
   title: "Whipcare FAQ | Booking, Payments, Services & More",
@@ -13,19 +9,7 @@ export const metadata = {
 };
 
 const page = () => {
-  return (
-    <>
-      <FaqJsonLd faq={faq} />
-      <div>
-        <Hero />
-        <Faq />
-        <div className="2xl:px-[7rem]">
-          <CTA />
-        </div>
-        <Footer />
-      </div>
-    </>
-  );
+  return <FaqClient />;
 };
 
 export default page;

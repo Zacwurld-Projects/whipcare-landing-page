@@ -4,6 +4,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import dynamic from "next/dynamic";
+import { CountryProvider } from "@/components/Global/CountryContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -80,9 +81,11 @@ export default function RootLayout({
         />
       </head>
       <body className={inter.className}>
-        {children}
-        <Toaster />
-        <MetaPixel />
+        <CountryProvider>
+          {children}
+          <Toaster />
+          <MetaPixel />
+        </CountryProvider>
       </body>
     </html>
   );

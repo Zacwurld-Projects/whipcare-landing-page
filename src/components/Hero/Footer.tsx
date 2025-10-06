@@ -10,7 +10,7 @@ import { motion } from "framer-motion";
 // import { fadeIn } from '@/variants'
 import Logo from "../lib/Logo";
 
-const Footer = () => {
+const Footer = ({ selectedCountry }: { selectedCountry?: { name: string; state: string } }) => {
   const date = new Date();
   const year = date.getFullYear();
 
@@ -75,7 +75,7 @@ const Footer = () => {
               <h2 className='text-white text-[24px] font-semibold'>Address</h2>
               <div className='flex flex-col gap-y-5'>
                 <div>
-                  <p className='text-white text-sm'>Lagos, Nigeria.</p>
+                  <p className='text-white text-sm'>{selectedCountry?.state || "Lagos"}, {selectedCountry?.name || "Nigeria"}.</p>
                   {/* <span className='text-[#A3DC2F] text-sm'>View on Maps</span> */}
                 </div>
                 <div className='flex flex-col gap-y-5'>

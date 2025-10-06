@@ -21,7 +21,6 @@ export default function Home() {
     <main className='flex flex-col *:w-full *:flex-1 justify-center items-center'>
       <div className='w-full'>
         <HomePage />
-        <Footer />
       </div>
     </main>
   );

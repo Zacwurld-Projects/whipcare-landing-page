@@ -6,20 +6,31 @@ import Statistics from "./Statistics";
 import Services from "./Services";
 import Testimonials from "./Testimonials";
 import CTA from "./CTA";
+import Footer from "./Footer";
+import { useCountry } from "@/components/Global/CountryContext";
 
 const HomePage = () => {
+  const { selectedCountry, setSelectedCountry } = useCountry();
+
   return (
     <div className='w-full'>
-      <Navbar textColor='text-gray-900' hamburgerColor='text-black' />
-      <Hero />
-      <Explore />
+      <Navbar
+        key={`navbar-${selectedCountry?.name || 'default'}`}
+        textColor='text-gray-900'
+        hamburgerColor='text-black'
+        selectedCountry={selectedCountry}
+        onCountrySelect={setSelectedCountry}
+      />
+      <Hero selectedCountry={selectedCountry} />
+      <Explore selectedCountry={selectedCountry} />
       <Features />
       <Statistics />
-      <Services />
+      <Services selectedCountry={selectedCountry} />
       <Testimonials />
       <div className='lg:px-[4rem]'>
         <CTA />
       </div>
+      <Footer selectedCountry={selectedCountry} />
     </div>
   );
 };

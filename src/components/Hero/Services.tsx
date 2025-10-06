@@ -7,7 +7,7 @@ import ServicesCard from "../cards/Services";
 import { motion } from "framer-motion";
 import { fadeIn } from "@/variants";
 
-const Services = () => {
+const Services = ({ selectedCountry }: { selectedCountry?: { name: string; state: string } }) => {
   return (
     <section className="w-full h-full lg:px-[5rem]">
       <div className="w-full h-full flex flex-col gap-y-20">
@@ -19,11 +19,16 @@ const Services = () => {
           className="flex flex-col gap-y-2 xl:gap-y-0 text-center px-7 xl:px-0"
         >
           <h2 className="text-3xl text-black font-semibold">
-            Car Wash, Towing & Detailing in Nigeria
+            {selectedCountry?.name === "South Africa"
+              ? `Car wash, towing and detailing in ${selectedCountry.name}`
+              : `Book Quality Car Services in ${selectedCountry?.name || "Nigeria"}`
+            }
           </h2>
           <p className="text-sm text-black tracking-wider">
-            Book a mobile mechanic in Lagos, or schedule car wash, towing, and
-            detailing services anywhere in Nigeria with Whipcare.
+            {selectedCountry?.name === "South Africa"
+              ? `Book a mobile mechanic in ${selectedCountry.state}, or schedule car wash, towing, and detailing services anywhere in ${selectedCountry.name} with Whipcare.`
+              : `Get connected to top-rated professionals in ${selectedCountry?.state || "Lagos"} and across ${selectedCountry?.name || "Nigeria"} seamlessly.`
+            }
           </p>
         </motion.div>
         <div>
