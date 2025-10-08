@@ -61,6 +61,21 @@ const Hero = ({ selectedCountry }: { selectedCountry?: { name: string; state: st
           title: `Book Quality Car Services in ${countryName}`,
           subtitle: `Get connected to top-rated professionals in ${stateName} and across ${countryName} seamlessly`
         };
+      case "USA":
+        return {
+          title: `Book Quality Car Services in ${countryName}`,
+          subtitle: `Get connected to top-rated professionals in ${stateName} and across ${countryName} seamlessly`
+        };
+      case "UK":
+        return {
+          title: `Book Quality Car Services in ${countryName}`,
+          subtitle: `Get connected to top-rated professionals in ${stateName} and across ${countryName} seamlessly`
+        };
+      case "UAE":
+        return {
+          title: `Book Quality Car Services in ${countryName}`,
+          subtitle: `Get connected to top-rated professionals in ${stateName} and across ${countryName} seamlessly`
+        };
       default:
         return {
           title: "Book Quality Car Services Around You",
