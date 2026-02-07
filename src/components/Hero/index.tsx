@@ -126,7 +126,7 @@ const Hero = ({ selectedCountry }: { selectedCountry?: { name: string; state: st
             <Image src={reviewers} className='w-1/2 md:w-36' alt='reviewers' />
             <div className='flex flex-col'>
               <Image src={ratingImage} alt='rating' />
-              <span>Join 50,000+ happy users</span>
+              <span>Join 500+ happy users</span>
             </div>
           </div>
           <div className='flex flex-col gap-y-4'>

@@ -159,11 +159,11 @@ export const features = [
 
 export const statistics = [
   {
-    title: 50000,
+    title: 500,
     description: "customers around the world.",
   },
   {
-    title: 30,
+    title: 2,
     description: "countries across the globe.",
   },
   {
