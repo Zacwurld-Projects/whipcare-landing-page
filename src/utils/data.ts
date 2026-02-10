@@ -170,6 +170,10 @@ export const statistics = [
     title: 100,
     description: "Real time active service providers",
   },
+  {
+    title: 80,
+    description: "Real time active service bookings",
+  },
 ];
 
 export const services = [
