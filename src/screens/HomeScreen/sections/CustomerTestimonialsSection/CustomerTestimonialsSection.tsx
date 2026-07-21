@@ -293,6 +293,7 @@ const StarRating = ({
 
   return (
     <div
+      role="img"
       className="flex items-center gap-0.5 sm:gap-1"
       aria-label={`${rating} out of ${total} stars`}
     >
@@ -410,7 +411,7 @@ export const CustomerTestimonialsSection = () => {
             <div
               key={setIndex}
               className="animate-marquee flex shrink-0 items-stretch gap-[var(--gap)] pr-[var(--gap)] group-hover:[animation-play-state:paused] motion-reduce:animate-none"
-              aria-hidden={setIndex === 1}
+              {...(setIndex === 1 ? { "aria-hidden": true } : {})}
             >
               {testimonials.map((testimonial) => (
                 <TestimonialCard

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { HomePageJsonLd } from "@/components/HomePageJsonLd";
+import { SplashGate } from "@/components/Global/SplashGate";
 import { CONTACT_ADDRESS } from "@/constants/contact";
 import { SITE_NAME, SITE_TAGLINE } from "@/constants/site";
 import { buildPageMetadata } from "@/lib/seo";
@@ -23,9 +24,9 @@ export const metadata: Metadata = buildPageMetadata({
 
 export default function Home() {
   return (
-    <>
+    <SplashGate>
       <HomePageJsonLd />
       <HomeScreen />
-    </>
+    </SplashGate>
   );
 }
