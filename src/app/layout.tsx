@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { OrganizationJsonLd } from "@/components/OrganizationJsonLd";
+import { SplashGate } from "@/components/Global/SplashGate";
 import {
   SITE_DESCRIPTION,
   SITE_KEYWORDS,
@@ -88,9 +89,11 @@ export default function RootLayout({
   return (
     <html lang="en-NG" className={inter.variable}>
       <body className={`${inter.className} font-inter antialiased`}>
-        <NavigationProgress />
-        <OrganizationJsonLd />
-        {children}
+        <SplashGate>
+          <NavigationProgress />
+          <OrganizationJsonLd />
+          {children}
+        </SplashGate>
       </body>
     </html>
   );

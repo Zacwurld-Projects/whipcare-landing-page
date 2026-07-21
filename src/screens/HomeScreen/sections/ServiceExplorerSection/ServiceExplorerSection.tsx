@@ -38,22 +38,22 @@ const serviceProviderSteps = [
   {
     title: "Create a profile",
     description:
-      "Set up your provider profile, list your services, and showcase your expertise to vehicle owners on Whipcare.",
+      "Set up your profile and let us know your area of expertise to get personalized service bookings.",
   },
   {
-    title: "Accept Bookings",
+    title: "List Service(s)",
     description:
-      "Stay in control of your schedule. Set availability, respond to requests, and view every job detail.",
+      "List your services, set your prices, and start receiving bookings from vehicle owners near you.",
   },
   {
-    title: "Provide the Service",
+    title: "Render Service(s)",
     description:
-      "Arrive on schedule, carry out the service, and stay in touch with the customer throughout.",
+      "See the full breakdown of requested services, update progress, and confirm delivery once each job is done.",
   },
   {
-    title: "Get Reviewed",
+    title: "Get Reviewed and Paid",
     description:
-      "Great service earns great reviews. Use customer feedback to build your reputation on Whipcare.",
+      "Complete the job, get reviewed by the customer, and receive your payment instantly, all within the app.",
   },
 ] as const;
 
@@ -171,7 +171,7 @@ export const ServiceExplorerSection = () => {
                     }
                   }}
                 >
-                  <p className="text-center font-inter text-[16px] font-medium leading-[1.4] text-white sm:text-[20px] lg:text-[24px]">
+                  <p className="text-center font-inter text-[16px] font-regular leading-[1.4] text-white sm:text-[16px] lg:text-[18px]">
                     {selectedAudience === "vehicle-owner"
                       ? "Here is a step-by-step guide on how to use Whipcare as a Vehicle Owner:"
                       : "Here is a step-by-step guide on how to use Whipcare as a Service Provider:"}

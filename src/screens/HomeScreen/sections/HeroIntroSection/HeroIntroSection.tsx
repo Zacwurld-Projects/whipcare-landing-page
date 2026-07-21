@@ -101,7 +101,7 @@ export const HeroIntroSection = () => {
                   <Button
                     key={cta.label}
                     asChild
-                    className="h-auto w-full rounded-lg bg-[#701e00] px-5 py-3 hover:bg-[#5a1800] sm:w-auto"
+                    className="w-full h-[50px] rounded-[8px] bg-[#701e00] px-[20px] py-[12px] hover:bg-[#5a1800] sm:w-auto"
                   >
                     <a
                       href={cta.href}
