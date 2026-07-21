@@ -48,7 +48,7 @@ const healthFeatures = [
       "All your vehicle's details, history, and health status, organised and always up to date.",
     icon: (
       <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M4.25 0C4.80228 0 5.25 0.447715 5.25 1V3C5.25 3.55228 4.80228 4 4.25 4C3.69772 4 3.25 3.55228 3.25 3V1C3.25 0.447715 3.69772 0 4.25 0ZM16.25 0C16.8023 0 17.25 0.447715 17.25 1V3C17.25 3.55228 16.8023 4 16.25 4C15.6977 4 15.25 3.55228 15.25 3V1C15.25 0.447715 15.6977 0 16.25 0Z" fill="white" />
+        <path fillRule="evenodd" clip-rule="evenodd" d="M4.25 0C4.80228 0 5.25 0.447715 5.25 1V3C5.25 3.55228 4.80228 4 4.25 4C3.69772 4 3.25 3.55228 3.25 3V1C3.25 0.447715 3.69772 0 4.25 0ZM16.25 0C16.8023 0 17.25 0.447715 17.25 1V3C17.25 3.55228 16.8023 4 16.25 4C15.6977 4 15.25 3.55228 15.25 3V1C15.25 0.447715 15.6977 0 16.25 0Z" fill="white" />
         <path d="M11.2607 1.25C13.2244 1.24998 14.781 1.24972 15.999 1.42676C17.2574 1.6097 18.2633 1.99549 19.0488 2.84473C19.8264 3.68557 20.1723 4.7479 20.3379 6.0791C20.5002 7.3839 20.5 9.05684 20.5 11.1904V11.8096C20.5 13.9432 20.5002 15.6161 20.3379 16.9209C20.1723 18.2521 19.8264 19.3144 19.0488 20.1553C18.2633 21.0045 17.2574 21.3903 15.999 21.5732C14.781 21.7503 13.2244 21.75 11.2607 21.75H9.23926C7.27556 21.75 5.71901 21.7503 4.50098 21.5732C3.24258 21.3903 2.23672 21.0045 1.45117 20.1553C0.673585 19.3144 0.327703 18.2521 0.162109 16.9209C-0.000158846 15.6161 -1.09037e-05 13.9431 0 11.8096V11.1904C-1.09037e-05 9.05686 -0.000158846 7.3839 0.162109 6.0791C0.327703 4.7479 0.673585 3.68557 1.45117 2.84473C2.23672 1.99549 3.24258 1.6097 4.50098 1.42676C5.71901 1.24972 7.27557 1.24998 9.23926 1.25H11.2607ZM7.25 11C6.69772 11 6.25 11.4477 6.25 12C6.25 12.5523 6.69772 13 7.25 13V16C7.25 16.5523 7.69772 17 8.25 17C8.80228 17 9.25 16.5523 9.25 16V12.4004C9.25 11.6272 8.62281 11 7.84961 11H7.25ZM11.25 11C10.6977 11 10.25 11.4477 10.25 12C10.25 12.5523 10.6977 13 11.25 13H11.9258L10.9424 15.6523C10.7503 16.1701 11.0145 16.7454 11.5322 16.9375C12.0499 17.1294 12.6253 16.8653 12.8174 16.3477L14.1719 12.6973C14.5086 11.7898 13.768 11 12.9707 11H11.25ZM4.25 6C3.69772 6 3.25 6.44772 3.25 7C3.25 7.55228 3.69772 8 4.25 8H16.25C16.8023 8 17.25 7.55228 17.25 7C17.25 6.44772 16.8023 6 16.25 6H4.25Z" fill="white" />
       </svg>
 
@@ -157,73 +157,61 @@ export const AdvertisementSpotlightSection = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const getNearestIndex = useCallback(() => {
+  const scrollToSlide = useCallback((index: number) => {
     const container = scrollContainerRef.current;
-    if (!container) return 0;
+    if (!container) return;
 
-    const slideElements = Array.from(container.children) as HTMLElement[];
-    if (slideElements.length === 0) return 0;
+    const slide = container.children[index] as HTMLElement | undefined;
+    if (!slide) return;
 
-    const scrollCenter = container.scrollLeft + container.clientWidth / 2;
-
-    let nearest = 0;
-    let nearestDistance = Number.POSITIVE_INFINITY;
-
-    slideElements.forEach((slide, index) => {
-      const slideCenter = slide.offsetLeft + slide.offsetWidth / 2;
-      const distance = Math.abs(scrollCenter - slideCenter);
-      if (distance < nearestDistance) {
-        nearestDistance = distance;
-        nearest = index;
-      }
+    slide.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
     });
-
-    return nearest;
+    setActiveIndex(index);
   }, []);
-
-  const scrollToSlide = useCallback(
-    (index: number) => {
-      const container = scrollContainerRef.current;
-      if (!container) return;
-
-      const slide = container.children[index] as HTMLElement | undefined;
-      if (!slide) return;
-
-      container.scrollTo({
-        left: slide.offsetLeft,
-        behavior: "smooth",
-      });
-      setActiveIndex(index);
-    },
-    [],
-  );
 
   useEffect(() => {
     const container = scrollContainerRef.current;
     if (!container) return;
 
-    let frame = 0;
+    const slideElements = Array.from(container.children);
+    if (slideElements.length === 0) return;
 
-    const syncActiveIndex = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        setActiveIndex(getNearestIndex());
-      });
-    };
+    const visibility = new Map<Element, number>();
 
-    container.addEventListener("scroll", syncActiveIndex, { passive: true });
-    container.addEventListener("scrollend", syncActiveIndex);
-    window.addEventListener("resize", syncActiveIndex);
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          visibility.set(entry.target, entry.intersectionRatio);
+        }
 
-    syncActiveIndex();
+        let bestIndex = 0;
+        let bestRatio = -1;
 
-    return () => {
-      cancelAnimationFrame(frame);
-      container.removeEventListener("scroll", syncActiveIndex);
-      container.removeEventListener("scrollend", syncActiveIndex);
-      window.removeEventListener("resize", syncActiveIndex);
-    };
-  }, [getNearestIndex]);
+        slideElements.forEach((slide, index) => {
+          const ratio = visibility.get(slide) ?? 0;
+          if (ratio > bestRatio) {
+            bestRatio = ratio;
+            bestIndex = index;
+          }
+        });
+
+        setActiveIndex((current) =>
+          current === bestIndex ? current : bestIndex,
+        );
+      },
+      {
+        root: container,
+        threshold: [0, 0.25, 0.5, 0.75, 1],
+      },
+    );
+
+    slideElements.forEach((slide) => observer.observe(slide));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section

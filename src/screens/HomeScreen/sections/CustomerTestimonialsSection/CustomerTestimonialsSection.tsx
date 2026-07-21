@@ -427,7 +427,7 @@ export const CustomerTestimonialsSection = () => {
         <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-6 bg-gradient-to-l from-[#f3f4f6] to-transparent sm:w-10 md:w-16 lg:w-24 xl:w-32" />
       </div>
 
-      <div className="mx-auto mt-8 flex w-full max-w-[1280px] flex-col items-center px-4 sm:mt-10 sm:px-6 lg:px-8">
+      <div className="mx-auto mt-8 flex w-full max-w-[1280px] flex-col items-center px-4 sm:mt-20 sm:px-6 lg:px-8">
         <Reveal
           delay={0.1}
           className="flex w-full max-w-[807px] flex-col items-center gap-4 text-center sm:gap-5 md:gap-6"
