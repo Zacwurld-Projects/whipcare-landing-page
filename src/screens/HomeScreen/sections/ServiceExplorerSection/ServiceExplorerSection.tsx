@@ -171,7 +171,7 @@ export const ServiceExplorerSection = () => {
                     }
                   }}
                 >
-                  <p className="text-center font-inter text-[16px] font-regular leading-[1.4] text-white sm:text-[16px] lg:text-[18px]">
+                  <p className="text-center font-inter text-[16px] font-normal leading-[1.4] text-white sm:text-[16px] lg:text-[18px]">
                     {selectedAudience === "vehicle-owner"
                       ? "Here is a step-by-step guide on how to use Whipcare as a Vehicle Owner:"
                       : "Here is a step-by-step guide on how to use Whipcare as a Service Provider:"}

@@ -67,7 +67,7 @@ export const ValuePropositionStatsSection = () => {
                     <div className="font-inter text-[28px] font-semibold leading-[1.2] text-white sm:text-[36px] lg:text-[length:var(--inter-h2-semibold-font-size)] lg:leading-[var(--inter-h2-semibold-line-height)]">
                       {stat.value}
                     </div>
-                    <p className="font-inter text-[13px] font-normal leading-[1.4] text-white/90 sm:text-[15px] lg:text-[length:var(--inter-title-2-regular-font-size)]">
+                    <p className="font-inter text-[13px] font-normal leading-[1.4] text-white sm:text-[15px] lg:text-[length:var(--inter-title-2-regular-font-size)]">
                       {stat.label}
                     </p>
                   </div>

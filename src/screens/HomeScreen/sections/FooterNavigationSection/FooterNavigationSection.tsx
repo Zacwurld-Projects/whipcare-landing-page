@@ -105,14 +105,26 @@ export const FooterNavigationSection = () => {
                 </a>
               </p>
             </div>
-            <div className="flex items-center gap-4 sm:gap-5">
-              <button type="button" aria-label="X" className="h-auto p-0">
+            <div className="flex w-full flex-wrap items-center gap-2 pt-1 sm:w-auto sm:gap-3 sm:pt-0 md:gap-4 lg:gap-5">
+              <button
+                type="button"
+                aria-label="X"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-[#701e00]/5 sm:h-11 sm:w-11"
+              >
                 <XIcon />
               </button>
-              <button type="button" aria-label="Facebook" className="h-auto p-0">
+              <button
+                type="button"
+                aria-label="Facebook"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-[#701e00]/5 sm:h-11 sm:w-11"
+              >
                 <FacebookIcon />
               </button>
-              <button type="button" aria-label="Instagram" className="h-auto p-0">
+              <button
+                type="button"
+                aria-label="Instagram"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-[#701e00]/5 sm:h-11 sm:w-11"
+              >
                 <InstagramIcon />
               </button>
             </div>

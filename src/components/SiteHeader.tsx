@@ -30,10 +30,9 @@ type SiteHeaderProps = {
 };
 
 const navLinkClass = (isActive: boolean) =>
-  `inline-flex items-center gap-[7px] whitespace-nowrap ${
-    isActive
-      ? "font-inter text-[15px] font-medium leading-[1.4] text-[#701e00] sm:text-[length:var(--inter-title-1-medium-font-size)] sm:leading-[var(--inter-title-1-medium-line-height)]"
-      : "font-inter text-[15px] font-normal leading-[1.4] text-[#111928] sm:text-[length:var(--inter-title-1-regular-font-size)] sm:leading-[var(--inter-title-1-regular-line-height)]"
+  `inline-flex items-center gap-[7px] whitespace-nowrap ${isActive
+    ? "font-inter text-[15px] font-medium leading-[1.4] text-[#701e00] sm:text-[length:var(--inter-title-1-medium-font-size)] sm:leading-[var(--inter-title-1-medium-line-height)]"
+    : "font-inter text-[15px] font-normal leading-[1.4] text-[#111928] sm:text-[length:var(--inter-title-1-regular-font-size)] sm:leading-[var(--inter-title-1-regular-line-height)]"
   }`;
 
 const ctaClass =
@@ -217,11 +216,10 @@ export const SiteHeader = ({ active = "Home" }: SiteHeaderProps) => {
                               key={option.label}
                               href={option.href}
                               role="menuitem"
-                              className={`block px-4 py-2 font-inter text-[15px] leading-[1.4] ${
-                                optionActive
+                              className={`block px-4 py-2 font-inter text-[15px] leading-[1.4] ${optionActive
                                   ? "font-medium text-[#701e00]"
                                   : "font-normal text-[#111928] hover:text-[#701e00]"
-                              }`}
+                                }`}
                               onClick={() => setResourcesOpen(false)}
                             >
                               {option.label}
@@ -355,11 +353,10 @@ export const SiteHeader = ({ active = "Home" }: SiteHeaderProps) => {
                                 <Link
                                   key={option.label}
                                   href={option.href}
-                                  className={`rounded-lg px-3 py-3 font-inter text-[15px] leading-[1.4] ${
-                                    optionActive
+                                  className={`rounded-lg px-3 py-3 font-inter text-[15px] leading-[1.4] ${optionActive
                                       ? "font-medium text-[#701e00]"
                                       : "font-normal text-[#111928]"
-                                  }`}
+                                    }`}
                                   onClick={closeMobile}
                                 >
                                   {option.label}

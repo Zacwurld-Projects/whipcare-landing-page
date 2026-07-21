@@ -60,7 +60,7 @@ export const ServiceCategoryCardsSection = () => {
           >
             Explore Our Services
           </h2>
-          <p className="max-w-[550px] font-inter text-[15px] font-medium leading-[1.5] text-gray-600 sm:text-[16px] lg:text-[length:var(--inter-title-2-medium-font-size)]">
+          <p className="max-w-[550px] font-inter text-[15px] font-medium leading-[1.5] text-gray-600 sm:text-[16px] lg:text-[24px]">
             Discover how Whipcare connects you to a variety of car service
             providers
           </p>
