@@ -1,7 +1,7 @@
 import Image from "next/image";
 import frame1618873200 from "@/assets/Frame 1618873200.png";
 import frame1618873202 from "@/assets/Frame 1618873202.png";
-import aboutHero from "@/assets/about-hero.jpg";
+import aboutHero from "@/assets/about-hero.png";
 import { SiteHeader } from "@/components/SiteHeader";
 import { AdvertisementSpotlightSection } from "../HomeScreen/sections/AdvertisementSpotlightSection";
 import { FooterNavigationSection } from "../HomeScreen/sections/FooterNavigationSection";

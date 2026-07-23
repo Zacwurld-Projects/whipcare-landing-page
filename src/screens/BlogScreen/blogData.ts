@@ -1,6 +1,6 @@
 import type { StaticImageData } from "next/image";
-import blogPostThumb from "@/assets/blog-post-thumb.png";
-import blogDetailHero from "@/assets/blog-detail-hero.png";
+import blogPostThumb from "@/assets/blog-detail-hero.png";
+import blogDetailHero from "@/assets/blog-post-thumb.png";
 
 export type BlogCategoryId =
   | "general"
