@@ -106,27 +106,33 @@ export const FooterNavigationSection = () => {
               </p>
             </div>
             <div className="flex w-full flex-wrap items-center gap-2 pt-1 sm:w-auto sm:gap-3 sm:pt-0 md:gap-4 lg:gap-5">
-              <button
-                type="button"
+              <a
+                href="https://x.com/whipcareapp"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="X"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-[#701e00]/5 sm:h-11 sm:w-11"
               >
                 <XIcon />
-              </button>
-              <button
-                type="button"
+              </a>
+              <a
+                href="https://web.facebook.com/profile.php?id=61562572721634"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Facebook"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-[#701e00]/5 sm:h-11 sm:w-11"
               >
                 <FacebookIcon />
-              </button>
-              <button
-                type="button"
+              </a>
+              <a
+                href="https://www.instagram.com/whipcare.app"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="Instagram"
                 className="inline-flex h-10 w-10 items-center justify-center rounded-full transition-colors hover:bg-[#701e00]/5 sm:h-11 sm:w-11"
               >
                 <InstagramIcon />
-              </button>
+              </a>
             </div>
           </address>
         </div>
@@ -149,7 +155,13 @@ export const FooterNavigationSection = () => {
           <p className="max-w-[34rem] text-center font-inter text-[12px] font-normal leading-[1.5] text-black sm:max-w-none sm:text-[length:var(--inter-title-1-regular-font-size)] sm:leading-[var(--inter-title-1-regular-line-height)]">
             © {new Date().getFullYear()} Whipcare. All rights reserved
             <span className="mx-1.5 sm:mx-2">|</span>
-            Terms and Condition, Privacy Policy
+            <Link href="/terms" className="hover:text-[#701e00] transition-colors">
+              Terms and Conditions
+            </Link>
+            ,
+            <Link href="/privacy" className="hover:text-[#701e00] transition-colors">
+              {" "}Privacy Policy
+            </Link>
           </p>
         </div>
       </div>

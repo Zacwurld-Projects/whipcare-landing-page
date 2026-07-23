@@ -1,27 +1,105 @@
+"use client";
+
 import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 import checkAssets from "@/assets/check-assets.png";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 const stats = [
   {
-    value: "5k+",
+    target: 5,
+    suffix: "k+",
     label: "Customers around the world.",
   },
   {
-    value: "3+",
+    target: 3,
+    suffix: "+",
     label: "Countries across the globe.",
   },
   {
-    value: "100+",
+    target: 100,
+    suffix: "+",
     label: "Real time active service providers",
   },
   {
-    value: "80+",
+    target: 80,
+    suffix: "+",
     label: "Real time active service bookings",
   },
 ] as const;
 
+const DURATION_MS = 1400;
+
+const easeOutCubic = (t: number) => 1 - (1 - t) ** 3;
+
+const CountUpStat = ({
+  target,
+  suffix,
+  start,
+}: {
+  target: number;
+  suffix: string;
+  start: boolean;
+}) => {
+  const [value, setValue] = useState(0);
+
+  useEffect(() => {
+    if (!start) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)",
+    ).matches;
+
+    if (prefersReducedMotion) {
+      setValue(target);
+      return;
+    }
+
+    let raf = 0;
+    const startedAt = performance.now();
+
+    const tick = (now: number) => {
+      const progress = Math.min(1, (now - startedAt) / DURATION_MS);
+      setValue(Math.round(easeOutCubic(progress) * target));
+      if (progress < 1) {
+        raf = requestAnimationFrame(tick);
+      }
+    };
+
+    raf = requestAnimationFrame(tick);
+    return () => cancelAnimationFrame(raf);
+  }, [start, target]);
+
+  return (
+    <>
+      {value}
+      {suffix}
+    </>
+  );
+};
+
 export const ValuePropositionStatsSection = () => {
+  const statsRef = useRef<HTMLDivElement>(null);
+  const [started, setStarted] = useState(false);
+
+  useEffect(() => {
+    const el = statsRef.current;
+    if (!el) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setStarted(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.35 },
+    );
+
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <section
       aria-labelledby="value-proposition-heading"
@@ -55,12 +133,22 @@ export const ValuePropositionStatsSection = () => {
               </p>
             </header>
 
-            <div className="mt-10 grid w-full grid-cols-2 gap-x-4 gap-y-8 sm:mt-14 sm:gap-x-6 md:grid-cols-4 md:gap-x-8 lg:mt-[100px]">
+            <div
+              ref={statsRef}
+              className="mt-10 grid w-full grid-cols-2 gap-x-4 gap-y-8 sm:mt-14 sm:gap-x-6 md:grid-cols-4 md:gap-x-8 lg:mt-[100px]"
+            >
               {stats.map((stat, index) => (
-                <div key={stat.value} className="flex items-start">
+                <div key={stat.label} className="flex items-start">
                   <div className="flex flex-col items-start gap-0.5">
-                    <div className="font-inter text-[28px] font-semibold leading-[1.2] text-white sm:text-[36px] lg:text-[length:var(--inter-h2-semibold-font-size)] lg:leading-[var(--inter-h2-semibold-line-height)]">
-                      {stat.value}
+                    <div
+                      className="font-inter text-[28px] font-semibold leading-[1.2] text-white sm:text-[36px] lg:text-[length:var(--inter-h2-semibold-font-size)] lg:leading-[var(--inter-h2-semibold-line-height)]"
+                      aria-label={`${stat.target}${stat.suffix}`}
+                    >
+                      <CountUpStat
+                        target={stat.target}
+                        suffix={stat.suffix}
+                        start={started}
+                      />
                     </div>
                     <p className="font-inter text-[13px] font-normal leading-[1.4] text-white sm:text-[15px] lg:text-[length:var(--inter-title-2-regular-font-size)]">
                       {stat.label}

@@ -12,7 +12,8 @@ import {
 
 const slides = [
   { type: "feature" as const },
-  { type: "ads" as const },
+  // TODO: uncomment when ads are live
+  // { type: "ads" as const },
   { type: "vehicleHealth" as const },
 ];
 
@@ -223,20 +224,21 @@ export const AdvertisementSpotlightSection = () => {
           className="flex w-full snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overscroll-x-contain scroll-smooth pb-2 sm:gap-8 lg:gap-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {slides.map((slide, index) => {
-            if (slide.type === "ads") {
-              return (
-                <Card
-                  key={`slide-${index}`}
-                  className="w-full min-w-0 shrink-0 basis-full snap-center snap-always rounded-[20px] border-0 bg-[#f3f4f6] shadow-none sm:rounded-[32px]"
-                >
-                  <CardContent className="flex min-h-[280px] items-center justify-center p-6 sm:min-h-[400px] sm:p-10 lg:h-[500px] lg:p-0">
-                    <h2 className="font-inter text-[48px] font-bold leading-none tracking-[0] text-[#701e00] sm:text-[64px] lg:text-[80px] lg:leading-[112px]">
-                      Ads
-                    </h2>
-                  </CardContent>
-                </Card>
-              );
-            }
+            // TODO: uncomment when ads are live
+            // if (slide.type === "ads") {
+            //   return (
+            //     <Card
+            //       key={`slide-${index}`}
+            //       className="w-full min-w-0 shrink-0 basis-full snap-center snap-always rounded-[20px] border-0 bg-[#f3f4f6] shadow-none sm:rounded-[32px]"
+            //     >
+            //       <CardContent className="flex min-h-[280px] items-center justify-center p-6 sm:min-h-[400px] sm:p-10 lg:h-[500px] lg:p-0">
+            //         <h2 className="font-inter text-[48px] font-bold leading-none tracking-[0] text-[#701e00] sm:text-[64px] lg:text-[80px] lg:leading-[112px]">
+            //           Ads
+            //         </h2>
+            //       </CardContent>
+            //     </Card>
+            //   );
+            // }
 
             if (slide.type === "vehicleHealth") {
               return <VehicleHealthSlide key={`slide-${index}`} />;
