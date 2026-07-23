@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { Button } from "@/components/ui/button";
-import { PLAY_STORE_URL } from "@/constants/appLinks";
 
 type Billing = "monthly" | "yearly";
 
@@ -227,17 +227,15 @@ export const FleetsPricingSection = () => {
                         : "bg-[#F3F4F6] text-[#737373] hover:bg-[#d1d5db]"
                     }`}
                   >
-                    <a
-                      href={PLAY_STORE_URL}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                    <Link
+                      href="/coming-soon"
                       onClick={(event) => {
                         event.stopPropagation();
                         setSelectedTier(tier.id);
                       }}
                     >
                       Get started
-                    </a>
+                    </Link>
                   </Button>
                 </div>
               </article>
@@ -311,17 +309,15 @@ export const FleetsPricingSection = () => {
                 : "bg-[#F3F4F6] text-[#737373] hover:bg-[#d1d5db]"
             }`}
           >
-            <a
-              href={PLAY_STORE_URL}
-              target="_blank"
-              rel="noopener noreferrer"
+            <Link
+              href="/coming-soon"
               onClick={(event) => {
                 event.stopPropagation();
                 setSelectedTier("custom");
               }}
             >
               Get started
-            </a>
+            </Link>
           </Button>
         </article>
       </div>
