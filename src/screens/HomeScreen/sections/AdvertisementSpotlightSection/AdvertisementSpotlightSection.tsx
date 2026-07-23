@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import vehicleHealthProPhones from "@/assets/vehicle-health-pro-phones.png";
-import { Reveal } from "@/components/Reveal";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { cn } from "../../../../lib/utils";
 import {
@@ -48,7 +47,7 @@ const healthFeatures = [
       "All your vehicle's details, history, and health status, organised and always up to date.",
     icon: (
       <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fillRule="evenodd" clip-rule="evenodd" d="M4.25 0C4.80228 0 5.25 0.447715 5.25 1V3C5.25 3.55228 4.80228 4 4.25 4C3.69772 4 3.25 3.55228 3.25 3V1C3.25 0.447715 3.69772 0 4.25 0ZM16.25 0C16.8023 0 17.25 0.447715 17.25 1V3C17.25 3.55228 16.8023 4 16.25 4C15.6977 4 15.25 3.55228 15.25 3V1C15.25 0.447715 15.6977 0 16.25 0Z" fill="white" />
+        <path fillRule="evenodd" clipRule="evenodd" d="M4.25 0C4.80228 0 5.25 0.447715 5.25 1V3C5.25 3.55228 4.80228 4 4.25 4C3.69772 4 3.25 3.55228 3.25 3V1C3.25 0.447715 3.69772 0 4.25 0ZM16.25 0C16.8023 0 17.25 0.447715 17.25 1V3C17.25 3.55228 16.8023 4 16.25 4C15.6977 4 15.25 3.55228 15.25 3V1C15.25 0.447715 15.6977 0 16.25 0Z" fill="white" />
         <path d="M11.2607 1.25C13.2244 1.24998 14.781 1.24972 15.999 1.42676C17.2574 1.6097 18.2633 1.99549 19.0488 2.84473C19.8264 3.68557 20.1723 4.7479 20.3379 6.0791C20.5002 7.3839 20.5 9.05684 20.5 11.1904V11.8096C20.5 13.9432 20.5002 15.6161 20.3379 16.9209C20.1723 18.2521 19.8264 19.3144 19.0488 20.1553C18.2633 21.0045 17.2574 21.3903 15.999 21.5732C14.781 21.7503 13.2244 21.75 11.2607 21.75H9.23926C7.27556 21.75 5.71901 21.7503 4.50098 21.5732C3.24258 21.3903 2.23672 21.0045 1.45117 20.1553C0.673585 19.3144 0.327703 18.2521 0.162109 16.9209C-0.000158846 15.6161 -1.09037e-05 13.9431 0 11.8096V11.1904C-1.09037e-05 9.05686 -0.000158846 7.3839 0.162109 6.0791C0.327703 4.7479 0.673585 3.68557 1.45117 2.84473C2.23672 1.99549 3.24258 1.6097 4.50098 1.42676C5.71901 1.24972 7.27557 1.24998 9.23926 1.25H11.2607ZM7.25 11C6.69772 11 6.25 11.4477 6.25 12C6.25 12.5523 6.69772 13 7.25 13V16C7.25 16.5523 7.69772 17 8.25 17C8.80228 17 9.25 16.5523 9.25 16V12.4004C9.25 11.6272 8.62281 11 7.84961 11H7.25ZM11.25 11C10.6977 11 10.25 11.4477 10.25 12C10.25 12.5523 10.6977 13 11.25 13H11.9258L10.9424 15.6523C10.7503 16.1701 11.0145 16.7454 11.5322 16.9375C12.0499 17.1294 12.6253 16.8653 12.8174 16.3477L14.1719 12.6973C14.5086 11.7898 13.768 11 12.9707 11H11.25ZM4.25 6C3.69772 6 3.25 6.44772 3.25 7C3.25 7.55228 3.69772 8 4.25 8H16.25C16.8023 8 17.25 7.55228 17.25 7C17.25 6.44772 16.8023 6 16.25 6H4.25Z" fill="white" />
       </svg>
 
@@ -218,7 +217,7 @@ export const AdvertisementSpotlightSection = () => {
       aria-label="Whipcare features and promotions"
       className="relative w-full overflow-hidden bg-white py-10 sm:py-14 lg:py-16"
     >
-      <Reveal className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-5 px-4 sm:gap-6 sm:px-6 lg:px-8">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-5 px-4 sm:gap-6 sm:px-6 lg:px-8">
         <div
           ref={scrollContainerRef}
           className="flex w-full touch-pan-x snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overscroll-x-contain scroll-smooth pb-2 sm:gap-8 lg:gap-12 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
@@ -257,23 +256,30 @@ export const AdvertisementSpotlightSection = () => {
                         </h2>
                         <p className="font-inter text-[14px] font-normal leading-[1.5] text-white sm:text-[16px] lg:text-[18px] lg:leading-[var(--inter-title-1-regular-line-height)]">
                           Sign up with your email and get informed about
-                          discounts , Whipcare tips and exciting features coming
+                          discounts, Whipcare tips and exciting features coming
                           your way!
                         </p>
                       </header>
-                      <form className="flex w-full max-w-[438px] flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4">
-                        <div className="flex h-11 flex-1 items-center rounded-lg bg-neutral-100 px-3 sm:h-12">
-                          <span className="font-inter text-[14px] font-normal text-gray-500 opacity-[0.62] sm:text-[length:var(--inter-title-1-regular-font-size)]">
-                            Enter your email
-                          </span>
-                        </div>
+                      <form
+                        className="flex w-full max-w-[438px] flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"
+                        onSubmit={(e) => e.preventDefault()}
+                      >
+                        <label htmlFor="spotlight-email" className="sr-only">
+                          Email address
+                        </label>
+                        <input
+                          id="spotlight-email"
+                          type="email"
+                          name="email"
+                          autoComplete="email"
+                          placeholder="Enter your email"
+                          className="box-border min-h-[56px] w-full min-w-0 flex-1 appearance-none rounded-xl border-0 bg-neutral-100 px-4 py-4 font-inter text-base font-normal leading-normal text-[#111928] outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-white/40 sm:min-h-[52px] sm:rounded-lg sm:py-3 sm:text-[length:var(--inter-title-1-regular-font-size)]"
+                        />
                         <button
-                          type="button"
-                          className="flex h-11 items-center justify-center rounded-lg bg-gray-100 px-5 py-3 sm:h-12 sm:px-6 sm:py-3.5"
+                          type="submit"
+                          className="flex min-h-[56px] shrink-0 items-center justify-center rounded-xl bg-gray-100 px-5 font-inter text-base font-semibold text-[#701e00] sm:min-h-[52px] sm:rounded-lg sm:px-6 sm:text-[length:var(--inter-body-semibold-font-size)]"
                         >
-                          <span className="whitespace-nowrap font-inter text-[14px] font-semibold text-[#701e00] sm:text-[length:var(--inter-body-semibold-font-size)]">
-                            Stay Updated
-                          </span>
+                          Stay Updated
                         </button>
                       </form>
                     </div>
@@ -314,7 +320,7 @@ export const AdvertisementSpotlightSection = () => {
             />
           ))}
         </div>
-      </Reveal>
+      </div>
     </section>
   );
 };

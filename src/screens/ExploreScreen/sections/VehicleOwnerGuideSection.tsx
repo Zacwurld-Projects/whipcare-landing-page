@@ -1,5 +1,7 @@
+"use client";
+
 import Image from "next/image";
-import phoneMockup from "@/assets/phone-mockup.png";
+import strings from "@/assets/strings.png";
 import { vehicleOwnerSteps } from "../exploreGuideData";
 
 export const VehicleOwnerGuideSection = () => {
@@ -30,13 +32,35 @@ export const VehicleOwnerGuideSection = () => {
           style={{ animationDelay: "0.16s" }}
         >
           <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
-            <div className="overflow-hidden rounded-[20px] bg-white">
+            <div className="relative flex items-center justify-center overflow-hidden rounded-[20px] bg-white px-6 py-10 sm:px-10 sm:py-12 lg:min-h-[520px]">
               <Image
-                className="mx-auto block h-auto w-full object-contain"
-                alt="Whipcare mobile app booking flow on a smartphone"
-                src={phoneMockup}
-                sizes="(max-width: 1024px) 100vw, 560px"
+                src={strings}
+                alt=""
+                aria-hidden
+                className="pointer-events-none absolute left-1/2 top-1/2 z-0 w-[160%] max-w-none -translate-x-1/2 -translate-y-1/2 object-contain sm:w-[140%]"
+                sizes="(max-width: 1024px) 100vw, 640px"
               />
+
+              <div className="relative z-10 w-full max-w-[160px] sm:max-w-[180px] lg:max-w-[200px]">
+                <video
+                  className="pointer-events-none block h-auto w-full"
+                  src="https://res.cloudinary.com/vlsxeibo/video/upload/v1784794856/vehicle_owners_section_booking_yn2vmj.mp4"
+                  autoPlay
+                  muted
+                  loop
+                  playsInline
+                  controlsList="nodownload noplaybackrate"
+                  disablePictureInPicture
+                  disableRemotePlayback
+                  onContextMenu={(e) => e.preventDefault()}
+                  aria-label="Whipcare vehicle owner app walkthrough"
+                />
+                <div
+                  className="absolute inset-0 z-10"
+                  aria-hidden
+                  onContextMenu={(e) => e.preventDefault()}
+                />
+              </div>
             </div>
 
             <ol className="relative flex flex-col gap-8 sm:gap-10">

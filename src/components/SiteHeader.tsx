@@ -135,17 +135,17 @@ export const SiteHeader = ({ active = "Home" }: SiteHeaderProps) => {
             variant="ghost"
             className={`${ctaClass} ${widthClass} bg-[#f3f4f6] text-[#701e00] hover:bg-[#e5e7eb] hover:text-[#5a1800] ${options?.className ?? ""}`}
           >
-            <a href="#" onClick={closeMobile}>
+            <Link href="/coming-soon" onClick={closeMobile}>
               Login
-            </a>
+            </Link>
           </Button>
           <Button
             asChild
             className={`${ctaClass} ${widthClass} bg-[#701e00] text-white hover:bg-[#5a1800] ${options?.className ?? ""}`}
           >
-            <a href="#" onClick={closeMobile}>
+            <Link href="/coming-soon" onClick={closeMobile}>
               Sign Up
-            </a>
+            </Link>
           </Button>
         </>
       );

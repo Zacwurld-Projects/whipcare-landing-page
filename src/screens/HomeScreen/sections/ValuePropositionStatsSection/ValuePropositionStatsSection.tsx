@@ -1,6 +1,5 @@
 import Image from "next/image";
 import checkAssets from "@/assets/check-assets.png";
-import { Reveal } from "@/components/Reveal";
 import { Card, CardContent } from "../../../../components/ui/card";
 
 const stats = [
@@ -39,7 +38,7 @@ export const ValuePropositionStatsSection = () => {
       <div className="relative mx-auto flex min-h-[320px] w-full max-w-[1440px] items-center px-4 py-12 sm:min-h-[400px] sm:px-6 sm:py-14 md:px-10 lg:px-20 lg:py-16">
         <Card className="h-auto w-full border-0 bg-transparent shadow-none">
           <CardContent className="flex h-full flex-col items-start justify-center p-0">
-            <Reveal as="header" className="flex max-w-[760px] flex-col items-start gap-1 sm:gap-2">
+            <header className="flex max-w-[760px] flex-col items-start gap-1 sm:gap-2">
               <h2
                 id="value-proposition-heading"
                 className="font-inter text-[26px] font-medium leading-[1.25] text-white sm:text-[36px] lg:text-[length:var(--inter-h2-medium-font-size)] lg:leading-[var(--inter-h2-medium-line-height)]"
@@ -54,15 +53,11 @@ export const ValuePropositionStatsSection = () => {
                   at the best prices!
                 </strong>
               </p>
-            </Reveal>
+            </header>
 
             <div className="mt-10 grid w-full grid-cols-2 gap-x-4 gap-y-8 sm:mt-14 sm:gap-x-6 md:grid-cols-4 md:gap-x-8 lg:mt-[100px]">
               {stats.map((stat, index) => (
-                <Reveal
-                  key={stat.value}
-                  delay={0.08 + index * 0.08}
-                  className="flex items-start"
-                >
+                <div key={stat.value} className="flex items-start">
                   <div className="flex flex-col items-start gap-0.5">
                     <div className="font-inter text-[28px] font-semibold leading-[1.2] text-white sm:text-[36px] lg:text-[length:var(--inter-h2-semibold-font-size)] lg:leading-[var(--inter-h2-semibold-line-height)]">
                       {stat.value}
@@ -92,7 +87,7 @@ export const ValuePropositionStatsSection = () => {
                       <path d="M1.5 43V75" stroke="#AA5A3E" />
                     </svg>
                   )}
-                </Reveal>
+                </div>
               ))}
             </div>
           </CardContent>

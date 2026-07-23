@@ -1,8 +1,14 @@
-import type { CSSProperties } from "react";
-import { Reveal } from "@/components/Reveal";
+"use client";
+
+import {
+  useEffect,
+  useRef,
+  type PointerEvent as ReactPointerEvent,
+} from "react";
 import { GetAppLink } from "../../../../components/GetAppLink";
 import { Button } from "../../../../components/ui/button";
 import { Card, CardContent } from "../../../../components/ui/card";
+import { cn } from "../../../../lib/utils";
 
 const testimonials = [
   {
@@ -369,6 +375,92 @@ const TestimonialCard = ({
   );
 };
 
+const TestimonialsMarquee = () => {
+  const scrollerRef = useRef<HTMLDivElement>(null);
+  const draggingRef = useRef(false);
+  const dragStartXRef = useRef(0);
+  const dragStartScrollRef = useRef(0);
+  useEffect(() => {
+    const el = scrollerRef.current;
+    if (!el) return;
+
+    const wrapScroll = () => {
+      const half = el.scrollWidth / 2;
+      if (half <= 0) return;
+      if (el.scrollLeft >= half) {
+        el.scrollLeft -= half;
+      }
+    };
+
+    const onScroll = () => wrapScroll();
+    el.addEventListener("scroll", onScroll, { passive: true });
+
+    return () => {
+      el.removeEventListener("scroll", onScroll);
+    };
+  }, []);
+
+  const onPointerDown = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (e.pointerType !== "mouse") return;
+    draggingRef.current = true;
+    dragStartXRef.current = e.clientX;
+    dragStartScrollRef.current = scrollerRef.current?.scrollLeft ?? 0;
+    e.currentTarget.setPointerCapture(e.pointerId);
+  };
+
+  const onPointerMove = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (!draggingRef.current || !scrollerRef.current) return;
+    scrollerRef.current.scrollLeft =
+      dragStartScrollRef.current - (e.clientX - dragStartXRef.current);
+  };
+
+  const onPointerUp = (e: ReactPointerEvent<HTMLDivElement>) => {
+    if (draggingRef.current) {
+      draggingRef.current = false;
+      try {
+        e.currentTarget.releasePointerCapture(e.pointerId);
+      } catch {
+        /* already released */
+      }
+    }
+  };
+
+  return (
+    <div className="relative w-full pt-1 sm:pt-3 md:pt-4 lg:pt-10">
+      <div className="pointer-events-none absolute left-1/2 top-0 hidden h-[389px] w-full max-w-[762px] -translate-x-1/2 bg-[linear-gradient(90deg,rgba(68,255,154,1)_0%,rgba(68,176,255,1)_23%,rgba(139,68,255,1)_49%,rgba(255,102,68,1)_74%,rgba(235,255,112,1)_100%)] opacity-30 lg:block" />
+      <div
+        ref={scrollerRef}
+        className={cn(
+          "relative z-10 flex cursor-grab touch-pan-x gap-4 overflow-x-auto overscroll-x-contain pb-1 select-none active:cursor-grabbing",
+          "[-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
+        )}
+        onPointerDown={onPointerDown}
+        onPointerMove={onPointerMove}
+        onPointerUp={onPointerUp}
+        onPointerCancel={onPointerUp}
+      >
+        {[0, 1].map((setIndex) => (
+          <div
+            key={setIndex}
+            className="flex shrink-0 items-stretch gap-4"
+            {...(setIndex === 1 ? { "aria-hidden": true } : {})}
+          >
+            {testimonials.map((testimonial) => (
+              <TestimonialCard
+                key={`${setIndex}-${testimonial.name}`}
+                testimonial={testimonial}
+                idPrefix={`${setIndex}-${testimonial.name}`}
+              />
+            ))}
+          </div>
+        ))}
+      </div>
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-6 bg-gradient-to-r from-[#f3f4f6] to-transparent sm:w-10 md:w-16 lg:w-24 xl:w-32" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-6 bg-gradient-to-l from-[#f3f4f6] to-transparent sm:w-10 md:w-16 lg:w-24 xl:w-32" />
+    </div>
+  );
+};
+
 export const CustomerTestimonialsSection = () => {
   return (
     <section
@@ -376,7 +468,7 @@ export const CustomerTestimonialsSection = () => {
       className="w-full overflow-hidden bg-[#f3f4f6] py-10 sm:py-14 lg:py-16"
     >
       <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center gap-8 px-4 sm:gap-10 sm:px-6 lg:gap-12 lg:px-8">
-        <Reveal as="header" className="flex w-full max-w-[771px] flex-col items-center gap-3 text-center sm:gap-4 md:gap-[19px]">
+        <header className="flex w-full max-w-[771px] flex-col items-center gap-3 text-center sm:gap-4 md:gap-[19px]">
           <p className="w-full font-inter text-[14px] font-normal leading-[1.5] text-gray-600 sm:text-[15px] md:text-xl md:leading-6">
             <span className="tracking-[-0.08px] text-[#701e00]">2,157</span>
             <span className="font-medium tracking-[-0.08px] text-[#4a5565]">
@@ -393,45 +485,13 @@ export const CustomerTestimonialsSection = () => {
           <p className="mb-2 w-full max-w-[569px] font-inter text-[14px] font-medium leading-[1.5] text-gray-500 sm:mb-3.5 sm:text-[15px] md:text-[length:var(--heading-h6-medium-font-size)] md:leading-[var(--heading-h6-medium-line-height)]">
             Here&apos;s what other users say about us
           </p>
-        </Reveal>
+        </header>
       </div>
 
-      <div className="relative w-full pt-1 sm:pt-3 md:pt-4 lg:pt-10">
-        <div className="pointer-events-none absolute left-1/2 top-0 hidden h-[389px] w-full max-w-[762px] -translate-x-1/2 bg-[linear-gradient(90deg,rgba(68,255,154,1)_0%,rgba(68,176,255,1)_23%,rgba(139,68,255,1)_49%,rgba(255,102,68,1)_74%,rgba(235,255,112,1)_100%)] opacity-30 lg:block" />
-        <div
-          className="group relative z-10 flex overflow-hidden"
-          style={
-            {
-              "--gap": "1rem",
-              "--duration": "120s",
-            } as CSSProperties
-          }
-        >
-          {[0, 1].map((setIndex) => (
-            <div
-              key={setIndex}
-              className="animate-marquee flex shrink-0 items-stretch gap-[var(--gap)] pr-[var(--gap)] group-hover:[animation-play-state:paused] motion-reduce:animate-none"
-              {...(setIndex === 1 ? { "aria-hidden": true } : {})}
-            >
-              {testimonials.map((testimonial) => (
-                <TestimonialCard
-                  key={`${setIndex}-${testimonial.name}`}
-                  testimonial={testimonial}
-                  idPrefix={`${setIndex}-${testimonial.name}`}
-                />
-              ))}
-            </div>
-          ))}
-        </div>
-        <div className="pointer-events-none absolute inset-y-0 left-0 z-20 w-6 bg-gradient-to-r from-[#f3f4f6] to-transparent sm:w-10 md:w-16 lg:w-24 xl:w-32" />
-        <div className="pointer-events-none absolute inset-y-0 right-0 z-20 w-6 bg-gradient-to-l from-[#f3f4f6] to-transparent sm:w-10 md:w-16 lg:w-24 xl:w-32" />
-      </div>
+      <TestimonialsMarquee />
 
       <div className="mx-auto mt-8 flex w-full max-w-[1280px] flex-col items-center px-4 sm:mt-20 sm:px-6 lg:px-8">
-        <Reveal
-          delay={0.1}
-          className="flex w-full max-w-[807px] flex-col items-center gap-4 text-center sm:gap-5 md:gap-6"
-        >
+        <div className="flex w-full max-w-[807px] flex-col items-center gap-4 text-center sm:gap-5 md:gap-6">
           <div className="flex w-full flex-col items-center justify-center gap-2">
             <p className="font-inter text-[14px] font-medium leading-[1.5] text-gray-600 sm:text-[15px] md:text-[length:var(--heading-h6-medium-font-size)] md:leading-[var(--heading-h6-medium-line-height)]">
               What are you waiting for?
@@ -447,7 +507,7 @@ export const CustomerTestimonialsSection = () => {
           >
             <GetAppLink>Get the App</GetAppLink>
           </Button>
-        </Reveal>
+        </div>
       </div>
     </section>
   );
