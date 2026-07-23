@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
-import vehicleHealthProPhones from "@/assets/vehicle-health-pro-phones.png";
+import vehicleHealthProPhones from "@/assets/vehicle-health-image.png";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { cn } from "../../../../lib/utils";
 import {
@@ -220,7 +220,7 @@ export const AdvertisementSpotlightSection = () => {
       <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center gap-5 px-4 sm:gap-6 sm:px-6 lg:px-8">
         <div
           ref={scrollContainerRef}
-          className="flex w-full touch-pan-x snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overscroll-x-contain scroll-smooth pb-2 sm:gap-8 lg:gap-12 [-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="flex w-full snap-x snap-mandatory items-stretch gap-4 overflow-x-auto overscroll-x-contain scroll-smooth pb-2 sm:gap-8 lg:gap-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
         >
           {slides.map((slide, index) => {
             if (slide.type === "ads") {

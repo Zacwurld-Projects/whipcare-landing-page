@@ -107,7 +107,7 @@ export const ExploreScreen = () => {
             <div className="relative w-full max-w-[160px] sm:max-w-[180px] lg:max-w-[200px]">
               <video
                 className="pointer-events-none block h-auto w-full"
-                src="/video/vehicle-owners.mp4"
+                src="https://res.cloudinary.com/vlsxeibo/video/upload/v1784794856/vehicle_owners_section_booking_yn2vmj.mp4"
                 autoPlay
                 muted
                 loop
