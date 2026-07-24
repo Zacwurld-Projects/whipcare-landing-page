@@ -148,7 +148,9 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
 
         {filteredPosts.length === 0 ? (
           <p className="py-8 text-center font-inter text-[15px] text-[#6b7280]">
-            No posts match your search.
+            {posts.length === 0
+              ? "No blog posts yet. Check back soon."
+              : "No posts match your search."}
           </p>
         ) : null}
       </div>

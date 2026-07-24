@@ -431,7 +431,7 @@ const TestimonialsMarquee = () => {
       <div
         ref={scrollerRef}
         className={cn(
-          "relative z-10 flex cursor-grab touch-pan-x gap-4 overflow-x-auto overscroll-x-contain pb-1 select-none active:cursor-grabbing",
+          "relative z-10 flex cursor-grab gap-4 overflow-x-auto overscroll-x-contain pb-1 select-none active:cursor-grabbing [touch-action:pan-x_pan-y]",
           "[-webkit-overflow-scrolling:touch] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden",
         )}
         onPointerDown={onPointerDown}
