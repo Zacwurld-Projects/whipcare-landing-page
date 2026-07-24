@@ -7,7 +7,7 @@ import { Card, CardContent } from "../../../../components/ui/card";
 
 const stats = [
   {
-    target: 5,
+    target: 2.5,
     suffix: "k+",
     label: "Customers around the world.",
   },
@@ -41,6 +41,7 @@ const CountUpStat = ({
   suffix: string;
   start: boolean;
 }) => {
+  const decimals = Number.isInteger(target) ? 0 : 1;
   const [value, setValue] = useState(0);
 
   useEffect(() => {
@@ -57,10 +58,13 @@ const CountUpStat = ({
 
     let raf = 0;
     const startedAt = performance.now();
+    const factor = 10 ** decimals;
 
     const tick = (now: number) => {
       const progress = Math.min(1, (now - startedAt) / DURATION_MS);
-      setValue(Math.round(easeOutCubic(progress) * target));
+      setValue(
+        Math.round(easeOutCubic(progress) * target * factor) / factor,
+      );
       if (progress < 1) {
         raf = requestAnimationFrame(tick);
       }
@@ -68,11 +72,11 @@ const CountUpStat = ({
 
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
-  }, [start, target]);
+  }, [decimals, start, target]);
 
   return (
     <>
-      {value}
+      {decimals > 0 ? value.toFixed(decimals) : value}
       {suffix}
     </>
   );
