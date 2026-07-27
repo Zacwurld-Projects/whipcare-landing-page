@@ -1,3 +1,5 @@
+import type { StaticImageData } from "next/image";
+import Image from "next/image";
 import type { ComponentType } from "react";
 import { VehicleWashIcon } from "../ServiceCategoryCardsSection/ServiceCategoryIcons";
 import mosesAvatar from "./moses-avatar.svg";
@@ -24,20 +26,22 @@ const PhotoAvatar = ({
   src,
   alt,
   className,
-}: TestimonialAvatarProps & { src: string }) => (
-  <img
+}: TestimonialAvatarProps & { src: StaticImageData }) => (
+  <Image
     src={src}
     alt={alt ?? ""}
+    width={43}
+    height={43}
     className={className ?? "h-[43px] w-[43px] shrink-0"}
   />
 );
 
 export const MosesTestimonialAvatar = (props: TestimonialAvatarProps) => (
-  <PhotoAvatar src={mosesAvatar.src} {...props} />
+  <PhotoAvatar src={mosesAvatar} {...props} />
 );
 
 export const TosinTestimonialAvatar = (props: TestimonialAvatarProps) => (
-  <PhotoAvatar src={tosinAvatar.src} {...props} />
+  <PhotoAvatar src={tosinAvatar} {...props} />
 );
 
 export const testimonialAvatarMap: Record<
