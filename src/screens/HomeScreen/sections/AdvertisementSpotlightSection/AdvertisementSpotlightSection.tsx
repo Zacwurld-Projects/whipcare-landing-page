@@ -20,6 +20,7 @@ import {
   APP_STORE_URL,
   PLAY_STORE_URL,
 } from "../../../../constants/appLinks";
+import { trackGa4Event } from "../../../../lib/ga4";
 
 const slides = [
   { type: "feature" as const },
@@ -91,6 +92,7 @@ const StoreButtons = () => (
       href={PLAY_STORE_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackGa4Event("download_app_click")}
       className="inline-flex h-auto w-full items-center justify-center gap-1 rounded-lg bg-black px-4 py-2.5 sm:w-auto sm:px-5 sm:py-3"
     >
       <PlayStoreIcon />
@@ -102,6 +104,7 @@ const StoreButtons = () => (
       href={APP_STORE_URL}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackGa4Event("download_app_click")}
       className="inline-flex h-auto w-full items-center justify-center gap-1 rounded-lg bg-black px-4 py-2.5 sm:w-auto sm:px-5 sm:py-3"
     >
       <AppStoreIcon />

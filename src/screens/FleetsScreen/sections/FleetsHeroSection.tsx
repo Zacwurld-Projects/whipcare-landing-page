@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 import frame96 from "@/assets/frame-96.svg";
 import fleetsHeroLaptop from "@/assets/fleets-hero-laptop.png";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Button } from "@/components/ui/button";
+import { trackGa4Event } from "@/lib/ga4";
 
 const LeftCircles = () => (
   <svg
@@ -157,7 +160,10 @@ export const FleetsHeroSection = () => {
               asChild
               className="h-auto w-full max-w-[320px] rounded-lg bg-[#701e00] px-6 py-3.5 hover:bg-[#5a1800] sm:w-auto"
             >
-              <Link href="/coming-soon">
+              <Link
+                href="/coming-soon"
+                onClick={() => trackGa4Event("create_account")}
+              >
                 <span className="font-inter-title-1-semibold font-[number:var(--inter-title-1-semibold-font-weight)] text-[length:var(--inter-title-1-semibold-font-size)] leading-[var(--inter-title-1-semibold-line-height)] tracking-[var(--inter-title-1-semibold-letter-spacing)] text-white [font-style:var(--inter-title-1-semibold-font-style)]">
                   Get Started - Today
                 </span>

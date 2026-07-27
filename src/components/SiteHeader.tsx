@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useCallback, useEffect, useState } from "react";
 import whippLogo from "@/assets/WHIPP_logo.png";
+import { trackGa4Event } from "@/lib/ga4";
 import { GetAppLink } from "./GetAppLink";
 import { Button } from "./ui/button";
 
@@ -143,7 +144,13 @@ export const SiteHeader = ({ active = "Home" }: SiteHeaderProps) => {
             asChild
             className={`${ctaClass} ${widthClass} bg-[#701e00] text-white hover:bg-[#5a1800] ${options?.className ?? ""}`}
           >
-            <Link href="/coming-soon" onClick={closeMobile}>
+            <Link
+              href="/coming-soon"
+              onClick={() => {
+                trackGa4Event("create_account");
+                closeMobile();
+              }}
+            >
               Sign Up
             </Link>
           </Button>

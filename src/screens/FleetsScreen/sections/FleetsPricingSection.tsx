@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { trackGa4Event } from "@/lib/ga4";
 
 type Billing = "monthly" | "yearly";
 
@@ -232,6 +233,7 @@ export const FleetsPricingSection = () => {
                       onClick={(event) => {
                         event.stopPropagation();
                         setSelectedTier(tier.id);
+                        trackGa4Event("book_service_submit", { tier: tier.id });
                       }}
                     >
                       Get started
@@ -314,6 +316,7 @@ export const FleetsPricingSection = () => {
               onClick={(event) => {
                 event.stopPropagation();
                 setSelectedTier("custom");
+                trackGa4Event("book_service_submit", { tier: "custom" });
               }}
             >
               Get started
