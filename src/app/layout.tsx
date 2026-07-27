@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
+import { AppToaster } from "@/components/AppToaster";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { OrganizationJsonLd } from "@/components/OrganizationJsonLd";
 import { SplashGate } from "@/components/Global/SplashGate";
@@ -93,6 +94,7 @@ export default function RootLayout({
           <NavigationProgress />
           <OrganizationJsonLd />
           {children}
+          <AppToaster />
         </SplashGate>
       </body>
     </html>

@@ -27,39 +27,34 @@ export type BlogPost = {
   publishedAt: string;
   updatedAt: string;
   readingTimeMinutes: number;
+  htmlContent: string;
   content: BlogArticleSection[];
 };
 
-export const blogPosts: BlogPost[] = [];
-
-export const blogCategories = [
-  { id: "all", label: "All", count: blogPosts.length },
+export const blogCategoryOptions = [
+  { id: "all", label: "All" },
   { id: "general", label: "General Vehicle Maintenance" },
   { id: "car", label: "Car Tips" },
   { id: "truck", label: "Truck Tips" },
   { id: "motorcycle", label: "Motorcycle Tips" },
 ] as const;
 
-export const getBlogPostBySlug = (slug: string) =>
-  blogPosts.find((post) => post.slug === slug);
-
-export const getRelatedPosts = (slug: string, limit = 3) => {
-  const current = getBlogPostBySlug(slug);
-  if (!current) return blogPosts.slice(0, limit);
-
-  const sameCategory = blogPosts.filter(
-    (post) => post.slug !== slug && post.categoryId === current.categoryId
-  );
-  const others = blogPosts.filter(
-    (post) =>
-      post.slug !== slug && post.categoryId !== current.categoryId
+export const getBlogCategories = (posts: BlogPost[]) =>
+  blogCategoryOptions.map((category) =>
+    category.id === "all"
+      ? { ...category, count: posts.length }
+      : category
   );
 
-  return [...sameCategory, ...others].slice(0, limit);
-};
+export const getBlogWordCount = (post: BlogPost) => {
+  if (post.htmlContent) {
+    return post.htmlContent
+      .replace(/<[^>]+>/g, " ")
+      .split(/\s+/)
+      .filter(Boolean).length;
+  }
 
-export const getBlogWordCount = (post: BlogPost) =>
-  post.content.reduce((count, section) => {
+  return post.content.reduce((count, section) => {
     const text = [
       ...section.paragraphs,
       ...(section.bullets ?? []),
@@ -68,3 +63,4 @@ export const getBlogWordCount = (post: BlogPost) =>
 
     return count + text.split(/\s+/).filter(Boolean).length;
   }, 0);
+};

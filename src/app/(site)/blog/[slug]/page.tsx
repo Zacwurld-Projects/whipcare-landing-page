@@ -2,27 +2,34 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BlogPostingJsonLd } from "@/components/BlogPostingJsonLd";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import {
+  fetchBlogBySlug,
+  fetchBlogs,
+  fetchRelatedPosts,
+} from "@/lib/blogs";
 import { buildPageMetadata } from "@/lib/seo";
 import { BlogPostScreen } from "@/screens/BlogScreen/BlogPostScreen";
-import {
-  blogPosts,
-  getBlogPostBySlug,
-  getRelatedPosts,
-} from "@/screens/BlogScreen/blogData";
+
+export const revalidate = 60;
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
 };
 
-export function generateStaticParams() {
-  return blogPosts.map((post) => ({ slug: post.slug }));
+export async function generateStaticParams() {
+  try {
+    const posts = await fetchBlogs(1, 100, "newest");
+    return posts.map((post) => ({ slug: post.slug }));
+  } catch {
+    return [];
+  }
 }
 
 export async function generateMetadata({
   params,
 }: BlogPostPageProps): Promise<Metadata> {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await fetchBlogBySlug(slug);
 
   if (!post) {
     return buildPageMetadata({
@@ -49,13 +56,13 @@ export async function generateMetadata({
 
 export default async function BlogPostPage({ params }: BlogPostPageProps) {
   const { slug } = await params;
-  const post = getBlogPostBySlug(slug);
+  const post = await fetchBlogBySlug(slug);
 
   if (!post) {
     notFound();
   }
 
-  const relatedPosts = getRelatedPosts(slug);
+  const relatedPosts = await fetchRelatedPosts(slug);
 
   return (
     <>

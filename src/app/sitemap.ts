@@ -1,9 +1,10 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/constants/site";
-import { blogPosts } from "@/screens/BlogScreen/blogData";
+import { fetchBlogs } from "@/lib/blogs";
 
-export default function sitemap(): MetadataRoute.Sitemap {
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const lastModified = new Date();
+  const posts = await fetchBlogs(1, 100, "newest");
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
@@ -20,9 +21,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: path === "" ? 1 : path === "/fleets" || path === "/explore" ? 0.9 : 0.7,
   }));
 
-  const blogRoutes: MetadataRoute.Sitemap = blogPosts.map((post) => ({
+  const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
-    lastModified,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
     changeFrequency: "monthly",
     priority: 0.6,
   }));

@@ -1,8 +1,19 @@
 "use client";
 
 import Image from "next/image";
-import { useCallback, useEffect, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+  type FormEvent,
+} from "react";
+import toast from "react-hot-toast";
 import vehicleHealthProPhones from "@/assets/vehicle-health-image.png";
+import {
+  parseEmailListForm,
+  submitEmailList,
+} from "@/lib/emailList";
 import { Card, CardContent } from "../../../../components/ui/card";
 import { cn } from "../../../../lib/utils";
 import {
@@ -100,6 +111,99 @@ const StoreButtons = () => (
     </a>
   </div>
 );
+
+const EmailSignupForm = () => {
+  const [emailError, setEmailError] = useState<string | undefined>();
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+    const parsed = parseEmailListForm({
+      email: String(formData.get("email") || ""),
+    });
+
+    if (!parsed.success) {
+      setEmailError(parsed.fieldErrors.email);
+      toast.error(parsed.formError);
+      return;
+    }
+
+    setEmailError(undefined);
+    setIsSubmitting(true);
+
+    try {
+      const result = await submitEmailList(parsed.data);
+      toast.success(result.message || "Email added to mailing list");
+      form.reset();
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Failed to join mailing list. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <form
+      className="flex w-full max-w-[438px] flex-col items-stretch gap-2 sm:gap-3"
+      noValidate
+      onSubmit={handleSubmit}
+    >
+      <div className="flex w-full flex-col items-stretch gap-3 sm:flex-row sm:items-start sm:gap-4">
+        <div className="min-w-0 flex-1">
+          <label htmlFor="spotlight-email" className="sr-only">
+            Email address
+          </label>
+          <input
+            id="spotlight-email"
+            type="email"
+            name="email"
+            autoComplete="email"
+            placeholder="Enter your email"
+            maxLength={254}
+            disabled={isSubmitting}
+            aria-invalid={Boolean(emailError)}
+            aria-describedby={
+              emailError ? "spotlight-email-error" : undefined
+            }
+            onChange={() => {
+              if (emailError) setEmailError(undefined);
+            }}
+            className={cn(
+              "box-border min-h-[56px] w-full min-w-0 appearance-none rounded-xl border-0 bg-neutral-100 px-4 py-4 font-inter text-base font-normal leading-normal text-[#111928] outline-none placeholder:text-gray-500 focus:ring-2 disabled:cursor-not-allowed disabled:opacity-70 sm:min-h-[52px] sm:rounded-lg sm:py-3 sm:text-[length:var(--inter-title-1-regular-font-size)]",
+              emailError
+                ? "ring-2 ring-[#f87171] focus:ring-[#f87171]"
+                : "focus:ring-white/40"
+            )}
+          />
+          {emailError ? (
+            <p
+              id="spotlight-email-error"
+              role="alert"
+              className="mt-1.5 font-inter text-[12px] text-[#fecaca] sm:text-[13px]"
+            >
+              {emailError}
+            </p>
+          ) : null}
+        </div>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="flex min-h-[56px] shrink-0 items-center justify-center rounded-xl bg-gray-100 px-5 font-inter text-base font-semibold text-[#701e00] disabled:cursor-not-allowed disabled:opacity-70 sm:min-h-[52px] sm:rounded-lg sm:px-6 sm:text-[length:var(--inter-body-semibold-font-size)]"
+        >
+          {isSubmitting ? "Submitting..." : "Stay Updated"}
+        </button>
+      </div>
+    </form>
+  );
+};
 
 const VehicleHealthSlide = () => (
   <Card className="w-full min-w-0 shrink-0 basis-full snap-center snap-always overflow-hidden rounded-[20px] border-0 bg-[#711E00] shadow-none sm:rounded-[32px]">
@@ -262,28 +366,7 @@ export const AdvertisementSpotlightSection = () => {
                           your way!
                         </p>
                       </header>
-                      <form
-                        className="flex w-full max-w-[438px] flex-col items-stretch gap-3 sm:flex-row sm:items-center sm:gap-4"
-                        onSubmit={(e) => e.preventDefault()}
-                      >
-                        <label htmlFor="spotlight-email" className="sr-only">
-                          Email address
-                        </label>
-                        <input
-                          id="spotlight-email"
-                          type="email"
-                          name="email"
-                          autoComplete="email"
-                          placeholder="Enter your email"
-                          className="box-border min-h-[56px] w-full min-w-0 flex-1 appearance-none rounded-xl border-0 bg-neutral-100 px-4 py-4 font-inter text-base font-normal leading-normal text-[#111928] outline-none placeholder:text-gray-500 focus:ring-2 focus:ring-white/40 sm:min-h-[52px] sm:rounded-lg sm:py-3 sm:text-[length:var(--inter-title-1-regular-font-size)]"
-                        />
-                        <button
-                          type="submit"
-                          className="flex min-h-[56px] shrink-0 items-center justify-center rounded-xl bg-gray-100 px-5 font-inter text-base font-semibold text-[#701e00] sm:min-h-[52px] sm:rounded-lg sm:px-6 sm:text-[length:var(--inter-body-semibold-font-size)]"
-                        >
-                          Stay Updated
-                        </button>
-                      </form>
+                      <EmailSignupForm />
                     </div>
                     <StoreButtons />
                   </div>

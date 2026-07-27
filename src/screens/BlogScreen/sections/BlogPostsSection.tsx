@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
 import {
-  blogCategories,
+  getBlogCategories,
   type BlogCategoryId,
   type BlogPost,
 } from "../blogData";
@@ -18,6 +18,8 @@ type BlogPostsSectionProps = {
 export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
   const [activeCategory, setActiveCategory] = useState<CategoryId>("all");
   const [query, setQuery] = useState("");
+
+  const blogCategories = useMemo(() => getBlogCategories(posts), [posts]);
 
   const filteredPosts = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
