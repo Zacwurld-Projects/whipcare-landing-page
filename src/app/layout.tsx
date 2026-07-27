@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
-import Script from "next/script";
 import { Inter } from "next/font/google";
 import { AppToaster } from "@/components/AppToaster";
+import { CookieConsentGate } from "@/components/Global/CookieConsentGate";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { OrganizationJsonLd } from "@/components/OrganizationJsonLd";
 import { SplashGate } from "@/components/Global/SplashGate";
@@ -93,18 +93,7 @@ export default function RootLayout({
   return (
     <html lang="en-NG" className={inter.variable}>
       <body className={`${inter.className} font-inter antialiased`}>
-        <Script
-          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${GA_MEASUREMENT_ID}');
-          `}
-        </Script>
+        <CookieConsentGate measurementId={GA_MEASUREMENT_ID} />
         <SplashGate>
           <NavigationProgress />
           <OrganizationJsonLd />
