@@ -1,6 +1,4 @@
 import { cache } from "react";
-import blogDetailHero from "@/assets/blog-detail-hero.png";
-import blogPostThumb from "@/assets/blog-post-thumb.png";
 import { API_BASE_URL } from "@/lib/api";
 import { sanitizeBlogHtml } from "@/lib/sanitizeHtml";
 import type {
@@ -14,6 +12,7 @@ type ApiBlogListItem = {
   title: string;
   slug: string;
   excerpt: string;
+  coverImage?: string | null;
   categories: string[];
   status: string;
   createdAt: string;
@@ -103,9 +102,15 @@ function enrichHtmlContent(html: string): {
   return { htmlContent, content: sections };
 }
 
+function resolveCoverImage(coverImage?: string | null) {
+  const trimmed = coverImage?.trim();
+  return trimmed || null;
+}
+
 function mapListItemToPost(item: ApiBlogListItem): BlogPost {
   const category = resolveCategory(item.categories);
   const publishedAt = item.publishedAt || item.createdAt;
+  const cover = resolveCoverImage(item.coverImage);
 
   return {
     id: item.id,
@@ -115,8 +120,8 @@ function mapListItemToPost(item: ApiBlogListItem): BlogPost {
     title: item.title,
     excerpt: item.excerpt,
     description: item.excerpt,
-    image: blogPostThumb,
-    heroImage: blogDetailHero,
+    image: cover,
+    heroImage: cover,
     publishedAt,
     updatedAt: publishedAt,
     readingTimeMinutes: 1,

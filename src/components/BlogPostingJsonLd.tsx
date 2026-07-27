@@ -1,14 +1,15 @@
 import { SITE_NAME, SITE_URL } from "@/constants/site";
 import type { BlogPost } from "@/screens/BlogScreen/blogData";
-import { getBlogWordCount } from "@/screens/BlogScreen/blogData";
+import { getBlogImageAbsoluteUrl, getBlogWordCount } from "@/screens/BlogScreen/blogData";
 
 export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
+  const image = getBlogImageAbsoluteUrl(post.heroImage, SITE_URL);
   const data = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     headline: post.title,
     description: post.description,
-    image: `${SITE_URL}${post.heroImage.src}`,
+    ...(image ? { image } : {}),
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
     author: {

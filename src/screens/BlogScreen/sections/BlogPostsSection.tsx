@@ -1,8 +1,8 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { BlogCoverImage } from "@/components/BlogCoverImage";
 import {
   getBlogCategories,
   type BlogCategoryId,
@@ -124,7 +124,7 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
             <article key={post.id} className="flex flex-col gap-3 text-left">
               <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-3">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
-                  <Image
+                  <BlogCoverImage
                     src={post.image}
                     alt={post.title}
                     fill

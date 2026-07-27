@@ -1,6 +1,7 @@
 import Image from "next/image";
 import frame1618873200 from "@/assets/Frame 1618873200.png";
 import frame1618873202 from "@/assets/Frame 1618873202.png";
+import { BlogCoverImage } from "@/components/BlogCoverImage";
 import { SiteHeader } from "@/components/SiteHeader";
 import { AdvertisementSpotlightSection } from "../HomeScreen/sections/AdvertisementSpotlightSection";
 import { FooterNavigationSection } from "../HomeScreen/sections/FooterNavigationSection";
@@ -78,7 +79,7 @@ export const BlogPostScreen = ({ post, relatedPosts }: BlogPostScreenProps) => {
               </div>
 
               <div className="relative mx-auto mt-8 aspect-[16/10] w-full max-w-[1200px] sm:mt-10 sm:aspect-[21/9] lg:mt-14">
-                <Image
+                <BlogCoverImage
                   className="rounded-2xl object-cover object-center sm:rounded-[20px]"
                   alt={`${post.title} — ${post.categoryLabel} article hero image`}
                   src={post.heroImage}

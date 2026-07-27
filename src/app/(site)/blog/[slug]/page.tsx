@@ -9,6 +9,7 @@ import {
 } from "@/lib/blogs";
 import { buildPageMetadata } from "@/lib/seo";
 import { BlogPostScreen } from "@/screens/BlogScreen/BlogPostScreen";
+import { getBlogImageUrl } from "@/screens/BlogScreen/blogData";
 
 export const revalidate = 60;
 
@@ -50,7 +51,9 @@ export async function generateMetadata({
       "car care tips Nigeria",
       "Whipcare blog",
     ],
-    image: post.heroImage.src,
+    ...(getBlogImageUrl(post.heroImage)
+      ? { image: getBlogImageUrl(post.heroImage)! }
+      : {}),
   });
 }
 

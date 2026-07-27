@@ -6,6 +6,8 @@ export type BlogCategoryId =
   | "truck"
   | "motorcycle";
 
+export type BlogImage = StaticImageData | string;
+
 export type BlogArticleSection = {
   id: string;
   title: string;
@@ -22,14 +24,28 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   description: string;
-  image: StaticImageData;
-  heroImage: StaticImageData;
+  image: BlogImage | null;
+  heroImage: BlogImage | null;
   publishedAt: string;
   updatedAt: string;
   readingTimeMinutes: number;
   htmlContent: string;
   content: BlogArticleSection[];
 };
+
+export function getBlogImageUrl(image: BlogImage | null): string | null {
+  if (!image) return null;
+  return typeof image === "string" ? image : image.src;
+}
+
+export function getBlogImageAbsoluteUrl(
+  image: BlogImage | null,
+  siteUrl: string
+): string | null {
+  const url = getBlogImageUrl(image);
+  if (!url) return null;
+  return url.startsWith("http") ? url : `${siteUrl}${url}`;
+}
 
 export const blogCategoryOptions = [
   { id: "all", label: "All" },
