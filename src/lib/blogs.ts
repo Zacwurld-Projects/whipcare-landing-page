@@ -2,6 +2,7 @@ import { cache } from "react";
 import blogDetailHero from "@/assets/blog-detail-hero.png";
 import blogPostThumb from "@/assets/blog-post-thumb.png";
 import { API_BASE_URL } from "@/lib/api";
+import { sanitizeBlogHtml } from "@/lib/sanitizeHtml";
 import type {
   BlogArticleSection,
   BlogCategoryId,
@@ -126,14 +127,15 @@ function mapListItemToPost(item: ApiBlogListItem): BlogPost {
 
 function mapDetailToPost(item: ApiBlogDetail): BlogPost {
   const base = mapListItemToPost(item);
-  const { htmlContent, content } = enrichHtmlContent(item.content || "");
+  const cleanHtml = sanitizeBlogHtml(item.content || "");
+  const { htmlContent, content } = enrichHtmlContent(cleanHtml);
 
   return {
     ...base,
     title: item.pageTitle || item.title,
     description: item.pageDescription || item.excerpt,
     updatedAt: item.updatedAt || item.publishedAt || item.createdAt,
-    readingTimeMinutes: estimateReadingMinutes(item.content || item.excerpt),
+    readingTimeMinutes: estimateReadingMinutes(cleanHtml || item.excerpt),
     htmlContent,
     content,
   };
