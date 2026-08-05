@@ -57,11 +57,10 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`relative -mb-px whitespace-nowrap pb-3 font-inter text-[14px] leading-[1.4] tracking-[0] transition-colors sm:text-[15px] ${
-                      isActive
+                    className={`relative -mb-px whitespace-nowrap pb-3 font-inter text-[14px] leading-[1.4] tracking-[0] transition-colors sm:text-[15px] ${isActive
                         ? "font-semibold text-[#111928]"
                         : "font-medium text-[#6b7280] hover:text-[#111928]"
-                    }`}
+                      }`}
                   >
                     <span className="inline-flex items-center gap-1.5">
                       <span>{category.label}</span>
@@ -128,7 +127,7 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                   />
                 </div>
