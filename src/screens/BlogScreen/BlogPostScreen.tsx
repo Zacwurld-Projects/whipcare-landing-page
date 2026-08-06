@@ -80,7 +80,7 @@ export const BlogPostScreen = ({ post, relatedPosts }: BlogPostScreenProps) => {
 
               <div className="relative mx-auto mt-8 aspect-[16/10] w-full max-w-[1200px] sm:mt-10 sm:aspect-[21/9] lg:mt-14">
                 <BlogCoverImage
-                  className="rounded-2xl object-cover object-center sm:rounded-[20px]"
+                  className="rounded-2xl object-contain object-center sm:rounded-[20px]"
                   alt={`${post.title} — ${post.categoryLabel} article hero image`}
                   src={post.heroImage}
                   fill
