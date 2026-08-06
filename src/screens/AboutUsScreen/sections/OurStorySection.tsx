@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ourStoryChecklist from "@/assets/our-story-checklist.png";
 import missionVision from "@/assets/mission-vision.png";
+import strings from "@/assets/strings.png";
 
 const storyBlocks = [
   {

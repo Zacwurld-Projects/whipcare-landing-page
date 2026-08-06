@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
+import { fetchBlogs } from "@/lib/blogs";
 import { buildPageMetadata } from "@/lib/seo";
 import { BlogScreen } from "@/screens/BlogScreen";
-import { blogPosts } from "@/screens/BlogScreen/blogData";
+
+export const revalidate = 60;
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Blog & Vehicle Care Tips",
@@ -12,7 +14,9 @@ export const metadata: Metadata = buildPageMetadata({
   keywords: ["car maintenance tips", "vehicle care blog"],
 });
 
-export default function BlogPage() {
+export default async function BlogPage() {
+  const posts = await fetchBlogs(1, 20, "newest");
+
   return (
     <>
       <BreadcrumbJsonLd
@@ -21,7 +25,7 @@ export default function BlogPage() {
           { name: "Blog", path: "/blog" },
         ]}
       />
-      <BlogScreen posts={blogPosts} />
+      <BlogScreen posts={posts} />
     </>
   );
 }

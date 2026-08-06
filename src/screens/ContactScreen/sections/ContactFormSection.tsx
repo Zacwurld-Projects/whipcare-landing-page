@@ -2,19 +2,30 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
+import toast from "react-hot-toast";
 import contactHero from "@/assets/contact-hero.png";
 import {
   CONTACT_ADDRESS,
   CONTACT_EMAIL,
   CONTACT_PHONES,
 } from "@/constants/contact";
+import {
+  parseContactUsForm,
+  submitContactUs,
+  type ContactUsFieldErrors,
+} from "@/lib/contact";
 
 const fieldClassName =
-  "h-12 w-full rounded-md border border-[#d1d5db] bg-white px-4 font-inter text-[15px] leading-[1.4] text-[#111928] outline-none placeholder:text-[#9ca3af] focus:border-[#701e00] focus:ring-1 focus:ring-[#701e00] sm:h-[52px]";
+  "h-12 w-full rounded-md border bg-white px-4 font-inter text-[15px] leading-[1.4] text-[#111928] outline-none placeholder:text-[#9ca3af] focus:ring-1 disabled:cursor-not-allowed disabled:opacity-70 sm:h-[52px]";
 
 const textareaClassName =
-  "min-h-[112px] max-h-[240px] w-full resize-y rounded-md border border-[#d1d5db] bg-white px-4 py-3 font-inter text-[15px] leading-[1.4] text-[#111928] outline-none placeholder:text-[#9ca3af] focus:border-[#701e00] focus:ring-1 focus:ring-[#701e00] sm:min-h-[120px]";
+  "min-h-[112px] w-full resize-none rounded-md border bg-white px-4 py-3 font-inter text-[15px] leading-[1.4] text-[#111928] outline-none placeholder:text-[#9ca3af] focus:ring-1 disabled:cursor-not-allowed disabled:opacity-70 sm:min-h-[120px]";
+
+const fieldOkClassName =
+  "border-[#d1d5db] focus:border-[#701e00] focus:ring-[#701e00]";
+const fieldErrorClassName =
+  "border-[#f87171] focus:border-[#dc2626] focus:ring-[#dc2626]";
 
 const followUpSuggestions = [
   { label: "Browse FAQs", href: "/faq" },
@@ -24,6 +35,56 @@ const followUpSuggestions = [
 
 export const ContactFormSection = () => {
   const [submitted, setSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<ContactUsFieldErrors>({});
+
+  const clearFieldError = (field: keyof ContactUsFieldErrors) => {
+    setErrors((current) => {
+      if (!current[field]) return current;
+      const next = { ...current };
+      delete next[field];
+      return next;
+    });
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (isSubmitting) return;
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    const parsed = parseContactUsForm({
+      name: String(formData.get("name") || ""),
+      email: String(formData.get("email") || ""),
+      phoneNumber: String(formData.get("phone") || ""),
+      message: String(formData.get("message") || ""),
+    });
+
+    if (!parsed.success) {
+      setErrors(parsed.fieldErrors);
+      toast.error(parsed.formError);
+      return;
+    }
+
+    setErrors({});
+    setIsSubmitting(true);
+
+    try {
+      const result = await submitContactUs(parsed.data);
+      toast.success(result.message || "Message sent successfully");
+      setSubmitted(true);
+      form.reset();
+    } catch (error) {
+      toast.error(
+        error instanceof Error
+          ? error.message
+          : "Failed to send message. Please try again."
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <section
@@ -82,10 +143,8 @@ export const ContactFormSection = () => {
               <form
                 className="mt-7 flex w-full max-w-[460px] flex-col gap-3.5"
                 aria-describedby="contact-form-note"
-                onSubmit={(event) => {
-                  event.preventDefault();
-                  setSubmitted(true);
-                }}
+                noValidate
+                onSubmit={handleSubmit}
               >
                 <p id="contact-form-note" className="sr-only">
                   Required fields are marked with an asterisk.
@@ -102,11 +161,28 @@ export const ContactFormSection = () => {
                     id="contact-name"
                     name="name"
                     type="text"
-                    required
                     autoComplete="name"
                     placeholder="Your full name"
-                    className={fieldClassName}
+                    maxLength={80}
+                    disabled={isSubmitting}
+                    aria-invalid={Boolean(errors.name)}
+                    aria-describedby={
+                      errors.name ? "contact-name-error" : undefined
+                    }
+                    onChange={() => clearFieldError("name")}
+                    className={`${fieldClassName} ${
+                      errors.name ? fieldErrorClassName : fieldOkClassName
+                    }`}
                   />
+                  {errors.name ? (
+                    <p
+                      id="contact-name-error"
+                      role="alert"
+                      className="font-inter text-[12px] text-[#dc2626]"
+                    >
+                      {errors.name}
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="flex flex-col gap-1.5">
@@ -114,7 +190,7 @@ export const ContactFormSection = () => {
                     htmlFor="contact-email"
                     className="font-inter text-[13px] font-medium text-[#374151] sm:text-[14px]"
                   >
-                    Email
+                    Email <span aria-hidden="true">*</span>
                   </label>
                   <input
                     id="contact-email"
@@ -122,8 +198,26 @@ export const ContactFormSection = () => {
                     type="email"
                     autoComplete="email"
                     placeholder="you@example.com"
-                    className={fieldClassName}
+                    maxLength={254}
+                    disabled={isSubmitting}
+                    aria-invalid={Boolean(errors.email)}
+                    aria-describedby={
+                      errors.email ? "contact-email-error" : undefined
+                    }
+                    onChange={() => clearFieldError("email")}
+                    className={`${fieldClassName} ${
+                      errors.email ? fieldErrorClassName : fieldOkClassName
+                    }`}
                   />
+                  {errors.email ? (
+                    <p
+                      id="contact-email-error"
+                      role="alert"
+                      className="font-inter text-[12px] text-[#dc2626]"
+                    >
+                      {errors.email}
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="flex flex-col gap-1.5">
@@ -137,11 +231,45 @@ export const ContactFormSection = () => {
                     id="contact-phone"
                     name="phone"
                     type="tel"
-                    required
                     autoComplete="tel"
-                    placeholder="+234 800 000 0000"
-                    className={fieldClassName}
+                    inputMode="numeric"
+                    pattern="[0-9]*"
+                    placeholder="08000000000"
+                    maxLength={11}
+                    disabled={isSubmitting}
+                    aria-invalid={Boolean(errors.phoneNumber)}
+                    aria-describedby={
+                      errors.phoneNumber ? "contact-phone-error" : undefined
+                    }
+                    onChange={(event) => {
+                      event.currentTarget.value =
+                        event.currentTarget.value.replace(/\D/g, "").slice(0, 11);
+                      clearFieldError("phoneNumber");
+                    }}
+                    onPaste={(event) => {
+                      event.preventDefault();
+                      const digits = event.clipboardData
+                        .getData("text")
+                        .replace(/\D/g, "")
+                        .slice(0, 11);
+                      event.currentTarget.value = digits;
+                      clearFieldError("phoneNumber");
+                    }}
+                    className={`${fieldClassName} ${
+                      errors.phoneNumber
+                        ? fieldErrorClassName
+                        : fieldOkClassName
+                    }`}
                   />
+                  {errors.phoneNumber ? (
+                    <p
+                      id="contact-phone-error"
+                      role="alert"
+                      className="font-inter text-[12px] text-[#dc2626]"
+                    >
+                      {errors.phoneNumber}
+                    </p>
+                  ) : null}
                 </div>
 
                 <div className="flex flex-col gap-1.5">
@@ -149,22 +277,41 @@ export const ContactFormSection = () => {
                     htmlFor="contact-message"
                     className="font-inter text-[13px] font-medium text-[#374151] sm:text-[14px]"
                   >
-                    Message
+                    Message <span aria-hidden="true">*</span>
                   </label>
                   <textarea
                     id="contact-message"
                     name="message"
                     rows={4}
                     placeholder="How can we help you?"
-                    className={textareaClassName}
+                    maxLength={2000}
+                    disabled={isSubmitting}
+                    aria-invalid={Boolean(errors.message)}
+                    aria-describedby={
+                      errors.message ? "contact-message-error" : undefined
+                    }
+                    onChange={() => clearFieldError("message")}
+                    className={`${textareaClassName} ${
+                      errors.message ? fieldErrorClassName : fieldOkClassName
+                    }`}
                   />
+                  {errors.message ? (
+                    <p
+                      id="contact-message-error"
+                      role="alert"
+                      className="font-inter text-[12px] text-[#dc2626]"
+                    >
+                      {errors.message}
+                    </p>
+                  ) : null}
                 </div>
 
                 <button
                   type="submit"
-                  className="mt-1 h-12 w-full rounded-md bg-[#701e00] font-inter text-[14px] font-semibold uppercase tracking-[0.06em] text-white transition-colors hover:bg-[#5a1800] sm:h-[52px] sm:text-[15px]"
+                  disabled={isSubmitting}
+                  className="mt-1 h-12 w-full rounded-md bg-[#701e00] font-inter text-[14px] font-semibold uppercase tracking-[0.06em] text-white transition-colors hover:bg-[#5a1800] disabled:cursor-not-allowed disabled:opacity-70 sm:h-[52px] sm:text-[15px]"
                 >
-                  Send message
+                  {isSubmitting ? "Sending..." : "Send message"}
                 </button>
               </form>
             )}

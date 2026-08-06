@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Reveal } from "@/components/Reveal";
 import { Card, CardContent } from "../../../../components/ui/card";
 import {
   ToggleGroup,
@@ -70,12 +69,9 @@ const audienceOptions = [
   },
 ] as const;
 
-const STEP_INTERVAL_MS = 4500;
-
 export const ServiceExplorerSection = () => {
   const [selectedAudience, setSelectedAudience] = useState("vehicle-owner");
   const [activeStepIndex, setActiveStepIndex] = useState(0);
-  const [isPaused, setIsPaused] = useState(false);
 
   const steps =
     selectedAudience === "vehicle-owner"
@@ -86,15 +82,6 @@ export const ServiceExplorerSection = () => {
     setActiveStepIndex(0);
   }, [selectedAudience]);
 
-  useEffect(() => {
-    if (isPaused) return;
-
-    const interval = window.setInterval(() => {
-      setActiveStepIndex((current) => (current + 1) % steps.length);
-    }, STEP_INTERVAL_MS);
-
-    return () => window.clearInterval(interval);
-  }, [isPaused, steps.length]);
 
   return (
     <section
@@ -102,8 +89,7 @@ export const ServiceExplorerSection = () => {
       className="w-full bg-white px-4 py-12 sm:px-6 sm:py-14 lg:px-8 lg:py-16"
     >
       <div className="mx-auto max-w-[1280px]">
-        <Reveal>
-          <Card className="rounded-2xl border-0 bg-black text-white shadow-none sm:rounded-[32px]">
+                  <Card className="rounded-2xl border-0 bg-black text-white shadow-none sm:rounded-[32px]">
             <CardContent className="p-5 sm:p-8 lg:p-16">
               <div className="flex flex-col gap-8 lg:grid lg:grid-cols-[minmax(0,231px)_minmax(0,1fr)] lg:items-stretch lg:gap-12">
                 <div className="order-last flex w-full max-w-none flex-col justify-between gap-8 lg:order-none lg:max-w-[231px">
@@ -162,16 +148,8 @@ export const ServiceExplorerSection = () => {
 
                 <div
                   className="order-first flex flex-col items-center gap-6 lg:order-none lg:gap-8"
-                  onMouseEnter={() => setIsPaused(true)}
-                  onMouseLeave={() => setIsPaused(false)}
-                  onFocusCapture={() => setIsPaused(true)}
-                  onBlurCapture={(event) => {
-                    if (!event.currentTarget.contains(event.relatedTarget)) {
-                      setIsPaused(false);
-                    }
-                  }}
                 >
-                  <p className="text-center font-inter text-[16px] font-regular leading-[1.4] text-white sm:text-[16px] lg:text-[18px]">
+                  <p className="text-center font-inter text-[16px] font-normal leading-[1.4] text-white sm:text-[16px] lg:text-[18px]">
                     {selectedAudience === "vehicle-owner"
                       ? "Here is a step-by-step guide on how to use Whipcare as a Vehicle Owner:"
                       : "Here is a step-by-step guide on how to use Whipcare as a Service Provider:"}
@@ -188,7 +166,7 @@ export const ServiceExplorerSection = () => {
                             onClick={() => setActiveStepIndex(index)}
                             aria-expanded={isActive}
                             className={cn(
-                              "w-full rounded-lg text-left transition-all duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70",
+                              "w-full rounded-lg text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70",
                               isActive
                                 ? "border border-white bg-[#ffffff1f] opacity-100 shadow-[8px_8px_0px_#d1d5dc]"
                                 : "border border-transparent bg-[#ffffff14] opacity-60 shadow-[0px_4px_4px_#00000040] hover:opacity-80",
@@ -202,26 +180,17 @@ export const ServiceExplorerSection = () => {
                                 <span className="font-inter text-[18px] font-semibold leading-[1.2] text-white sm:text-[22px] lg:text-[24px]">
                                   {step.title}
                                 </span>
-                                <div
-                                  className={cn(
-                                    "grid w-full transition-[grid-template-rows,opacity] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)]",
-                                    isActive
-                                      ? "grid-rows-[1fr] opacity-100"
-                                      : "grid-rows-[0fr] opacity-0",
-                                  )}
-                                >
-                                  <div className="overflow-hidden">
-                                    <p className="max-w-[531px] font-inter text-[14px] font-medium leading-[1.5] text-gray-200 sm:text-[16px] lg:text-[18px]">
-                                      {step.description}
-                                    </p>
-                                  </div>
-                                </div>
+                                {isActive && (
+                                  <p className="max-w-[531px] font-inter text-[14px] font-medium leading-[1.5] text-gray-200 sm:text-[16px] lg:text-[18px]">
+                                    {step.description}
+                                  </p>
+                                )}
                               </div>
                               <span
                                 aria-hidden="true"
                                 className={cn(
-                                  "mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-white/80 text-[11px] font-semibold transition-transform duration-500",
-                                  isActive && "scale-110 bg-white text-black",
+                                  "mt-1 flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-white/80 text-[11px] font-semibold",
+                                  isActive && "bg-white text-black",
                                 )}
                               >
                                 {index + 1}
@@ -236,7 +205,6 @@ export const ServiceExplorerSection = () => {
               </div>
             </CardContent>
           </Card>
-        </Reveal>
       </div>
     </section>
   );

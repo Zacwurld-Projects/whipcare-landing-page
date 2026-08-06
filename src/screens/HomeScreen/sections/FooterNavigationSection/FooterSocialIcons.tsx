@@ -2,14 +2,13 @@ import type { SVGProps } from "react";
 
 type IconProps = SVGProps<SVGSVGElement>;
 
-export const FacebookIcon = (props: IconProps) => (
+export const FacebookIcon = ({ className, ...props }: IconProps) => (
   <svg
-    width="30"
-    height="30"
     viewBox="0 0 30 30"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    className={className ?? "h-6 w-6 sm:h-7 sm:w-7 md:h-[30px] md:w-[30px]"}
     {...props}
   >
     <path
@@ -19,14 +18,13 @@ export const FacebookIcon = (props: IconProps) => (
   </svg>
 );
 
-export const InstagramIcon = (props: IconProps) => (
+export const InstagramIcon = ({ className, ...props }: IconProps) => (
   <svg
-    width="27"
-    height="27"
     viewBox="0 0 27 27"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    className={className ?? "h-[22px] w-[22px] sm:h-6 sm:w-6 md:h-[27px] md:w-[27px]"}
     {...props}
   >
     <path
@@ -36,14 +34,13 @@ export const InstagramIcon = (props: IconProps) => (
   </svg>
 );
 
-export const XIcon = (props: IconProps) => (
+export const XIcon = ({ className, ...props }: IconProps) => (
   <svg
-    width="30"
-    height="30"
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
     aria-hidden="true"
+    className={className ?? "h-6 w-6 sm:h-7 sm:w-7 md:h-[30px] md:w-[30px]"}
     {...props}
   >
     <path

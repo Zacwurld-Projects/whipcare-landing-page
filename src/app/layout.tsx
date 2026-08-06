@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Inter } from "next/font/google";
+import { AppToaster } from "@/components/AppToaster";
+import { CookieConsentGate } from "@/components/Global/CookieConsentGate";
 import { NavigationProgress } from "@/components/NavigationProgress";
 import { OrganizationJsonLd } from "@/components/OrganizationJsonLd";
 import { SplashGate } from "@/components/Global/SplashGate";
@@ -19,6 +21,8 @@ const inter = Inter({
   variable: "--font-inter",
   display: "swap",
 });
+
+const GA_MEASUREMENT_ID = "G-8FSELRXSGB";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -89,10 +93,12 @@ export default function RootLayout({
   return (
     <html lang="en-NG" className={inter.variable}>
       <body className={`${inter.className} font-inter antialiased`}>
+        <CookieConsentGate measurementId={GA_MEASUREMENT_ID} />
         <SplashGate>
           <NavigationProgress />
           <OrganizationJsonLd />
           {children}
+          <AppToaster />
         </SplashGate>
       </body>
     </html>

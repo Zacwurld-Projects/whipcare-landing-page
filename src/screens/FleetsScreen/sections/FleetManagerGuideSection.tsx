@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useState } from "react";
-import fleetsManager from "@/assets/fleets-manager.jpg";
+import fleetsManager from "@/assets/fleets-manager.png";
 
 const fleetSteps = [
   {

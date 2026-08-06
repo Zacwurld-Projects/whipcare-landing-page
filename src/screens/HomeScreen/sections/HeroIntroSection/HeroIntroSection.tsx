@@ -63,9 +63,7 @@ export const HeroIntroSection = () => {
           <header className="relative mt-10 flex flex-col items-center px-4 sm:mt-14 sm:px-6 lg:mt-16 lg:px-[52px]">
             <div className="relative flex max-w-[820px] flex-col items-center gap-6 text-center sm:gap-8">
               <div className="relative flex flex-col items-center gap-4">
-                <div
-                  className="opacity-0 animate-fade-up relative z-10 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-lg bg-[#f3f4f6] px-2 py-1"
-                >
+                <div className="relative z-10 inline-flex max-w-full flex-wrap items-center justify-center gap-2 rounded-lg bg-[#f3f4f6] px-2 py-1">
                   <Image
                     alt=""
                     className="h-8 w-auto sm:h-9 sm:w-[118px]"
@@ -77,10 +75,7 @@ export const HeroIntroSection = () => {
                     Join 2.5k+ Satisfied User
                   </span>
                 </div>
-                <div
-                  className="opacity-0 animate-fade-up relative z-10 flex flex-col items-center gap-2 sm:gap-3"
-                  style={{ animationDelay: "0.1s" }}
-                >
+                <div className="relative z-10 flex flex-col items-center gap-2 sm:gap-3">
                   <h1
                     id="home-hero-title"
                     className="max-w-[794px] font-inter text-[32px] font-extrabold leading-[1.2] tracking-[0] text-[#111928] sm:text-[44px] lg:text-[56px] lg:leading-[1.2]"
@@ -93,10 +88,7 @@ export const HeroIntroSection = () => {
                   </p>
                 </div>
               </div>
-              <div
-                className="opacity-0 animate-fade-up flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4"
-                style={{ animationDelay: "0.2s" }}
-              >
+              <div className="flex w-full flex-col items-stretch justify-center gap-3 sm:flex-row sm:flex-wrap sm:items-center sm:gap-4">
                 {heroCtas.map((cta) => (
                   <Button
                     key={cta.label}
@@ -119,10 +111,7 @@ export const HeroIntroSection = () => {
                 ))}
               </div>
             </div>
-            <div
-              className="opacity-0 animate-fade-up relative mx-auto mt-10 w-full max-w-[1040px] sm:mt-14 lg:mt-20"
-              style={{ animationDelay: "0.3s" }}
-            >
+            <div className="relative mx-auto mt-10 w-full max-w-[1040px] sm:mt-14 lg:mt-20">
               <Image
                 className="mx-auto h-auto w-full object-contain"
                 alt="Whipcare mobile apps for vehicle owners and service providers"

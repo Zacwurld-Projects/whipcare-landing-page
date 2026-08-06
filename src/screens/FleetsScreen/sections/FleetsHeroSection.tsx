@@ -1,9 +1,12 @@
+"use client";
+
 import Image from "next/image";
+import Link from "next/link";
 import frame96 from "@/assets/frame-96.svg";
 import fleetsHeroLaptop from "@/assets/fleets-hero-laptop.png";
 import { SiteHeader } from "@/components/SiteHeader";
 import { Button } from "@/components/ui/button";
-import { PLAY_STORE_URL } from "@/constants/appLinks";
+import { trackGa4Event } from "@/lib/ga4";
 
 const LeftCircles = () => (
   <svg
@@ -135,7 +138,7 @@ export const FleetsHeroSection = () => {
                   width={118}
                 />
                 <span className="font-inter-title-1-medium font-[number:var(--inter-title-1-medium-font-weight)] text-sm leading-[var(--inter-title-1-medium-line-height)] tracking-[var(--inter-title-1-medium-letter-spacing)] text-[#5a1800] [font-style:var(--inter-title-1-medium-font-style)] sm:text-[length:var(--inter-title-1-medium-font-size)]">
-                  Join 2.5k+ Booming Businesses
+                  Join 100+ Businesses
                 </span>
               </div>
 
@@ -157,15 +160,14 @@ export const FleetsHeroSection = () => {
               asChild
               className="h-auto w-full max-w-[320px] rounded-lg bg-[#701e00] px-6 py-3.5 hover:bg-[#5a1800] sm:w-auto"
             >
-              <a
-                href={PLAY_STORE_URL}
-                target="_blank"
-                rel="noopener noreferrer"
+              <Link
+                href="/coming-soon"
+                onClick={() => trackGa4Event("create_account")}
               >
                 <span className="font-inter-title-1-semibold font-[number:var(--inter-title-1-semibold-font-weight)] text-[length:var(--inter-title-1-semibold-font-size)] leading-[var(--inter-title-1-semibold-line-height)] tracking-[var(--inter-title-1-semibold-letter-spacing)] text-white [font-style:var(--inter-title-1-semibold-font-style)]">
                   Get Started - Today
                 </span>
-              </a>
+              </Link>
             </Button>
           </div>
 

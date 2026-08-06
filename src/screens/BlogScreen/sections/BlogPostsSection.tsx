@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { BlogCoverImage } from "@/components/BlogCoverImage";
 import {
-  blogCategories,
+  getBlogCategories,
   type BlogCategoryId,
   type BlogPost,
 } from "../blogData";
@@ -18,6 +18,8 @@ type BlogPostsSectionProps = {
 export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
   const [activeCategory, setActiveCategory] = useState<CategoryId>("all");
   const [query, setQuery] = useState("");
+
+  const blogCategories = useMemo(() => getBlogCategories(posts), [posts]);
 
   const filteredPosts = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
@@ -55,11 +57,10 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                     role="tab"
                     aria-selected={isActive}
                     onClick={() => setActiveCategory(category.id)}
-                    className={`relative -mb-px whitespace-nowrap pb-3 font-inter text-[14px] leading-[1.4] tracking-[0] transition-colors sm:text-[15px] ${
-                      isActive
+                    className={`relative -mb-px whitespace-nowrap pb-3 font-inter text-[14px] leading-[1.4] tracking-[0] transition-colors sm:text-[15px] ${isActive
                         ? "font-semibold text-[#111928]"
                         : "font-medium text-[#6b7280] hover:text-[#111928]"
-                    }`}
+                      }`}
                   >
                     <span className="inline-flex items-center gap-1.5">
                       <span>{category.label}</span>
@@ -122,11 +123,11 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
             <article key={post.id} className="flex flex-col gap-3 text-left">
               <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-3">
                 <div className="relative aspect-[16/10] overflow-hidden rounded-xl">
-                  <Image
+                  <BlogCoverImage
                     src={post.image}
                     alt={post.title}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                    className="object-contain transition-transform duration-300 group-hover:scale-[1.02]"
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                   />
                 </div>
@@ -148,7 +149,9 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
 
         {filteredPosts.length === 0 ? (
           <p className="py-8 text-center font-inter text-[15px] text-[#6b7280]">
-            No posts match your search.
+            {posts.length === 0
+              ? "No blog posts yet. Check back soon."
+              : "No posts match your search."}
           </p>
         ) : null}
       </div>

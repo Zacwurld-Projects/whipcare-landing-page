@@ -7,7 +7,7 @@ import { HomeScreen } from "@/screens/HomeScreen";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Book Trusted Car Services Near You",
-  description: `${SITE_NAME} connects vehicle owners with verified mechanics, detailers, haulers, and fleet providers across ${CONTACT_ADDRESS.display}. Compare offers, book services, track vehicle health, and pay securely — ${SITE_TAGLINE.toLowerCase()}.`,
+  description: `${SITE_NAME} connects vehicle owners with verified mechanics, detailers, haulers, and fleet providers across ${CONTACT_ADDRESS.display}. Compare offers, book services, track vehicle health, and pay securely — ${SITE_TAGLINE.toLowerCase()}`,
   path: "/",
   keywords: [
     "book mechanic Nigeria",
