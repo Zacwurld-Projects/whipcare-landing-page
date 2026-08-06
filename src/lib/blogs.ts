@@ -29,6 +29,8 @@ type ApiBlogDetail = ApiBlogListItem & {
 
 type ApiListResponse = {
   status: boolean;
+  statusCode?: number;
+  message?: string;
   data: ApiBlogListItem[];
   meta?: {
     total: number;
@@ -40,6 +42,8 @@ type ApiListResponse = {
 
 type ApiDetailResponse = {
   status: boolean;
+  statusCode?: number;
+  message?: string;
   data: ApiBlogDetail;
 };
 
@@ -183,6 +187,8 @@ export const fetchBlogById = cache(
     const payload = await fetchJson<ApiDetailResponse>(
       `/api/v1/admin/blogs/${encodeURIComponent(id)}`
     );
+
+    console.log("blog detail response", payload);
 
     if (!payload?.status || !payload.data) return null;
     if (payload.data.status !== "published") return null;
