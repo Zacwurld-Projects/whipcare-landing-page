@@ -1,6 +1,5 @@
 import { cache } from "react";
 import { API_BASE_URL } from "@/lib/api";
-import { sanitizeBlogHtml } from "@/lib/sanitizeHtml";
 import type {
   BlogArticleSection,
   BlogCategoryId,
@@ -134,9 +133,20 @@ function mapListItemToPost(item: ApiBlogListItem): BlogPost {
   };
 }
 
-function mapDetailToPost(item: ApiBlogDetail): BlogPost {
+async function mapDetailToPost(item: ApiBlogDetail): Promise<BlogPost> {
   const base = mapListItemToPost(item);
-  const cleanHtml = sanitizeBlogHtml(item.content || "");
+
+  let cleanHtml = "";
+  try {
+    const { sanitizeBlogHtml } = await import("@/lib/sanitizeHtml");
+    cleanHtml = sanitizeBlogHtml(item.content || "");
+  } catch {
+    // DOMPurify/jsdom can fail in some serverless runtimes — serve stripped text fallback
+    cleanHtml = (item.content || "")
+      .replace(/<script[\s\S]*?<\/script>/gi, "")
+      .replace(/<style[\s\S]*?<\/style>/gi, "");
+  }
+
   const { htmlContent, content } = enrichHtmlContent(cleanHtml);
 
   return {
@@ -153,7 +163,7 @@ function mapDetailToPost(item: ApiBlogDetail): BlogPost {
 async function fetchJson<T>(path: string): Promise<T | null> {
   try {
     const response = await fetch(`${API_BASE_URL}${path}`, {
-      cache: "no-store",
+      next: { revalidate: 60 },
     });
 
     if (!response.ok) return null;
@@ -173,8 +183,6 @@ export const fetchBlogs = cache(
       `/api/v1/admin/blogs?page=${page}&limit=${limit}&sort=${sort}`
     );
 
-    console.log("blog response", payload);
-
     if (!payload?.status || !Array.isArray(payload.data)) return [];
 
     return payload.data
@@ -189,8 +197,6 @@ export const fetchBlogById = cache(
     const payload = await fetchJson<ApiDetailResponse>(
       `/api/v1/admin/blogs/${encodeURIComponent(id)}`
     );
-
-    console.log("blog detail response", payload);
 
     if (!payload?.status || !payload.data) return null;
     if (payload.data.status !== "published") return null;

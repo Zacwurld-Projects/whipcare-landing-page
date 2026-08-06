@@ -11,7 +11,7 @@ import { buildPageMetadata } from "@/lib/seo";
 import { BlogPostScreen } from "@/screens/BlogScreen/BlogPostScreen";
 import { getBlogImageUrl } from "@/screens/BlogScreen/blogData";
 
-export const dynamic = "force-dynamic";
+export const revalidate = 60;
 
 type BlogPostPageProps = {
   params: Promise<{ slug: string }>;
