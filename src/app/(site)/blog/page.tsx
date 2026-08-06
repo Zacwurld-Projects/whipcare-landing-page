@@ -4,7 +4,7 @@ import { fetchBlogs } from "@/lib/blogs";
 import { buildPageMetadata } from "@/lib/seo";
 import { BlogScreen } from "@/screens/BlogScreen";
 
-export const revalidate = 60;
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Blog & Vehicle Care Tips",

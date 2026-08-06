@@ -153,7 +153,7 @@ function mapDetailToPost(item: ApiBlogDetail): BlogPost {
 async function fetchJson<T>(path: string): Promise<T | null> {
   try {
     const response = await fetch(`${API_BASE_URL}${path}`, {
-      next: { revalidate: 60 },
+      cache: "no-store",
     });
 
     if (!response.ok) return null;
@@ -172,6 +172,8 @@ export const fetchBlogs = cache(
     const payload = await fetchJson<ApiListResponse>(
       `/api/v1/admin/blogs?page=${page}&limit=${limit}&sort=${sort}`
     );
+
+    console.log("blog response", payload);
 
     if (!payload?.status || !Array.isArray(payload.data)) return [];
 
