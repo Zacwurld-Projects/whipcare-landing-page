@@ -18,7 +18,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     url: `${SITE_URL}${path}`,
     lastModified,
     changeFrequency: path === "" || path === "/blog" ? "weekly" : "monthly",
-    priority: path === "" ? 1 : path === "/fleets" || path === "/explore" ? 0.9 : 0.7,
+    priority:
+      path === ""
+        ? 1
+        : path === "/blog"
+          ? 0.9
+          : path === "/fleets" || path === "/explore"
+            ? 0.9
+            : 0.7,
   }));
 
   const blogRoutes: MetadataRoute.Sitemap = posts.map((post) => ({

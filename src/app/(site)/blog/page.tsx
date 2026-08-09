@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { BlogPageJsonLd } from "@/components/BlogPageJsonLd";
 import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import { fetchBlogs } from "@/lib/blogs";
 import { buildPageMetadata } from "@/lib/seo";
@@ -25,6 +26,7 @@ export default async function BlogPage() {
           { name: "Blog", path: "/blog" },
         ]}
       />
+      <BlogPageJsonLd posts={posts} />
       <BlogScreen posts={posts} />
     </>
   );

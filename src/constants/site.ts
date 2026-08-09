@@ -2,7 +2,7 @@ import { APP_STORE_URL, PLAY_STORE_URL } from "./appLinks";
 
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://whipcare.app";
+  "https://www.whipcare.app";
 
 export const SITE_NAME = "Whipcare";
 
