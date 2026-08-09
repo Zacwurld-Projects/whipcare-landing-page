@@ -1,7 +1,9 @@
 import Image from "next/image";
 import frame1618873200 from "@/assets/Frame 1618873200.png";
 import frame1618873202 from "@/assets/Frame 1618873202.png";
+import { BlogAuthorLink } from "@/components/BlogAuthorLink";
 import { BlogCoverImage } from "@/components/BlogCoverImage";
+import { BlogShareButton } from "@/components/BlogShareButton";
 import { SiteHeader } from "@/components/SiteHeader";
 import { AdvertisementSpotlightSection } from "../HomeScreen/sections/AdvertisementSpotlightSection";
 import { FooterNavigationSection } from "../HomeScreen/sections/FooterNavigationSection";
@@ -70,11 +72,30 @@ export const BlogPostScreen = ({ post, relatedPosts }: BlogPostScreenProps) => {
                 </p>
 
                 <div className="mt-1 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 font-inter text-[12px] text-[#6b7280] sm:text-[13px]">
+                  {post.authorName ? (
+                    <>
+                      <span>
+                        By{" "}
+                        <BlogAuthorLink
+                          name={post.authorName}
+                          href={post.authorLink}
+                          className="text-[12px] sm:text-[13px]"
+                        />
+                      </span>
+                      <span aria-hidden="true">•</span>
+                    </>
+                  ) : null}
                   <time dateTime={post.publishedAt}>
                     Published {formatDate(post.publishedAt)}
                   </time>
                   <span aria-hidden="true">•</span>
                   <span>{post.readingTimeMinutes} min read</span>
+                  <span aria-hidden="true">•</span>
+                  <BlogShareButton
+                    slug={post.slug}
+                    title={post.title}
+                    description={post.description || post.excerpt}
+                  />
                 </div>
               </div>
 

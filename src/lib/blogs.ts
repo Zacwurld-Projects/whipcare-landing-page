@@ -12,6 +12,8 @@ type ApiBlogListItem = {
   slug: string;
   excerpt: string;
   coverImage?: string | null;
+  authorName?: string | null;
+  authorLink?: string | null;
   categories: string[];
   status: string;
   createdAt: string;
@@ -89,14 +91,63 @@ function enrichHtmlContent(html: string): {
   const sections: BlogArticleSection[] = [];
   let index = 0;
 
-  const htmlContent = html.replace(
+  const nextSectionId = (title: string) => {
+    index += 1;
+    const id = `section-${index}`;
+    sections.push({
+      id,
+      title: title || `Section ${index}`,
+      paragraphs: [],
+    });
+    return id;
+  };
+
+  // CMS often uses <p><strong>Section title:</strong></p> instead of real headings.
+  // Keep markup/fonts as authored — only add ids for TOC anchors.
+  const withSectionAnchors = html.replace(
+    /<p(\s[^>]*)?>\s*<(strong|b)(\s[^>]*)?>([^<]*)<\/\2>\s*(?:&nbsp;|\s)*<\/p>/gi,
+    (
+      match,
+      pAttrs = "",
+      tag: string,
+      sAttrs = "",
+      inner: string,
+      offset: number,
+      full: string
+    ) => {
+      const before = full.slice(0, offset).toLowerCase();
+      const lastLiOpen = Math.max(
+        before.lastIndexOf("<li>"),
+        before.lastIndexOf("<li ")
+      );
+      const lastLiClose = before.lastIndexOf("</li");
+      if (lastLiOpen > lastLiClose) return match;
+
+      const title = stripHtml(inner).replace(/\s+/g, " ").trim();
+      if (title.length < 12) return match;
+      if (/^step\s*\d+/i.test(title)) return match;
+
+      const isSectionHeading =
+        title.endsWith(":") ||
+        /^why\b/i.test(title) ||
+        /^\d+\.\s+\S+/i.test(title);
+      if (!isSectionHeading) return match;
+
+      const id = nextSectionId(title);
+      const attrsWithoutId = String(pAttrs).replace(
+        /\sid=(["'])[\s\S]*?\1/i,
+        ""
+      );
+      return `<p${attrsWithoutId} id="${id}"><${tag}${sAttrs}>${inner}</${tag}></p>`;
+    }
+  );
+
+  const htmlContent = withSectionAnchors.replace(
     /<h([1-3])(\s[^>]*)?>([\s\S]*?)<\/h\1>/gi,
     (_match, level: string, attrs = "", inner: string) => {
-      index += 1;
-      const id = `section-${index}`;
-      const title = stripHtml(inner) || `Section ${index}`;
-      sections.push({ id, title, paragraphs: [] });
-
+      const title =
+        stripHtml(inner).replace(/\s+/g, " ").trim() || `Section ${index + 1}`;
+      const id = nextSectionId(title);
       const withoutId = attrs.replace(/\sid=(["'])[\s\S]*?\1/i, "");
       return `<h${level}${withoutId} id="${id}">${inner}</h${level}>`;
     }
@@ -108,6 +159,23 @@ function enrichHtmlContent(html: string): {
 function resolveCoverImage(coverImage?: string | null) {
   const trimmed = coverImage?.trim();
   return trimmed || null;
+}
+
+function resolveAuthorName(authorName?: string | null) {
+  const trimmed = authorName?.trim();
+  return trimmed || null;
+}
+
+function resolveAuthorLink(authorLink?: string | null) {
+  const trimmed = authorLink?.trim();
+  if (!trimmed) return null;
+  try {
+    const url = new URL(trimmed);
+    if (url.protocol !== "http:" && url.protocol !== "https:") return null;
+    return url.toString();
+  } catch {
+    return null;
+  }
 }
 
 function mapListItemToPost(item: ApiBlogListItem): BlogPost {
@@ -123,6 +191,8 @@ function mapListItemToPost(item: ApiBlogListItem): BlogPost {
     title: item.title,
     excerpt: item.excerpt,
     description: item.excerpt,
+    authorName: resolveAuthorName(item.authorName),
+    authorLink: resolveAuthorLink(item.authorLink),
     image: cover,
     heroImage: cover,
     publishedAt,

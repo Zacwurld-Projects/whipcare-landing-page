@@ -50,7 +50,21 @@ export async function generateMetadata({
       "vehicle maintenance",
       "car care tips Nigeria",
       "Whipcare blog",
+      ...(post.authorName ? [post.authorName] : []),
     ],
+    type: "article",
+    publishedTime: post.publishedAt,
+    modifiedTime: post.updatedAt,
+    ...(post.authorName
+      ? {
+          authors: [
+            {
+              name: post.authorName,
+              ...(post.authorLink ? { url: post.authorLink } : {}),
+            },
+          ],
+        }
+      : {}),
     ...(getBlogImageUrl(post.heroImage)
       ? { image: getBlogImageUrl(post.heroImage)! }
       : {}),

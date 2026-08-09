@@ -2,7 +2,9 @@
 
 import Link from "next/link";
 import { useMemo, useState } from "react";
+import { BlogAuthorLink } from "@/components/BlogAuthorLink";
 import { BlogCoverImage } from "@/components/BlogCoverImage";
+import { BlogShareButton } from "@/components/BlogShareButton";
 import {
   getBlogCategories,
   type BlogCategoryId,
@@ -31,7 +33,8 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
         !normalizedQuery ||
         post.title.toLowerCase().includes(normalizedQuery) ||
         post.excerpt.toLowerCase().includes(normalizedQuery) ||
-        post.categoryLabel.toLowerCase().includes(normalizedQuery);
+        post.categoryLabel.toLowerCase().includes(normalizedQuery) ||
+        (post.authorName?.toLowerCase().includes(normalizedQuery) ?? false);
 
       return matchesCategory && matchesQuery;
     });
@@ -58,8 +61,8 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                     aria-selected={isActive}
                     onClick={() => setActiveCategory(category.id)}
                     className={`relative -mb-px whitespace-nowrap pb-3 font-inter text-[14px] leading-[1.4] tracking-[0] transition-colors sm:text-[15px] ${isActive
-                        ? "font-semibold text-[#111928]"
-                        : "font-medium text-[#6b7280] hover:text-[#111928]"
+                      ? "font-semibold text-[#111928]"
+                      : "font-medium text-[#6b7280] hover:text-[#111928]"
                       }`}
                   >
                     <span className="inline-flex items-center gap-1.5">
@@ -101,7 +104,7 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
               aria-hidden="true"
             >
               <path
-                d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 4.93629 14.25 8.25 14.25Z"
+                d="M8.25 14.25C11.5637 14.25 14.25 11.5637 14.25 8.25C14.25 4.93629 11.5637 2.25 8.25 2.25C4.93629 2.25 2.25 4.93629 2.25 8.25C2.25 11.5637 2.25 14.25 8.25 14.25Z"
                 stroke="currentColor"
                 strokeWidth="1.5"
                 strokeLinecap="round"
@@ -132,9 +135,16 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
-                  <p className="font-inter text-[13px] font-medium leading-[1.4] tracking-[0] text-[#8b4513]">
-                    {post.categoryLabel}
-                  </p>
+                  <div className="flex items-center justify-between gap-2">
+                    <p className="font-inter text-[13px] font-medium leading-[1.4] tracking-[0] text-[#8b4513]">
+                      {post.categoryLabel}
+                    </p>
+                    <BlogShareButton
+                      slug={post.slug}
+                      title={post.title}
+                      description={post.excerpt || post.description}
+                    />
+                  </div>
                   <h2 className="font-inter text-[20px] font-bold leading-[1.3] tracking-[0] text-[#111928] group-hover:text-[#701e00]">
                     {post.title}
                   </h2>
@@ -143,6 +153,22 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                   </p>
                 </div>
               </Link>
+
+              <div className="flex items-center justify-between gap-2">
+                {post.authorName ? (
+                  <p className="min-w-0 truncate font-inter text-[13px] leading-[1.4] text-[#6b7280]">
+                    By{" "}
+                    <BlogAuthorLink
+                      name={post.authorName}
+                      href={post.authorLink}
+                      className="text-[13px]"
+                    />
+                  </p>
+                ) : (
+                  <span />
+                )}
+
+              </div>
             </article>
           ))}
         </div>

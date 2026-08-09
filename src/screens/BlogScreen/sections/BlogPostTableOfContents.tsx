@@ -43,10 +43,10 @@ export const BlogPostTableOfContents = ({
   if (sections.length === 0) return null;
 
   return (
-    <aside className="hidden lg:block">
+    <aside className="hidden min-w-0 self-start lg:sticky lg:top-28 lg:block lg:max-h-[calc(100vh-8rem)] lg:overflow-y-auto">
       <nav
         aria-label="Article sections"
-        className="sticky top-28 border-l border-[#e5e7eb]"
+        className="border-l border-[#e5e7eb]"
       >
         <ul className="flex flex-col">
           {sections.map((section) => {
@@ -57,9 +57,9 @@ export const BlogPostTableOfContents = ({
                 <a
                   href={`#${section.id}`}
                   onClick={() => setActiveId(section.id)}
-                  className={`relative block border-l-2 py-3 pl-4 font-inter text-[16px] leading-[1.45] tracking-[0] transition-colors xl:text-[18px] ${
+                  className={`relative block border-l-2 py-2.5 pl-4 font-inter text-[15px] leading-[1.45] tracking-[0] transition-colors xl:text-[16px] ${
                     isActive
-                      ? "-ml-px border-[#a16207] font-medium text-[#101828]"
+                      ? "-ml-px border-[#711E00] font-medium text-[#101828]"
                       : "border-transparent font-normal text-[#4A5565] hover:text-[#101828]"
                   }`}
                 >

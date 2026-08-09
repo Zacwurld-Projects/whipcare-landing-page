@@ -24,6 +24,8 @@ export type BlogPost = {
   title: string;
   excerpt: string;
   description: string;
+  authorName: string | null;
+  authorLink: string | null;
   image: BlogImage | null;
   heroImage: BlogImage | null;
   publishedAt: string;

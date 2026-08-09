@@ -19,6 +19,15 @@ export function BlogPageJsonLd({ posts }: { posts: BlogPost[] }) {
       datePublished: post.publishedAt,
       dateModified: post.updatedAt || post.publishedAt,
       description: post.excerpt || SITE_DESCRIPTION,
+      ...(post.authorName
+        ? {
+            author: {
+              "@type": "Person",
+              name: post.authorName,
+              ...(post.authorLink ? { url: post.authorLink } : {}),
+            },
+          }
+        : {}),
     })),
   };
 
