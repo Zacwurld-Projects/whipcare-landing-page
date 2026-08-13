@@ -1,13 +1,16 @@
 import type { Metadata } from "next";
-import { buildPageMetadata } from "@/lib/seo";
+import {
+  PROFILE_INVITE_DESCRIPTION,
+  PROFILE_INVITE_TITLE,
+  buildPageMetadata,
+} from "@/lib/seo";
 import { ProfileInviteView } from "@/screens/DeepLinkInviteScreen/ProfileInviteView";
 
 export const metadata: Metadata = buildPageMetadata({
-  title: "View Profile",
-  description:
-    "Open this Whipcare profile in the app. Download Whipcare to view profiles and connect with trusted vehicle service providers.",
+  title: PROFILE_INVITE_TITLE,
+  description: PROFILE_INVITE_DESCRIPTION,
   path: "/profile",
-  noIndex: true,
+  image: false,
   keywords: ["Whipcare profile", "Whipcare app", "view profile"],
 });
 

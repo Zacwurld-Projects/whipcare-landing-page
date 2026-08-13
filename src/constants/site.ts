@@ -1,8 +1,21 @@
 import { APP_STORE_URL, PLAY_STORE_URL } from "./appLinks";
 
-export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "https://www.whipcare.app";
+const DEFAULT_SITE_URL = "https://www.whipcare.app";
+
+function canonicalSiteUrl(raw?: string): string {
+  const value = raw?.replace(/\/$/, "") || DEFAULT_SITE_URL;
+  try {
+    const url = new URL(value);
+    if (url.hostname === "whipcare.app") {
+      url.hostname = "www.whipcare.app";
+    }
+    return url.origin;
+  } catch {
+    return DEFAULT_SITE_URL;
+  }
+}
+
+export const SITE_URL = canonicalSiteUrl(process.env.NEXT_PUBLIC_SITE_URL);
 
 export const SITE_NAME = "Whipcare";
 

@@ -1,5 +1,9 @@
 import type { Metadata } from "next";
-import { buildPageMetadata } from "@/lib/seo";
+import {
+  JOIN_INVITE_DESCRIPTION,
+  JOIN_INVITE_TITLE,
+  buildPageMetadata,
+} from "@/lib/seo";
 import { JoinInviteView } from "@/screens/DeepLinkInviteScreen/JoinInviteView";
 
 type JoinByCodePageProps = {
@@ -12,11 +16,10 @@ export async function generateMetadata({
 }: JoinByCodePageProps): Promise<Metadata> {
   const { code } = await params;
   return buildPageMetadata({
-    title: "Join Whipcare",
-    description:
-      "Accept your Whipcare invite. Download the app to join and start connecting with trusted vehicle service providers.",
+    title: JOIN_INVITE_TITLE,
+    description: JOIN_INVITE_DESCRIPTION,
     path: `/join/${code}`,
-    noIndex: true,
+    image: false,
     keywords: ["Whipcare invite", "join Whipcare", "Whipcare referral"],
   });
 }
