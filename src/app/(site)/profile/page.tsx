@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
-import { DeepLinkInviteScreen } from "@/screens/DeepLinkInviteScreen";
+import { ProfileInviteView } from "@/screens/DeepLinkInviteScreen/ProfileInviteView";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "View Profile",
@@ -19,22 +18,5 @@ type ProfilePageProps = {
 export default async function ProfilePage({ searchParams }: ProfilePageProps) {
   const { userId, ref } = await searchParams;
 
-  return (
-    <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Profile", path: "/profile" },
-        ]}
-      />
-      <DeepLinkInviteScreen
-        headingId="profile-invite-heading"
-        eyebrow="Whipcare"
-        title="View this profile in the Whipcare app"
-        description="This link opens a profile in Whipcare. Download the app to continue."
-        ctaLabel="Get the App"
-        deepLink={{ type: "profile", userId, ref }}
-      />
-    </>
-  );
+  return <ProfileInviteView userId={userId} refCode={ref} />;
 }
