@@ -17,8 +17,7 @@ type ProfilePageProps = {
 };
 
 export default async function ProfilePage({ searchParams }: ProfilePageProps) {
-  // userId / ref reserved for deferred deep-linking in a later step.
-  const { userId: _userId, ref: _ref } = await searchParams;
+  const { userId, ref } = await searchParams;
 
   return (
     <>
@@ -34,6 +33,7 @@ export default async function ProfilePage({ searchParams }: ProfilePageProps) {
         title="View this profile in the Whipcare app"
         description="This link opens a profile in Whipcare. Download the app to continue."
         ctaLabel="Get the App"
+        deepLink={{ type: "profile", userId, ref }}
       />
     </>
   );

@@ -17,8 +17,7 @@ type JoinPageProps = {
 };
 
 export default async function JoinPage({ searchParams }: JoinPageProps) {
-  // ref reserved for deferred deep-linking in a later step.
-  const { ref: _ref } = await searchParams;
+  const { ref } = await searchParams;
 
   return (
     <>
@@ -34,6 +33,7 @@ export default async function JoinPage({ searchParams }: JoinPageProps) {
         title="Download Whipcare to accept this invite"
         description="This invite opens in the Whipcare app. Download the app to continue."
         ctaLabel="Get the App"
+        deepLink={{ type: "join", ref }}
       />
     </>
   );

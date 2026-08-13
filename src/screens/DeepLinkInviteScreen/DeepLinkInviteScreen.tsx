@@ -1,7 +1,10 @@
 import Image from "next/image";
 import frame1618873200 from "@/assets/Frame 1618873200.png";
 import frame1618873202 from "@/assets/Frame 1618873202.png";
-import { GetAppLink } from "@/components/GetAppLink";
+import {
+  GetAppLink,
+  type DeepLinkInvite,
+} from "@/components/GetAppLink";
 import { SiteHeader } from "@/components/SiteHeader";
 import { FooterNavigationSection } from "../HomeScreen/sections/FooterNavigationSection";
 
@@ -11,6 +14,7 @@ type DeepLinkInviteScreenProps = {
   title: string;
   description: string;
   ctaLabel: string;
+  deepLink: DeepLinkInvite;
 };
 
 export const DeepLinkInviteScreen = ({
@@ -19,6 +23,7 @@ export const DeepLinkInviteScreen = ({
   title,
   description,
   ctaLabel,
+  deepLink,
 }: DeepLinkInviteScreenProps) => {
   return (
     <main className="w-full bg-white">
@@ -66,7 +71,10 @@ export const DeepLinkInviteScreen = ({
             <p className="mt-4 font-inter text-base leading-relaxed text-[#6b7280] sm:text-lg">
               {description}
             </p>
-            <GetAppLink className="mt-8 inline-flex h-auto items-center justify-center rounded-lg bg-[#701e00] px-5 py-3 font-inter text-sm font-semibold text-white hover:bg-[#5a1800] sm:text-[length:var(--inter-body-semibold-font-size)]">
+            <GetAppLink
+              deepLink={deepLink}
+              className="mt-8 inline-flex h-auto items-center justify-center rounded-lg bg-[#701e00] px-5 py-3 font-inter text-sm font-semibold text-white hover:bg-[#5a1800] sm:text-[length:var(--inter-body-semibold-font-size)]"
+            >
               {ctaLabel}
             </GetAppLink>
           </div>
