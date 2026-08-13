@@ -6,7 +6,7 @@ const appleAppSiteAssociation = {
     details: [
       {
         appID: "A5Y588G4YX.com.jozy.whipcareapp",
-        paths: ["/profile", "/profile?*", "/join", "/join?*"],
+        paths: ["/profile", "/profile/*", "/join", "/join/*"],
       },
     ],
   },

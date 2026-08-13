@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
-import { BreadcrumbJsonLd } from "@/components/BreadcrumbJsonLd";
 import { buildPageMetadata } from "@/lib/seo";
-import { DeepLinkInviteScreen } from "@/screens/DeepLinkInviteScreen";
+import { JoinInviteView } from "@/screens/DeepLinkInviteScreen/JoinInviteView";
 
 export const metadata: Metadata = buildPageMetadata({
   title: "Join Whipcare",
@@ -19,22 +18,5 @@ type JoinPageProps = {
 export default async function JoinPage({ searchParams }: JoinPageProps) {
   const { ref } = await searchParams;
 
-  return (
-    <>
-      <BreadcrumbJsonLd
-        items={[
-          { name: "Home", path: "/" },
-          { name: "Join", path: "/join" },
-        ]}
-      />
-      <DeepLinkInviteScreen
-        headingId="join-invite-heading"
-        eyebrow="Whipcare"
-        title="Download Whipcare to accept this invite"
-        description="This invite opens in the Whipcare app. Download the app to continue."
-        ctaLabel="Get the App"
-        deepLink={{ type: "join", ref }}
-      />
-    </>
-  );
+  return <JoinInviteView refCode={ref} />;
 }
