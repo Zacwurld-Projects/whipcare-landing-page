@@ -4,6 +4,18 @@ import { getBlogImageAbsoluteUrl, getBlogWordCount } from "@/screens/BlogScreen/
 
 export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
   const image = getBlogImageAbsoluteUrl(post.heroImage, SITE_URL);
+  const author = post.authorName
+    ? {
+        "@type": "Person" as const,
+        name: post.authorName,
+        ...(post.authorLink ? { url: post.authorLink } : {}),
+      }
+    : {
+        "@type": "Organization" as const,
+        name: SITE_NAME,
+        url: SITE_URL,
+      };
+
   const data = {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
@@ -12,11 +24,7 @@ export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
     ...(image ? { image } : {}),
     datePublished: post.publishedAt,
     dateModified: post.updatedAt,
-    author: {
-      "@type": "Organization",
-      name: SITE_NAME,
-      url: SITE_URL,
-    },
+    author,
     publisher: {
       "@type": "Organization",
       name: SITE_NAME,

@@ -7,23 +7,30 @@ type BlogPostContentSectionProps = {
 
 export const BlogPostContentSection = ({ post }: BlogPostContentSectionProps) => {
   const hasHtml = Boolean(post.htmlContent?.trim());
+  const tocSections =
+    post.content.length > 0
+      ? post.content
+      : [{ id: "article-body", title: post.title, paragraphs: [] as string[] }];
 
   return (
     <section
       aria-labelledby="blog-article-heading"
       className="w-full bg-white px-4 pb-12 sm:px-6 sm:pb-16 lg:px-[52px] lg:pb-24"
     >
-      <div className="mx-auto grid w-full max-w-[1200px] grid-cols-1 gap-8 lg:grid-cols-[minmax(200px,280px)_minmax(0,1fr)] lg:gap-12 xl:gap-20">
-        <BlogPostTableOfContents sections={post.content} />
+      <div className="mx-auto grid w-full max-w-[1280px] grid-cols-1 gap-10 lg:grid-cols-[minmax(220px,280px)_minmax(0,1fr)] lg:items-start lg:gap-16 xl:gap-24">
+        <BlogPostTableOfContents sections={tocSections} />
 
-        <article className="flex min-w-0 flex-col gap-10 lg:gap-14">
+        <article
+          id="article-body"
+          className="flex min-w-0 w-full flex-col gap-10 lg:col-start-2 lg:gap-14"
+        >
           <h2 id="blog-article-heading" className="sr-only">
             {post.title} article content
           </h2>
 
           {hasHtml ? (
             <div
-              className="blog-html-content font-inter text-[15px] font-medium leading-[1.7] tracking-[0] text-[#4A5565] sm:text-[16px] lg:text-[18px] [&_a]:text-[#8b4513] [&_a]:underline [&_h1]:mb-4 [&_h1]:scroll-mt-24 [&_h1]:font-inter [&_h1]:text-[24px] [&_h1]:font-medium [&_h1]:leading-[1.3] [&_h1]:text-[#000000] sm:[&_h1]:scroll-mt-28 [&_h2]:mb-4 [&_h2]:mt-8 [&_h2]:scroll-mt-24 [&_h2]:font-inter [&_h2]:text-[22px] [&_h2]:font-medium [&_h2]:leading-[1.3] [&_h2]:text-[#000000] sm:[&_h2]:scroll-mt-28 [&_h3]:mb-3 [&_h3]:mt-6 [&_h3]:scroll-mt-24 [&_h3]:font-inter [&_h3]:text-[20px] [&_h3]:font-medium [&_h3]:leading-[1.3] [&_h3]:text-[#000000] sm:[&_h3]:scroll-mt-28 [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-4 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-5"
+              className="blog-html-content w-full max-w-none font-inter text-[15px] font-medium leading-[1.7] tracking-[0] text-[#4A5565] sm:text-[16px] lg:text-[18px] [&_a]:text-[#8b4513] [&_a]:underline [&_h1]:scroll-mt-24 sm:[&_h1]:scroll-mt-28 [&_h2]:scroll-mt-24 sm:[&_h2]:scroll-mt-28 [&_h3]:scroll-mt-24 sm:[&_h3]:scroll-mt-28 [&_h4]:scroll-mt-24 sm:[&_h4]:scroll-mt-28 [&_li]:my-1 [&_ol]:my-3 [&_ol]:list-decimal [&_ol]:pl-5 [&_p]:mb-4 [&_p[id^='section-']]:scroll-mt-24 sm:[&_p[id^='section-']]:scroll-mt-28 [&_ul]:my-3 [&_ul]:list-disc [&_ul]:pl-5"
               dangerouslySetInnerHTML={{ __html: post.htmlContent }}
             />
           ) : (

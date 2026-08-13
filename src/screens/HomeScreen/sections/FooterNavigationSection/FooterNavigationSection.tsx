@@ -18,6 +18,7 @@ import {
 const companyLinks = [
   { label: "About us", href: "/about" },
   { label: "Home", href: "/" },
+  { label: "Blog", href: "/blog" },
   { label: "FAQ`s", href: "/faq" },
   { label: "Contact us", href: "/contact" },
 ] as const;

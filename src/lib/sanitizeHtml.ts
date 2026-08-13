@@ -50,6 +50,7 @@ const ALLOWED_ATTR = [
   "height",
   "colspan",
   "rowspan",
+  "start",
 ];
 
 let hooksRegistered = false;

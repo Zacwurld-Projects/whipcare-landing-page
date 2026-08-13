@@ -209,33 +209,38 @@ export const SiteHeader = ({ active = "Home" }: SiteHeaderProps) => {
                     <ChevronDown />
                   </button>
 
-                  {resourcesOpen ? (
-                    <div
-                      role="menu"
-                      className="absolute left-0 top-full z-50 min-w-[160px] pt-2"
-                    >
-                      <div className="rounded-lg bg-white py-2 shadow-[0_8px_24px_rgba(17,25,40,0.12)]">
-                        {item.dropdown.map((option) => {
-                          const optionActive = pathname === option.href;
+                  {/* Keep links in DOM when closed so crawlers see /blog etc. */}
+                  <div
+                    role="menu"
+                    className={`absolute left-0 top-full z-50 min-w-[160px] pt-2 ${
+                      resourcesOpen
+                        ? ""
+                        : "invisible pointer-events-none opacity-0"
+                    }`}
+                    aria-hidden={!resourcesOpen}
+                  >
+                    <div className="rounded-lg bg-white py-2 shadow-[0_8px_24px_rgba(17,25,40,0.12)]">
+                      {item.dropdown.map((option) => {
+                        const optionActive = pathname === option.href;
 
-                          return (
-                            <Link
-                              key={option.label}
-                              href={option.href}
-                              role="menuitem"
-                              className={`block px-4 py-2 font-inter text-[15px] leading-[1.4] ${optionActive
-                                  ? "font-medium text-[#701e00]"
-                                  : "font-normal text-[#111928] hover:text-[#701e00]"
-                                }`}
-                              onClick={() => setResourcesOpen(false)}
-                            >
-                              {option.label}
-                            </Link>
-                          );
-                        })}
-                      </div>
+                        return (
+                          <Link
+                            key={option.label}
+                            href={option.href}
+                            role="menuitem"
+                            tabIndex={resourcesOpen ? 0 : -1}
+                            className={`block px-4 py-2 font-inter text-[15px] leading-[1.4] ${optionActive
+                                ? "font-medium text-[#701e00]"
+                                : "font-normal text-[#111928] hover:text-[#701e00]"
+                              }`}
+                            onClick={() => setResourcesOpen(false)}
+                          >
+                            {option.label}
+                          </Link>
+                        );
+                      })}
                     </div>
-                  ) : null}
+                  </div>
                 </div>
               );
             }

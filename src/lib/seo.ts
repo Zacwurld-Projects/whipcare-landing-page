@@ -1,9 +1,7 @@
 import type { Metadata } from "next";
 import {
-  SITE_DESCRIPTION,
   SITE_KEYWORDS,
   SITE_NAME,
-  SITE_TAGLINE,
   SITE_URL,
 } from "@/constants/site";
 
@@ -14,6 +12,10 @@ type BuildPageMetadataInput = {
   keywords?: string[];
   image?: string;
   noIndex?: boolean;
+  authors?: { name: string; url?: string }[];
+  type?: "website" | "article";
+  publishedTime?: string;
+  modifiedTime?: string;
 };
 
 export function buildPageMetadata({
@@ -23,6 +25,10 @@ export function buildPageMetadata({
   keywords = [],
   image = "/og-image.jpg",
   noIndex = false,
+  authors,
+  type = "website",
+  publishedTime,
+  modifiedTime,
 }: BuildPageMetadataInput): Metadata {
   const url = `${SITE_URL}${path}`;
   const imageUrl = image.startsWith("http") ? image : `${SITE_URL}${image}`;
@@ -31,11 +37,19 @@ export function buildPageMetadata({
     title,
     description,
     keywords: [...SITE_KEYWORDS, ...keywords],
+    ...(authors?.length
+      ? {
+          authors: authors.map((author) => ({
+            name: author.name,
+            ...(author.url ? { url: author.url } : {}),
+          })),
+        }
+      : {}),
     alternates: {
       canonical: url,
     },
     openGraph: {
-      type: "website",
+      type,
       locale: "en_NG",
       url,
       siteName: SITE_NAME,
@@ -46,9 +60,18 @@ export function buildPageMetadata({
           url: imageUrl,
           width: 1200,
           height: 630,
-          alt: `${SITE_NAME} — ${SITE_TAGLINE}`,
+          alt: `${title} | ${SITE_NAME}`,
         },
       ],
+      ...(type === "article"
+        ? {
+            ...(publishedTime ? { publishedTime } : {}),
+            ...(modifiedTime ? { modifiedTime } : {}),
+            ...(authors?.length
+              ? { authors: authors.map((author) => author.name) }
+              : {}),
+          }
+        : {}),
     },
     twitter: {
       card: "summary_large_image",
