@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { HomePageJsonLd } from "@/components/HomePageJsonLd";
 import { CONTACT_ADDRESS } from "@/constants/contact";
 import { SITE_NAME, SITE_TAGLINE } from "@/constants/site";
+import { fetchBlogs } from "@/lib/blogs";
 import { buildPageMetadata } from "@/lib/seo";
 import { HomeScreen } from "@/screens/HomeScreen";
 
@@ -21,11 +22,13 @@ export const metadata: Metadata = buildPageMetadata({
   ],
 });
 
-export default function Home() {
+export default async function Home() {
+  const posts = await fetchBlogs(1, 3, "newest");
+
   return (
     <>
       <HomePageJsonLd />
-      <HomeScreen />
+      <HomeScreen posts={posts} />
     </>
   );
 }

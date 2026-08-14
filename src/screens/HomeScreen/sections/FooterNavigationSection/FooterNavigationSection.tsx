@@ -16,9 +16,10 @@ import {
 } from "./FooterSocialIcons";
 
 const companyLinks = [
-  { label: "About us", href: "/about" },
   { label: "Home", href: "/" },
+  { label: "Explore", href: "/explore" },
   { label: "Blog", href: "/blog" },
+  { label: "About us", href: "/about" },
   { label: "FAQ`s", href: "/faq" },
   { label: "Contact us", href: "/contact" },
 ] as const;

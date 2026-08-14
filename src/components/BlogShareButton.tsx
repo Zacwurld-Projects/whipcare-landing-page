@@ -1,44 +1,43 @@
 "use client";
 
-import { useState } from "react";
-import { SITE_NAME, SITE_URL } from "@/constants/site";
+import { useState, type MouseEvent } from "react";
+import { SITE_URL } from "@/constants/site";
 
 type BlogShareButtonProps = {
   slug: string;
   title: string;
-  description: string;
+  description?: string;
   className?: string;
 };
 
 export function BlogShareButton({
   slug,
   title,
-  description,
   className = "",
 }: BlogShareButtonProps) {
   const [copied, setCopied] = useState(false);
   const url = `${SITE_URL}/blog/${slug}`;
-  const shareText = description.trim() || title;
 
-  const handleShare = async () => {
+  const copyUrl = async () => {
+    await navigator.clipboard.writeText(url);
+    setCopied(true);
+    window.setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleShare = async (event: MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     try {
-      if (typeof navigator !== "undefined" && navigator.share) {
-        await navigator.share({
-          title: `${title} | ${SITE_NAME}`,
-          text: shareText,
-          url,
-        });
-        return;
-      }
-
-      await navigator.clipboard.writeText(`${title}\n\n${shareText}\n\n${url}`);
-      setCopied(true);
-      window.setTimeout(() => setCopied(false), 2000);
-    } catch (error) {
-      if (error instanceof DOMException && error.name === "AbortError") return;
-
+      await copyUrl();
+    } catch {
       try {
-        await navigator.clipboard.writeText(url);
+        const input = document.createElement("input");
+        input.value = url;
+        document.body.appendChild(input);
+        input.select();
+        document.execCommand("copy");
+        input.remove();
         setCopied(true);
         window.setTimeout(() => setCopied(false), 2000);
       } catch {
@@ -51,9 +50,12 @@ export function BlogShareButton({
     <button
       type="button"
       onClick={handleShare}
-      aria-label={copied ? "Link copied" : `Share ${title}`}
-      title={copied ? "Copied!" : "Share article"}
-      className={`inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#6b7280] transition-colors hover:bg-[#f3f4f6] hover:text-[#701e00] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b4513] ${className}`}
+      onPointerDown={(event) => {
+        event.stopPropagation();
+      }}
+      aria-label={copied ? "Link copied" : `Copy link to ${title}`}
+      title={copied ? "Copied!" : "Copy link"}
+      className={`relative z-10 inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg text-[#6b7280] transition-colors hover:bg-[#f3f4f6] hover:text-[#701e00] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b4513] ${className}`}
     >
       {copied ? (
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">

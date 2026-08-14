@@ -30,7 +30,7 @@ export const BlogScreen = ({ posts }: BlogScreenProps) => {
         />
 
         <div className="mx-auto flex w-full max-w-[1440px] flex-col px-4 pt-6 sm:px-6 lg:px-[52px]">
-          <SiteHeader active="Resources" />
+          <SiteHeader active="Blog" />
 
           <div className="relative mt-6 -mx-4 sm:-mx-6 lg:-mx-[52px]">
             <div className="relative z-10 h-1 w-full">
@@ -50,7 +50,7 @@ export const BlogScreen = ({ posts }: BlogScreenProps) => {
                     className="absolute bottom-[10px] left-0 z-0 h-[18px] w-full rounded-[1px] bg-[#fca5a5]/60 sm:bottom-[14px] sm:h-5"
                   />
                   <h1 className="relative z-10 font-inter text-[58px] font-extrabold leading-[1.2] tracking-[0] text-[#111928] sm:text-[48px] lg:text-[56px] lg:leading-[72.8px]">
-                    Blogs
+                    Blog
                   </h1>
                 </div>
                 <p className="max-w-[520px] font-inter text-[24px] font-medium leading-[1.5] tracking-[0] text-[#475367]">

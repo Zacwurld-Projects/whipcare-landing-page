@@ -44,7 +44,7 @@ export const BlogPostScreen = ({ post, relatedPosts }: BlogPostScreenProps) => {
         />
 
         <div className="mx-auto flex w-full max-w-[1440px] flex-col px-4 pt-5 sm:px-6 sm:pt-6 lg:px-[52px]">
-          <SiteHeader active="Resources" />
+          <SiteHeader active="Blog" />
 
           <div className="relative mt-5 -mx-4 sm:mt-6 sm:-mx-6 lg:-mx-[52px]">
             <div className="relative z-10 h-1 w-full">
