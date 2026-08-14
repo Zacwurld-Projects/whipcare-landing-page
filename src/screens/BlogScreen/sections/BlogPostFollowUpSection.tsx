@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { BlogCoverImage } from "@/components/BlogCoverImage";
+import { BlogShareButton } from "@/components/BlogShareButton";
 import type { BlogPost } from "../blogData";
 
 const helpfulLinks = [
@@ -60,21 +61,33 @@ export const BlogPostFollowUpSection = ({
                   <article className="flex h-full flex-col overflow-hidden rounded-xl border border-[#e5e7eb] bg-white shadow-[0_4px_16px_rgba(17,25,40,0.04)]">
                     <Link
                       href={`/blog/${related.slug}`}
-                      className="group flex h-full flex-col"
+                      className="group relative block aspect-[16/10] overflow-hidden"
                     >
-                      <div className="relative aspect-[16/10] overflow-hidden">
-                        <BlogCoverImage
-                          src={related.image}
-                          alt={related.title}
-                          fill
-                          className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
-                          sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+                      <BlogCoverImage
+                        src={related.image}
+                        alt={related.title}
+                        fill
+                        className="object-cover transition-transform duration-300 group-hover:scale-[1.02]"
+                        sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
+                      />
+                    </Link>
+                    <div className="flex flex-1 flex-col gap-2 p-4 sm:p-5">
+                      <div className="flex items-center justify-between gap-2">
+                        <Link
+                          href={`/blog/${related.slug}`}
+                          className="font-inter text-[12px] font-medium uppercase tracking-[0.04em] text-[#8b4513] sm:text-[13px]"
+                        >
+                          {related.categoryLabel}
+                        </Link>
+                        <BlogShareButton
+                          slug={related.slug}
+                          title={related.title}
                         />
                       </div>
-                      <div className="flex flex-1 flex-col gap-2 p-4 sm:p-5">
-                        <p className="font-inter text-[12px] font-medium uppercase tracking-[0.04em] text-[#8b4513] sm:text-[13px]">
-                          {related.categoryLabel}
-                        </p>
+                      <Link
+                        href={`/blog/${related.slug}`}
+                        className="group flex flex-1 flex-col gap-2"
+                      >
                         <h3 className="font-inter text-[16px] font-bold leading-[1.35] text-[#111928] group-hover:text-[#701e00] sm:text-[18px]">
                           {related.title}
                         </h3>
@@ -87,8 +100,8 @@ export const BlogPostFollowUpSection = ({
                         >
                           {formatDate(related.publishedAt)}
                         </time>
-                      </div>
-                    </Link>
+                      </Link>
+                    </div>
                   </article>
                 </li>
               ))}

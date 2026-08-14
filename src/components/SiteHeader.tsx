@@ -12,6 +12,7 @@ import { Button } from "./ui/button";
 const navItems = [
   { label: "Home", href: "/" },
   { label: "Explore", href: "/explore" },
+  { label: "Blog", href: "/blog" },
   {
     label: "Resources",
     href: "/about",
@@ -19,7 +20,6 @@ const navItems = [
     dropdown: [
       { label: "About Us", href: "/about" },
       { label: "Faq's", href: "/faq" },
-      { label: "Blogs", href: "/blog" },
     ],
   },
   { label: "Contact Us", href: "/contact" },
@@ -27,7 +27,7 @@ const navItems = [
 ] as const;
 
 type SiteHeaderProps = {
-  active?: "Home" | "Explore" | "Resources" | "Contact Us" | "Fleets";
+  active?: "Home" | "Explore" | "Blog" | "Resources" | "Contact Us" | "Fleets";
 };
 
 const navLinkClass = (isActive: boolean) =>
@@ -357,26 +357,30 @@ export const SiteHeader = ({ active = "Home" }: SiteHeaderProps) => {
                             className={`transition-transform ${mobileResourcesOpen ? "rotate-180" : ""}`}
                           />
                         </button>
-                        {mobileResourcesOpen ? (
-                          <div className="mb-1 ml-3 flex flex-col border-l border-[#e5e7eb] pl-3">
-                            {item.dropdown.map((option) => {
-                              const optionActive = pathname === option.href;
-                              return (
-                                <Link
-                                  key={option.label}
-                                  href={option.href}
-                                  className={`rounded-lg px-3 py-3 font-inter text-[15px] leading-[1.4] ${optionActive
-                                      ? "font-medium text-[#701e00]"
-                                      : "font-normal text-[#111928]"
-                                    }`}
-                                  onClick={closeMobile}
-                                >
-                                  {option.label}
-                                </Link>
-                              );
-                            })}
-                          </div>
-                        ) : null}
+                        <div
+                          className={`mb-1 ml-3 flex flex-col border-l border-[#e5e7eb] pl-3 ${
+                            mobileResourcesOpen
+                              ? ""
+                              : "hidden"
+                          }`}
+                        >
+                          {item.dropdown.map((option) => {
+                            const optionActive = pathname === option.href;
+                            return (
+                              <Link
+                                key={option.label}
+                                href={option.href}
+                                className={`rounded-lg px-3 py-3 font-inter text-[15px] leading-[1.4] ${optionActive
+                                    ? "font-medium text-[#701e00]"
+                                    : "font-normal text-[#111928]"
+                                  }`}
+                                onClick={closeMobile}
+                              >
+                                {option.label}
+                              </Link>
+                            );
+                          })}
+                        </div>
                       </div>
                     );
                   }

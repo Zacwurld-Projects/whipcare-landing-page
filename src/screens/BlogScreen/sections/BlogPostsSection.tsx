@@ -134,25 +134,30 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 400px"
                   />
                 </div>
-                <div className="flex flex-col gap-1.5">
-                  <div className="flex items-center justify-between gap-2">
-                    <p className="font-inter text-[13px] font-medium leading-[1.4] tracking-[0] text-[#8b4513]">
-                      {post.categoryLabel}
-                    </p>
-                    <BlogShareButton
-                      slug={post.slug}
-                      title={post.title}
-                      description={post.excerpt || post.description}
-                    />
-                  </div>
+              </Link>
+              <div className="flex flex-col gap-1.5">
+                <div className="flex items-center justify-between gap-2">
+                  <Link
+                    href={`/blog/${post.slug}`}
+                    className="font-inter text-[13px] font-medium leading-[1.4] tracking-[0] text-[#8b4513]"
+                  >
+                    {post.categoryLabel}
+                  </Link>
+                  <BlogShareButton
+                    slug={post.slug}
+                    title={post.title}
+                    description={post.excerpt || post.description}
+                  />
+                </div>
+                <Link href={`/blog/${post.slug}`} className="group flex flex-col gap-1.5">
                   <h2 className="font-inter text-[20px] font-bold leading-[1.3] tracking-[0] text-[#111928] group-hover:text-[#701e00]">
                     {post.title}
                   </h2>
                   <p className="line-clamp-2 font-inter text-[14px] font-normal leading-[1.5] tracking-[0] text-[#6b7280]">
                     {post.excerpt}
                   </p>
-                </div>
-              </Link>
+                </Link>
+              </div>
 
               <div className="flex items-center justify-between gap-2">
                 {post.authorName ? (
