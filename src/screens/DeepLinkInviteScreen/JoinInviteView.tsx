@@ -17,9 +17,9 @@ export function JoinInviteView({ refCode }: JoinInviteViewProps) {
       <DeepLinkInviteScreen
         headingId="join-invite-heading"
         eyebrow="Whipcare"
-        title="Download Whipcare to accept this invite"
-        description="This invite opens in the Whipcare app. Download the app to continue."
-        ctaLabel="Get the App"
+        title="Open this invite in Whipcare"
+        description="If you have the app, this opens Whipcare. If not, you'll go to the store to download it."
+        ctaLabel="Open Whipcare"
         deepLink={{ type: "join", ref: refCode }}
       />
     </>

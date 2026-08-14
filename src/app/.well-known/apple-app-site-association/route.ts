@@ -6,14 +6,21 @@ const appleAppSiteAssociation = {
     details: [
       {
         appID: "A5Y588G4YX.com.jozy.whipcareapp",
+        appIDs: ["A5Y588G4YX.com.jozy.whipcareapp"],
         paths: ["/profile", "/profile/*", "/join", "/join/*"],
+        components: [
+          { "/": "/profile" },
+          { "/": "/profile/*" },
+          { "/": "/join" },
+          { "/": "/join/*" },
+        ],
       },
     ],
   },
 };
 
 export function GET() {
-  return NextResponse.json(appleAppSiteAssociation, {
+  return new NextResponse(JSON.stringify(appleAppSiteAssociation), {
     headers: {
       "Content-Type": "application/json",
       "Cache-Control": "public, max-age=3600",

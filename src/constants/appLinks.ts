@@ -4,6 +4,8 @@ export const PLAY_STORE_URL =
 export const APP_STORE_URL =
   "https://apps.apple.com/ng/app/whipcare-car-care-near-you/id6670729882";
 
+export const ANDROID_PACKAGE_NAME = "com.jozy.whipcareapp2";
+
 /** iOS → App Store, Android → Play Store, desktop/unknown → Play Store */
 export function getPreferredStoreUrl(userAgent?: string): string {
   const ua =
