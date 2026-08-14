@@ -18,9 +18,9 @@ export function ProfileInviteView({ userId, refCode }: ProfileInviteViewProps) {
       <DeepLinkInviteScreen
         headingId="profile-invite-heading"
         eyebrow="Whipcare"
-        title="View this profile in the Whipcare app"
-        description="This link opens a profile in Whipcare. Download the app to continue."
-        ctaLabel="Get the App"
+        title="View this profile in Whipcare"
+        description="If you have the app, this opens the profile. If not, you'll go to the store to download it."
+        ctaLabel="Open Whipcare"
         deepLink={{ type: "profile", userId, ref: refCode }}
       />
     </>
