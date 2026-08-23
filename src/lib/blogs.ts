@@ -18,6 +18,8 @@ type ApiBlogListItem = {
   status: string;
   createdAt: string;
   publishedAt?: string;
+  viewCount?: number;
+  seoKeywords?: string | string[] | null;
 };
 
 type ApiBlogDetail = ApiBlogListItem & {
@@ -178,6 +180,17 @@ function resolveAuthorLink(authorLink?: string | null) {
   }
 }
 
+function parseSeoKeywords(raw?: string | string[] | null): string[] {
+  if (!raw) return [];
+  const parts = Array.isArray(raw) ? raw : raw.split(",");
+  return parts.map((part) => part.trim()).filter(Boolean);
+}
+
+function resolveViewCount(viewCount?: number) {
+  if (typeof viewCount !== "number" || !Number.isFinite(viewCount)) return 0;
+  return Math.max(0, Math.floor(viewCount));
+}
+
 function mapListItemToPost(item: ApiBlogListItem): BlogPost {
   const category = resolveCategory(item.categories);
   const publishedAt = item.publishedAt || item.createdAt;
@@ -198,6 +211,8 @@ function mapListItemToPost(item: ApiBlogListItem): BlogPost {
     publishedAt,
     updatedAt: publishedAt,
     readingTimeMinutes: 1,
+    viewCount: resolveViewCount(item.viewCount),
+    seoKeywords: parseSeoKeywords(item.seoKeywords),
     htmlContent: "",
     content: [],
   };
@@ -251,6 +266,11 @@ export const fetchBlogs = cache(
   ): Promise<BlogPost[]> => {
     const payload = await fetchJson<ApiListResponse>(
       `/api/v1/admin/blogs?page=${page}&limit=${limit}&sort=${sort}`
+    );
+
+    console.log(
+      "[fetchBlogs] response",
+      JSON.stringify(payload, null, 2)
     );
 
     if (!payload?.status || !Array.isArray(payload.data)) return [];

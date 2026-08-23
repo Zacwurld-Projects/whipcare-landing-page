@@ -6,6 +6,7 @@ import { BlogAuthorLink } from "@/components/BlogAuthorLink";
 import { BlogCoverImage } from "@/components/BlogCoverImage";
 import { BlogShareButton } from "@/components/BlogShareButton";
 import {
+  formatBlogViewCount,
   getBlogCategories,
   type BlogCategoryId,
   type BlogPost,
@@ -172,7 +173,13 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                 ) : (
                   <span />
                 )}
-
+                <p
+                  className="shrink-0 font-inter text-[13px] leading-[1.4] text-[#6b7280]"
+                  aria-label={`${formatBlogViewCount(post.viewCount)} views`}
+                >
+                  {formatBlogViewCount(post.viewCount)}{" "}
+                  {post.viewCount === 1 ? "view" : "views"}
+                </p>
               </div>
             </article>
           ))}

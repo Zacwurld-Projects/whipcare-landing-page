@@ -3,6 +3,7 @@ import { BlogCoverImage } from "@/components/BlogCoverImage";
 import { BlogShareButton } from "@/components/BlogShareButton";
 import { Button } from "@/components/ui/button";
 import type { BlogPost } from "@/screens/BlogScreen/blogData";
+import { formatBlogViewCount } from "@/screens/BlogScreen/blogData";
 
 type HomeBlogSectionProps = {
   posts: BlogPost[];
@@ -66,6 +67,13 @@ export const HomeBlogSection = ({ posts }: HomeBlogSectionProps) => {
                     {post.excerpt}
                   </p>
                 </Link>
+                <p
+                  className="font-inter text-[13px] leading-[1.4] text-[#6b7280]"
+                  aria-label={`${formatBlogViewCount(post.viewCount)} views`}
+                >
+                  {formatBlogViewCount(post.viewCount)}{" "}
+                  {post.viewCount === 1 ? "view" : "views"}
+                </p>
               </div>
             </article>
           ))}

@@ -1,6 +1,10 @@
 import { SITE_NAME, SITE_URL } from "@/constants/site";
 import type { BlogPost } from "@/screens/BlogScreen/blogData";
-import { getBlogImageAbsoluteUrl, getBlogWordCount } from "@/screens/BlogScreen/blogData";
+import {
+  getBlogImageAbsoluteUrl,
+  getBlogWordCount,
+  resolveBlogSeoKeywords,
+} from "@/screens/BlogScreen/blogData";
 
 export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
   const image = getBlogImageAbsoluteUrl(post.heroImage, SITE_URL);
@@ -34,7 +38,13 @@ export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
       },
     },
     articleSection: post.categoryLabel,
+    keywords: resolveBlogSeoKeywords(post).join(", "),
     wordCount: getBlogWordCount(post),
+    interactionStatistic: {
+      "@type": "InteractionCounter",
+      interactionType: "https://schema.org/ViewAction",
+      userInteractionCount: post.viewCount,
+    },
     inLanguage: "en-NG",
     mainEntityOfPage: {
       "@type": "WebPage",

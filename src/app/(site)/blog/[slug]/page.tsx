@@ -9,7 +9,10 @@ import {
 } from "@/lib/blogs";
 import { buildPageMetadata } from "@/lib/seo";
 import { BlogPostScreen } from "@/screens/BlogScreen/BlogPostScreen";
-import { getBlogImageUrl } from "@/screens/BlogScreen/blogData";
+import {
+  getBlogImageUrl,
+  resolveBlogSeoKeywords,
+} from "@/screens/BlogScreen/blogData";
 
 export const revalidate = 60;
 
@@ -45,13 +48,7 @@ export async function generateMetadata({
     title: post.title,
     description: post.description,
     path: `/blog/${post.slug}`,
-    keywords: [
-      post.categoryLabel,
-      "vehicle maintenance",
-      "car care tips Nigeria",
-      "Whipcare blog",
-      ...(post.authorName ? [post.authorName] : []),
-    ],
+    keywords: resolveBlogSeoKeywords(post),
     type: "article",
     publishedTime: post.publishedAt,
     modifiedTime: post.updatedAt,

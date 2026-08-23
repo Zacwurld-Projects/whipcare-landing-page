@@ -31,9 +31,35 @@ export type BlogPost = {
   publishedAt: string;
   updatedAt: string;
   readingTimeMinutes: number;
+  viewCount: number;
+  /** CMS SEO keywords; empty → page uses defaults. */
+  seoKeywords: string[];
   htmlContent: string;
   content: BlogArticleSection[];
 };
+
+export const DEFAULT_BLOG_SEO_KEYWORDS = [
+  "vehicle maintenance",
+  "car care tips Nigeria",
+  "Whipcare blog",
+] as const;
+
+export function resolveBlogSeoKeywords(post: BlogPost): string[] {
+  if (post.seoKeywords.length > 0) return post.seoKeywords;
+  return [
+    post.categoryLabel,
+    ...DEFAULT_BLOG_SEO_KEYWORDS,
+    ...(post.authorName ? [post.authorName] : []),
+  ];
+}
+
+export function formatBlogViewCount(count: number): string {
+  const safe = Math.max(0, Math.floor(count));
+  return new Intl.NumberFormat("en", {
+    notation: safe >= 1000 ? "compact" : "standard",
+    maximumFractionDigits: 1,
+  }).format(safe);
+}
 
 export function getBlogImageUrl(image: BlogImage | null): string | null {
   if (!image) return null;
