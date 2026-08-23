@@ -4,6 +4,7 @@ import frame1618873202 from "@/assets/Frame 1618873202.png";
 import { BlogAuthorLink } from "@/components/BlogAuthorLink";
 import { BlogCoverImage } from "@/components/BlogCoverImage";
 import { BlogShareButton } from "@/components/BlogShareButton";
+import { BlogViewTracker } from "@/components/BlogViewTracker";
 import { SiteHeader } from "@/components/SiteHeader";
 import { AdvertisementSpotlightSection } from "../HomeScreen/sections/AdvertisementSpotlightSection";
 import { FooterNavigationSection } from "../HomeScreen/sections/FooterNavigationSection";
@@ -26,6 +27,7 @@ const formatDate = (value: string) =>
 export const BlogPostScreen = ({ post, relatedPosts }: BlogPostScreenProps) => {
   return (
     <main className="w-full bg-white">
+      <BlogViewTracker blogId={post.id} />
       <section
         aria-labelledby="blog-post-title"
         className="relative w-full overflow-hidden bg-white"

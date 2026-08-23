@@ -2,6 +2,7 @@ import Link from "next/link";
 import { BlogCoverImage } from "@/components/BlogCoverImage";
 import { BlogShareButton } from "@/components/BlogShareButton";
 import type { BlogPost } from "../blogData";
+import { formatBlogViewCount } from "../blogData";
 
 const helpfulLinks = [
   {
@@ -94,12 +95,18 @@ export const BlogPostFollowUpSection = ({
                         <p className="line-clamp-2 font-inter text-[13px] leading-[1.5] text-[#6b7280] sm:text-[14px]">
                           {related.excerpt}
                         </p>
-                        <time
-                          dateTime={related.publishedAt}
-                          className="mt-auto pt-2 font-inter text-[12px] text-[#9ca3af] sm:text-[13px]"
-                        >
-                          {formatDate(related.publishedAt)}
-                        </time>
+                        <div className="mt-auto flex items-center justify-between gap-2 pt-2">
+                          <time
+                            dateTime={related.publishedAt}
+                            className="font-inter text-[12px] text-[#9ca3af] sm:text-[13px]"
+                          >
+                            {formatDate(related.publishedAt)}
+                          </time>
+                          <span className="font-inter text-[12px] text-[#9ca3af] sm:text-[13px]">
+                            {formatBlogViewCount(related.viewCount)}{" "}
+                            {related.viewCount === 1 ? "view" : "views"}
+                          </span>
+                        </div>
                       </Link>
                     </div>
                   </article>
