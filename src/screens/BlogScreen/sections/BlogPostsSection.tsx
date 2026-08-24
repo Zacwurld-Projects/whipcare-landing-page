@@ -173,13 +173,13 @@ export const BlogPostsSection = ({ posts }: BlogPostsSectionProps) => {
                 ) : (
                   <span />
                 )}
-                <p
+                {/* <p
                   className="shrink-0 font-inter text-[13px] leading-[1.4] text-[#6b7280]"
                   aria-label={`${formatBlogViewCount(post.viewCount)} views`}
                 >
                   {formatBlogViewCount(post.viewCount)}{" "}
                   {post.viewCount === 1 ? "view" : "views"}
-                </p>
+                </p> */}
               </div>
             </article>
           ))}
