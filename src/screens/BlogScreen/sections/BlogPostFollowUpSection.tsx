@@ -102,10 +102,10 @@ export const BlogPostFollowUpSection = ({
                           >
                             {formatDate(related.publishedAt)}
                           </time>
-                          <span className="font-inter text-[12px] text-[#9ca3af] sm:text-[13px]">
+                          {/* <span className="font-inter text-[12px] text-[#9ca3af] sm:text-[13px]">
                             {formatBlogViewCount(related.viewCount)}{" "}
                             {related.viewCount === 1 ? "view" : "views"}
-                          </span>
+                          </span> */}
                         </div>
                       </Link>
                     </div>

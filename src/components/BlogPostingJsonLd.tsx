@@ -10,15 +10,15 @@ export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
   const image = getBlogImageAbsoluteUrl(post.heroImage, SITE_URL);
   const author = post.authorName
     ? {
-        "@type": "Person" as const,
-        name: post.authorName,
-        ...(post.authorLink ? { url: post.authorLink } : {}),
-      }
+      "@type": "Person" as const,
+      name: post.authorName,
+      ...(post.authorLink ? { url: post.authorLink } : {}),
+    }
     : {
-        "@type": "Organization" as const,
-        name: SITE_NAME,
-        url: SITE_URL,
-      };
+      "@type": "Organization" as const,
+      name: SITE_NAME,
+      url: SITE_URL,
+    };
 
   const data = {
     "@context": "https://schema.org",
@@ -43,7 +43,7 @@ export function BlogPostingJsonLd({ post }: { post: BlogPost }) {
     interactionStatistic: {
       "@type": "InteractionCounter",
       interactionType: "https://schema.org/ViewAction",
-      userInteractionCount: post.viewCount,
+      // userInteractionCount: post.viewCount,
     },
     inLanguage: "en-NG",
     mainEntityOfPage: {
